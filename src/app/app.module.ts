@@ -13,6 +13,7 @@ import { CustomerRegComponent } from './component/customer-reg/customer-reg.comp
 import { HomeCardComponent } from './component/home-card/home-card.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { HomeCardComponent } from './component/home-card/home-card.component';
     CustomerDashComponent,
     CustomerLoginComponent,
     CustomerRegComponent,
-    HomeCardComponent
+    HomeCardComponent,
   ],
   imports: [
     BrowserModule,
