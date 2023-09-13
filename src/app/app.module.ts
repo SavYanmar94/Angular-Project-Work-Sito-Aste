@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { FooterComponent } from './component/footer/footer.component';
+
+import { CustomerDashComponent } from './component/customer-dash/customer-dash.component';
 import { CustomerLoginComponent } from './component/customer-login/customer-login.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
-import { AdminDashComponent } from './component/customer-dash/admin-dash.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { AdminDashComponent } from './component/customer-dash/admin-dash.compone
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    CustomerRegComponent,
+    CustomerDashComponent,
     CustomerLoginComponent,
     CustomerRegComponent
   ],
@@ -27,4 +29,5 @@ import { AdminDashComponent } from './component/customer-dash/admin-dash.compone
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
