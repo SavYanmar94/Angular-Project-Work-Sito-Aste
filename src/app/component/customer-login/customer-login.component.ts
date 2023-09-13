@@ -4,9 +4,10 @@ import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-customer-login',
-  templateUrl: './customer-login.component.html',
-  styleUrls: ['./customer-login.component.css']
+
+    selector: 'app-customer-login',
+    templateUrl: './customer-login.component.html',
+    styleUrls: ['./customer-login.component.css']
 })
 export class CustomerLoginComponent {
 
@@ -49,3 +50,4 @@ export class CustomerLoginComponent {
   }
 
 }
+
