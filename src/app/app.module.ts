@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { CustomerDashComponent } from './component/customer-dash/customer-dash.component';
+import { CustomerLoginComponent } from './component/customer-login/customer-login.component';
+import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CustomerDashComponent,
+    CustomerLoginComponent,
+    CustomerRegComponent
   ],
   imports: [
     BrowserModule,
@@ -21,4 +27,5 @@ import { FooterComponent } from './component/footer/footer.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
