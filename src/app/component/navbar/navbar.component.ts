@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
+  //attributi
+  @Input() position:any;
+  @Output() userLoginFormPopup = new EventEmitter();
+
+  //attivazione popup form login user
+  activateUserLoginFormPopup():void{
+    this.userLoginFormPopup.emit();
+  }
 
 }

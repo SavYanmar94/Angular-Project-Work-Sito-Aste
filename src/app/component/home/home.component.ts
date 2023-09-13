@@ -1,10 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
+  //attributi
+  userLoginPopupVisible:boolean = false;
+  userLogged:boolean = false;
+
+  //costruttore
+  constructor(
+    private userService:UserService,
+    private router:Router) { } 
+  
+  //inizializzazione
+  ngOnInit(): void {
+    this.userLogged = this.userService.checkUserLoginState();
+  }
+
+  //visualizzazione popup form login user
+  activateUserLoginFormPopup():void{
+    if(this.userService.checkUserLoginState())
+      this.router.navigate(["customer"]) //METTERCI IL ROUTING CORRETTO PER LA PAGINA DEL CLIENTE SE NON È CUSTOMER
+    else
+      this.userLoginPopupVisible = true;
+  }
+
+
+  //disattivazione popup form login cliente
+  deactivateUserLoginFormPopup():void{
+    this.userLoginPopupVisible = false;
+  }
+
+
+  //gestione login cliente
+  userLoginManager():void{
+    this.userLoginPopupVisible = false;
+    this.router.navigate(["customer"]); //METTERCI IL ROUTING CORRETTO PER LA PAGINA DEL CLIENTE SE NON È CUSTOMER
+  }
+  
 }

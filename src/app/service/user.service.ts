@@ -54,4 +54,9 @@ export class UserService {
       return localStorage.getItem(USER_STORAGE_TKN) as string;
     return "_";
   }
+
+  //controllo stato di login del cliente
+  public checkUserLoginState():boolean{
+    return localStorage.getItem(USER_STORAGE_TKN) != null;
+  }
 }
