@@ -10,6 +10,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { CustomerDashComponent } from './component/customer-dash/customer-dash.component';
 import { CustomerLoginComponent } from './component/customer-login/customer-login.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
+import { HomeCardComponent } from './component/home-card/home-card.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CustomerRegComponent } from './component/customer-reg/customer-reg.comp
     FooterComponent,
     CustomerDashComponent,
     CustomerLoginComponent,
-    CustomerRegComponent
+    CustomerRegComponent,
+    HomeCardComponent
   ],
   imports: [
     BrowserModule,
