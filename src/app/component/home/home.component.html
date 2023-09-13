@@ -1,5 +1,10 @@
 <div class="container">
 <app-navbar></app-navbar>
 <app-home-card></app-home-card>
+<app-customer-login
+    [isVisible]="userLoginPopupVisible"
+    (leave)="deactivateUserLoginFormPopup()"
+    (login)="userLoginManager()">
+</app-customer-login>
 <app-footer></app-footer>
 </div>
