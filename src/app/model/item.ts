@@ -8,5 +8,5 @@ export interface Item {
     auctionBase?:number;
     image?:string;
     state?:string;
-    seller?: /* DA AGGIUNGERE */;
+     /*seller?: DA AGGIUNGERE */
 }
