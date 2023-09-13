@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Item {
 
     id?:number;
@@ -8,5 +10,6 @@ export interface Item {
     auctionBase?:number;
     image?:string;
     state?:string;
-     /*seller?: DA AGGIUNGERE */
+    seller?:User;
+
 }
