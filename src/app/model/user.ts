@@ -1,3 +1,6 @@
+import { HomeAddress } from "./home-address";
+import { ShippingAddress } from "./shipping-address";
+
 export interface User {
 
     id?:number;
@@ -11,6 +14,6 @@ export interface User {
     profileImage?:string;
     profileType?:string;
     authToken?:string;
-    homeAddress?:/* DA AGGIUNGERE */;
-    shippingAddress?: /* DA AGGIUNGERE */;
+    homeAddress?:HomeAddress;
+    shippingAddress?:ShippingAddress;
 }
