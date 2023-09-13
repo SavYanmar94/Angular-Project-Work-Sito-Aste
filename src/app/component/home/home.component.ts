@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   //visualizzazione popup form login user
   activateUserLoginFormPopup():void{
     if(this.userService.checkUserLoginState())
-      this.router.navigate(["customer"]) //METTERCI IL ROUTING CORRETTO PER LA PAGINA DEL CLIENTE SE NON È CUSTOMER
+      this.router.navigate(["customer"]) //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
     else
       this.userLoginPopupVisible = true;
   }
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   //gestione login cliente
   userLoginManager():void{
     this.userLoginPopupVisible = false;
-    this.router.navigate(["customer"]); //METTERCI IL ROUTING CORRETTO PER LA PAGINA DEL CLIENTE SE NON È CUSTOMER
+    this.router.navigate(["customer"]); //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
   }
   
 }
