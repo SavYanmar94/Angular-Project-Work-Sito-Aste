@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-customer-dash',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class CustomerDashComponent {
 
+  constructor(
+    private router:Router
+  ) {}
+
+  btnClick():void {
+    this.router.navigate(["c_dash_two"]);
+  }
 }

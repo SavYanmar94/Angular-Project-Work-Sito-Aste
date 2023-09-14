@@ -11,6 +11,8 @@ import { CustomerDashComponent } from './component/customer-dash/customer-dash.c
 import { CustomerLoginComponent } from './component/customer-login/customer-login.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
 import { HomeCardComponent } from './component/home-card/home-card.component';
+import { CustomerDashTwoComponent } from './customer-dash-two/customer-dash-two.component';
+import { ItemFormComponent } from './component/item-form/item-form.component';
 
 
 
@@ -24,6 +26,8 @@ import { HomeCardComponent } from './component/home-card/home-card.component';
     CustomerLoginComponent,
     CustomerRegComponent,
     HomeCardComponent,
+    ItemFormComponent,
+    CustomerDashTwoComponent
   ],
   imports: [
     BrowserModule,
