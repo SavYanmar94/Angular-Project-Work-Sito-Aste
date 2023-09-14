@@ -7,13 +7,13 @@ import { HomeComponent } from './component/home/home.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CustomerDashComponent } from './component/customer-dash/customer-dash.component';
-import { CustomerLoginComponent } from './component/customer-login/customer-login.component';
-import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
+import { UserDashComponent } from './component/user-dash/user-dash.component';
+import { UserLoginComponent } from './component/user-login/user-login.component';
+import { UserRegComponent } from './component/user-reg/user-reg.component';
 import { HomeCardComponent } from './component/home-card/home-card.component';
-import { CustomerDashTwoComponent } from './component/customer-dash-two/customer-dash-two.component';
+import { UserDashTwoComponent } from './component/user-dash-two/user-dash-two.component';
 import { ItemFormComponent } from './component/item-form/item-form.component';
-import { CustomerProfileDetailsComponent } from './component/customer-profile-details/customer-profile-details.component';
+import { UserProfileDetailsComponent } from './component/user-profile-details/user-profile-details.component';
 
 
 @NgModule({
@@ -22,13 +22,13 @@ import { CustomerProfileDetailsComponent } from './component/customer-profile-de
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    CustomerDashComponent,
-    CustomerLoginComponent,
-    CustomerRegComponent,
+    UserDashComponent,
+    UserLoginComponent,
+    UserRegComponent,
     HomeCardComponent,
     ItemFormComponent,
-    CustomerDashTwoComponent,
-    CustomerProfileDetailsComponent,
+    UserDashTwoComponent,
+    UserProfileDetailsComponent,
   ],
   imports: [
     BrowserModule,

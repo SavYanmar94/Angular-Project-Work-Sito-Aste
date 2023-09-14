@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from "@angular/router"
 
 @Component({
-  selector: 'app-customer-dash',
-  templateUrl: './customer-dash.component.html',
-  styleUrls: ['./customer-dash.component.css']
+  selector: 'app-user-dash',
+  templateUrl: './user-dash.component.html',
+  styleUrls: ['./user-dash.component.css']
 })
-export class CustomerDashComponent {
+export class UserDashComponent {
 
   constructor(
     private router:Router,

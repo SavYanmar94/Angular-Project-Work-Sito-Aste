@@ -1,9 +1,9 @@
 <div class="container">
-    <app-customer-login
+    <app-user-login
     [isVisible]="userLoginPopupVisible"
     (leave)="deactivateUserLoginFormPopup()"
     (login)="userLoginManager()">
-</app-customer-login>
+</app-user-login>
 <app-navbar
     [position]="'home'"
     (userRegFormPopup)="activateUserRegFormPopup()"
@@ -12,10 +12,10 @@
 </app-navbar>
 <app-home-card></app-home-card>
 
-<app-customer-reg
+<app-user-reg
         [isVisible]="userRegPopupVisible"
         (leave)="deactivateUserRegFormPopup()"
         (register)="userRegistrationManager()">
-    </app-customer-reg>
+    </app-user-reg>
 <app-footer></app-footer>
 </div>

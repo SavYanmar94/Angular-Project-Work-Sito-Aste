@@ -1,4 +1,4 @@
-import { HomeAddress } from './../../model/home-address';
+import { HomeAddress } from '../../model/home-address';
 import { outputAst } from '@angular/compiler';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -8,11 +8,11 @@ import { UserService } from 'src/app/service/user.service';
 
 
 @Component({
-  selector: 'app-customer-reg',
-  templateUrl: './customer-reg.component.html',
-  styleUrls: ['./customer-reg.component.css']
+  selector: 'app-user-reg',
+  templateUrl: './user-reg.component.html',
+  styleUrls: ['./user-reg.component.css']
 })
-export class CustomerRegComponent 
+export class UserRegComponent 
 {
   // attributi
   @Input() isVisible:boolean = false;

@@ -5,11 +5,11 @@ import { UserService } from 'src/app/service/user.service';
 
 @Component({
 
-    selector: 'app-customer-login',
-    templateUrl: './customer-login.component.html',
-    styleUrls: ['./customer-login.component.css']
+    selector: 'app-user-login',
+    templateUrl: './user-login.component.html',
+    styleUrls: ['./user-login.component.css']
 })
-export class CustomerLoginComponent {
+export class UserLoginComponent {
 
   //attributi
   @Input() isVisible:boolean = false;
