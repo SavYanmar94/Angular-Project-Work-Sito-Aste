@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   //attributi
   userLoginPopupVisible:boolean = false;
   userLogged:boolean = false;
+  customerRegPopupVisible:boolean = false;
 
   //costruttore
   constructor(
@@ -43,5 +44,21 @@ export class HomeComponent implements OnInit {
     this.userLoginPopupVisible = false;
     this.router.navigate(["customer"]); //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
   }
+
+  // visualizzazione popup form registrazione cliente
+  activateCustomerRegFormPopup():void
+  {
+    this.customerRegPopupVisible = true;
+  }
   
+  // disattivazione popup form registrazione cliente
+  deactivateCustomerRegFormPopup():void
+  {
+    this.customerRegPopupVisible = false;
+  }
+   // gestione registrazione profilo cliente
+   customerRegistrationManager():void
+   {
+     this.customerRegPopupVisible = false;
+   }
 }
