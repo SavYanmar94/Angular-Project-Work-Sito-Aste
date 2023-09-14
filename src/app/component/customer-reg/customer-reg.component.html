@@ -1,4 +1,4 @@
-<div class="popup-overlay  d-flex justify-content-center" [ngClass]="{'visible': isVisible}">
+<div class="popup-overlay  d-flex justify-content-center" *ngIf="isVisible">
     <div class="popup" style="background-color:#9ab6c724; border-radius: 20px; width: 900px;">
         <div class="row">
             <div class="col-12 text-center">
