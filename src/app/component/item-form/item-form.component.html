@@ -1,0 +1,54 @@
+<div class="popup-overlay" [ngClass]="{'visible':isVisible}"> <!-- aggiungiamo la classe visible da css a condizione che isVisible sia true -->
+    <div class="popup">
+        <div class="row">
+            <h5 class="text-primary text-center">Nuovo Elemento</h5>
+        </div>
+        <div class="row mt-2">
+            <div class="col-7">
+                <form #f="ngForm" (submit)="formManager(f)">
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Nome:</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="col-6">
+                            <label>Descrizione:</label>
+                            <input name="description" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Base d'asta:</label>
+                            <input type="number" name="auctionBase" class="form-control" required>
+                        </div>
+                    </div>
+                        <div class="col-9">
+                            <input type="file" name="image" class="form-control" style="display: none;"
+                                accept="image/jpeg,image/png" maxlength="1048576"
+                                #image>
+                            <button type="button" class="btn btn-outline-warning mt-4"
+                                (click)="image.click()">
+                                Carica immagine di copertina
+                            </button>
+                        </div>
+                    <div class="row mt-4">
+                        <div class="col-12 text-center">
+                            <button type="button" class="btn btn-outline-warning me-4"
+                            (click)="leaveItemForm(f)">
+                                Abbandona
+                            </button>
+                            <input type="submit" class="btn btn-outline-primary"
+                                >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-5 text-center">
+                <h6 class="mt-4 mb-3">Immagine Caricata</h6>
+                <img  
+                    class="img-thumbnail" alt="image" 
+                    style="width:210px;max-width:210px;height:310px;max-height:310px;">
+            </div>
+        </div>
+    </div>
+</div>
