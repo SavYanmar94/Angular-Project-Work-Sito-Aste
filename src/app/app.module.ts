@@ -13,7 +13,7 @@ import { CustomerRegComponent } from './component/customer-reg/customer-reg.comp
 import { HomeCardComponent } from './component/home-card/home-card.component';
 import { CustomerDashTwoComponent } from './component/customer-dash-two/customer-dash-two.component';
 import { ItemFormComponent } from './component/item-form/item-form.component';
-import { CustomerProfileDetailsComponent } from './customer-profile-details/customer-profile-details.component';
+import { CustomerProfileDetailsComponent } from './component/customer-profile-details/customer-profile-details.component';
 
 
 @NgModule({
