@@ -21,6 +21,11 @@ a:focus {
     align-items: stretch;
 }
 
+#sidebarWebsiteName {
+    font-size: 30px;
+    line-height: 50px;
+}
+
 #sidebar {
     min-width: 250px;
     max-width: 250px;
@@ -32,6 +37,7 @@ a:focus {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #334D5C;
+    text-align: center;
 }
 
 #sidebar ul p {
