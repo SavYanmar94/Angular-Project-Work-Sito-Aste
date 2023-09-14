@@ -7,87 +7,14 @@
                     <h1 class="display-5 fw-bold">Benvenuto Nickname!</h1>
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 250px;"
                     alt="Avatar" /><br>
-                    <button id="bottone_sotto_profilo" class="btn btn-primary btn-lg" href="#!">Modifica il tuo profilo</button>
+                    <button id="bottone_sotto_profilo" class="btn btn-outline-secondary btn-lg" href="#!">Modifica il tuo profilo</button><br>
+                    <!-- info button-->
+                    <button (click)="info_btnClick()"  id="info_btn" class="btn btn-lg bottone_2" type="button" data-toggle="collapse" data-target="#dettagli_profilo" aria-expanded="true" aria-controls="dettagli_profilo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg></button>
                 </div>
-
-
-                <div class="card mb-4">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Tipologia profilo</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">tipologia profilo</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Data di iscrizione</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">data</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Nome e cognome</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">Nome e cognome</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Nickname</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">nickname</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Email</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">indirizzo@gmail.com</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Codice fiscale</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">codice</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Indirizzo di residenza</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">indirizzo</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Indirizzo di spedizione</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-muted mb-0">indirizzo di spedizione</p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-                
+                <app-customer-profile-details [isVisible]="isVisible"></app-customer-profile-details>
             </div>
         </div>
     </header>
@@ -101,7 +28,7 @@
                         <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
                             <h2 class="fs-4 fw-bold">Aggiungi un nuovo articolo</h2>
-                            <button class="btn btn-outline-success btn-lg bottone_2">Clicca qui</button>
+                            <button class="btn btn-lg bottone_2">Clicca qui</button>
                         </div>
                     </div>
                 </div>
@@ -110,7 +37,7 @@
                         <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
                             <h2 class="fs-4 fw-bold">Le tue offerte</h2>
-                            <button (click)="btnClick()" class="btn btn-outline-success btn-lg bottone_2">Clicca qui</button>
+                            <button (click)="btnClick()" class="btn btn-lg bottone_2">Clicca qui</button>
                         </div>
                     </div>
                 </div>
@@ -119,7 +46,7 @@
                         <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
                             <h2 class="fs-4 fw-bold">I tuoi articoli all'asta</h2>
-                            <button (click)="btnClick()" class="btn btn-outline-success btn-lg bottone_2">Clicca qui</button>
+                            <button (click)="btnClick()" class="btn btn-lg bottone_2">Clicca qui</button>
                         </div>
                     </div>
                 </div>
@@ -128,12 +55,12 @@
                         <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
                             <h2 class="fs-4 fw-bold">I tuoi articoli venduti</h2>
-                            <button (click)="btnClick()" class="btn btn-outline-success btn-lg bottone_2">Clicca qui</button>
+                            <button (click)="btnClick()" class="btn btn-lg bottone_2">Clicca qui</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section>    
 </body>
 <app-footer></app-footer>
