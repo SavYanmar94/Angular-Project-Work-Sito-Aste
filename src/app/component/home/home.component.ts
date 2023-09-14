@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   //attributi
   userLoginPopupVisible:boolean = false;
   userLogged:boolean = false;
-  customerRegPopupVisible:boolean = false;
+  userRegPopupVisible:boolean = false;
 
   //costruttore
   constructor(
@@ -46,19 +46,19 @@ export class HomeComponent implements OnInit {
   }
 
   // visualizzazione popup form registrazione cliente
-  activateCustomerRegFormPopup():void
+  activateUserRegFormPopup():void
   {
-    this.customerRegPopupVisible = true;
+    this.userRegPopupVisible = true;
   }
   
   // disattivazione popup form registrazione cliente
-  deactivateCustomerRegFormPopup():void
+  deactivateUserRegFormPopup():void
   {
-    this.customerRegPopupVisible = false;
+    this.userRegPopupVisible = false;
   }
    // gestione registrazione profilo cliente
-   customerRegistrationManager():void
+   userRegistrationManager():void
    {
-     this.customerRegPopupVisible = false;
+     this.userRegPopupVisible = false;
    }
 }

@@ -45,6 +45,7 @@ export class CustomerRegComponent
       town:form.value["town"],
       province:form.value["province"]
     };
+
     let shippingAddress:ShippingAddress = {
       street:form.value["street"],
       civic:form.value["civic"],
@@ -52,6 +53,7 @@ export class CustomerRegComponent
       town:form.value["town"],
       province:form.value["province"]
     };
+    
     let user:User = {
       entryDate:form.value["entryDate"],
       name:form.value["name"],
@@ -69,6 +71,7 @@ export class CustomerRegComponent
     this.userService.userRegistration(user)
       .subscribe({
         next: response => {
+          // da vedere
           if(response.code == 201)
           {
             form.reset();

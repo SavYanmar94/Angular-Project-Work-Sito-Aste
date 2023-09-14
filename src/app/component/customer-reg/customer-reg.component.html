@@ -80,12 +80,11 @@
                     <div class="row  d-flex justify-content-center">
                         <div class="col-auto m-2">
                         <label for="venditore"style="margin: 4px;">Venditore</label>
-                        <input type="radio" id="venditore" name="ruolo" value="venditore">
-                   
+                        <!-- <input [(ngModel)]="profileType" type="radio" name="profileType"> DA VEDERE-->
                     </div> 
                     <div class="col-auto m-2">
                         <label for="acquirente" style="margin: 4px;">Acquirente</label>
-                        <input type="radio" id="acquirente" name="ruolo" value="acquirente">
+                        <!-- <input  [(ngModel)]="profileType"  type="radio" name="profileType"> DA VEDERE-->
                     </div>
                      <!-- DOMICILIO -->
                      <h5 class=" text-center  mt-4 mb-4" style="color: #334D5C;" >Indirizzo di residenza:</h5>
@@ -147,7 +146,6 @@
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                       
                         <div class="col-5">
                             <label>Comune:</label>
                             <input [ngModel] type="text" name="town" class="form-control" required  
