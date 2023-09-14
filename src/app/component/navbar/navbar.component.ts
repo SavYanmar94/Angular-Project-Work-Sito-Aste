@@ -10,15 +10,15 @@ export class NavbarComponent {
   //attributi
   @Input() position:any;
   @Output() userLoginFormPopup = new EventEmitter();
-  @Output() customerRegFormPopup = new EventEmitter();
+  @Output() userRegFormPopup = new EventEmitter();
 
   //attivazione popup form login user
   activateUserLoginFormPopup():void{
     this.userLoginFormPopup.emit();
   }
 
-  activateCustomerRegFormPopup():void{
-    this.customerRegFormPopup.emit();
+  activateUserRegFormPopup():void{
+    this.userRegFormPopup.emit();
   }
 
 }

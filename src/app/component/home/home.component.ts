@@ -26,10 +26,13 @@ export class HomeComponent implements OnInit {
 
   //visualizzazione popup form login user
   activateUserLoginFormPopup():void{
-    if(this.userService.checkUserLoginState())
-      this.router.navigate(["customer"]) //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
-    else
-      this.userLoginPopupVisible = true;
+
+    this.userLoginPopupVisible = true; // per vedere se cosi funziona
+
+    //  if(this.userService.checkUserLoginState())
+    //    this.router.navigate(["customer"]) //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
+    //  else
+    //    this.userLoginPopupVisible = true;
   }
 
 

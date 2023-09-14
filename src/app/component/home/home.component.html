@@ -1,15 +1,17 @@
 <div class="container">
-<app-navbar
-    [position]="'home'"
-    (userRegFormPopup)="activateUserRegFormPopup()">
-    
-</app-navbar>
-<app-home-card></app-home-card>
-<app-customer-login
+    <app-customer-login
     [isVisible]="userLoginPopupVisible"
     (leave)="deactivateUserLoginFormPopup()"
     (login)="userLoginManager()">
 </app-customer-login>
+<app-navbar
+    [position]="'home'"
+    (userRegFormPopup)="activateUserRegFormPopup()"
+    (userLoginFormPopup)="activateUserLoginFormPopup()">
+    
+</app-navbar>
+<app-home-card></app-home-card>
+
 <app-customer-reg
         [isVisible]="userRegPopupVisible"
         (leave)="deactivateUserRegFormPopup()"
