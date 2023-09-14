@@ -5,10 +5,10 @@ import { User } from '../model/user';
 import { ServiceResponse } from '../model/service-response';
 
 //API endpoints
-const USER_REG_API:string = "http://localhost:8080/"; //DA AGGIUNGERE
-const USER_LOGIN_API:string = "http://localhost:8080/"; //DA AGGIUNGERE
+const USER_REG_API:string = "http://localhost:8080/auctions/user/reg";
+const USER_LOGIN_API:string = "http://localhost:8080/auctions/user/login";
 //const USER_DATA_API:string = "http://localhost:8080/"; PER ORA NON SERVE, NON SO SE SERVIRÀ
-const USER_LOGOUT_API:string = "http://localhost:8080/"; //DA AGGIUNGERE
+const USER_LOGOUT_API:string = "http://localhost:8080/auctions/user/logout";
 
 
 //chiavi local storage
