@@ -13,7 +13,7 @@ import { CustomerRegComponent } from './component/customer-reg/customer-reg.comp
 import { HomeCardComponent } from './component/home-card/home-card.component';
 import { CustomerDashTwoComponent } from './customer-dash-two/customer-dash-two.component';
 import { ItemFormComponent } from './component/item-form/item-form.component';
-
+import { CustomerProfileDetailsComponent } from './customer-profile-details/customer-profile-details.component';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { ItemFormComponent } from './component/item-form/item-form.component';
     CustomerRegComponent,
     HomeCardComponent,
     ItemFormComponent,
-    CustomerDashTwoComponent
+    CustomerDashTwoComponent,
+    CustomerProfileDetailsComponent,
   ],
   imports: [
     BrowserModule,
