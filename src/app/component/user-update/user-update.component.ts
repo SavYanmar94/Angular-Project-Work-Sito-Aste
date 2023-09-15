@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HomeAddress } from 'src/app/model/home-address';
 import { ShippingAddress } from 'src/app/model/shipping-address';
@@ -10,13 +10,17 @@ import { UserService } from 'src/app/service/user.service';
   templateUrl: './user-update.component.html',
   styleUrls: ['./user-update.component.css']
 })
-export class UserUpdateComponent {
+export class UserUpdateComponent implements OnInit {
 
   @Input() update_lander:String = "main";
   serverError:any;
   duplicate:any;
   @Output() leave = new EventEmitter();
   @Output() update = new EventEmitter();
+
+  ngOnInit(): void {
+    
+  }
 
 
     // costruttore

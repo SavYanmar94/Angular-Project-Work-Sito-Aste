@@ -22,6 +22,7 @@ export class UserDashComponent {
   }
 
   user_profile_update():void {
+    window.scroll(0, 0);
     this.lander = "no";
     this.child_lander = "update";
   }
