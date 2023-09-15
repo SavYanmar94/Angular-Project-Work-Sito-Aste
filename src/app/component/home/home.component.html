@@ -7,9 +7,11 @@
 <app-navbar
     [position]="'home'"
     (userRegFormPopup)="activateUserRegFormPopup()"
-    (userLoginFormPopup)="activateUserLoginFormPopup()">
+    (userLoginFormPopup)="activateUserLoginFormPopup()"
+    (search)="getItemAPI($event)">
     
 </app-navbar>
+<app-carousel></app-carousel>
 <app-home-card></app-home-card>
 
 <app-user-reg
