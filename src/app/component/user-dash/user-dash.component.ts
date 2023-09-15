@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from "@angular/router"
 
 @Component({
@@ -16,6 +16,7 @@ export class UserDashComponent {
   isVisible:boolean = false;
   lander:String = "main";
   child_lander:String = "main";
+  itemFormVisibility:boolean = false;
 
   btnClick():void {
     this.router.navigate(["c_dash_two"]);
@@ -32,7 +33,7 @@ export class UserDashComponent {
   }
 
   addNewItem():void {
-
+    this.itemFormVisibility = true;
   }
 
   yourOffers():void {
@@ -46,12 +47,17 @@ export class UserDashComponent {
   }
 
   yourSoldItems():void {
-
+    this.lander = "no";
+    this.child_lander = "soldItems";
   }
 
   return_to_profile():void {
     this.lander = "main";
     this.child_lander = "main";
+  }
+
+  leaveItemForm():void {
+    this.itemFormVisibility = false;
   }
 
 }

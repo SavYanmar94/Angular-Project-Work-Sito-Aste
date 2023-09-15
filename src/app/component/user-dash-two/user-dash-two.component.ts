@@ -28,6 +28,6 @@ export class UserDashTwoComponent {
   }
 
   articoliVenduti():void {
-
+    this.child_lander = "soldItems";
   }
 }

@@ -15,7 +15,8 @@ export class ItemFormComponent {
   @Input() isVisible:boolean = false;
   @Input() itemImage:any;
   @Input() item:Item|undefined;
-  @Output() leave = new EventEmitter();
+  @Output() isVisibleChange = new EventEmitter<boolean>();
+  
 
   //costruttore
   constructor(private itemService:ItemService) { }
@@ -24,7 +25,7 @@ export class ItemFormComponent {
   leaveItemForm(form:NgForm):void{
     form.reset();
     this.itemImage = undefined;
-    this.leave.emit;
+    this.isVisibleChange.emit(false);
   }
 
   //metodo per la gestione del form
@@ -51,7 +52,7 @@ export class ItemFormComponent {
           if(response.code == 201){ //CHECK SE IL CODICE È GIUSTO IN BACKEND
             form.reset();
             this.itemImage = undefined;
-            this.leave.emit();
+            this.isVisibleChange.emit(); //da controllare 
           }
         },
         error: e => console.log(e.message)

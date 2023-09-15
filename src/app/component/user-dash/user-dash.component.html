@@ -1,5 +1,8 @@
 <div id="container">
+
     <app-user-update [update_lander]="child_lander" (leave)="return_to_profile()"></app-user-update>
+    
+    <app-item-form  [(isVisible)]="itemFormVisibility" (leave)="leaveItemForm()"></app-item-form>
     
     <app-user-dash-two [child_lander]="child_lander" (lander_main)="return_to_profile()"></app-user-dash-two>
     <body *ngIf="lander == 'main'">
@@ -34,7 +37,7 @@
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
                                 <h2 class="fs-4 fw-bold">Aggiungi un nuovo articolo</h2>
-                                <button (click)="addNewItem" class="btn btn-lg bottone_2">Clicca qui</button>
+                                <button (click)="addNewItem()" class="btn btn-lg bottone_2">Clicca qui</button>
                             </div>
                         </div>
                     </div>
