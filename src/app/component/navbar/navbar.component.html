@@ -10,21 +10,23 @@
           <li class="nav-item active">
               <a class="nav-link" href="#">Home</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categorie 
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Abbigliamento</a>
-              <a class="dropdown-item" href="#">Oggetti vari</a>
-              <a class="dropdown-item" href="#">Quadri</a>
-              <a class="dropdown-item" href="#">Telefoni e computer</a>
-            </div>
-          </li>
+          <!-- DROPDOWN -->
+          <div class="dropdown">
+            <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Elettronica</a></li>
+              <li><a class="dropdown-item" href="#">Quadri</a></li>
+              <li><a class="dropdown-item" href="#">Abbigliamento</a></li>
+              <li><a class="dropdown-item" href="#">Arredamento per la casa</a></li>
+            </ul>
+          </div>
       </ul>
+                <!-- SEARCH -->
       <form class="form-inline my-2 my-lg-0">
           <div class="input-group">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" style="width: 400px;">
               <div class="input-group-append">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                       <i class="fa-solid fa-magnifying-glass" style="color: #334d5c;"><img src="../../../assets/images/search-svgrepo-com-2.png" alt="" style="width: 25px;"></i>
