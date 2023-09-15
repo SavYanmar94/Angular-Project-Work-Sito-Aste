@@ -14,6 +14,7 @@ import { HomeCardComponent } from './component/home-card/home-card.component';
 import { UserDashTwoComponent } from './component/user-dash-two/user-dash-two.component';
 import { ItemFormComponent } from './component/item-form/item-form.component';
 import { UserProfileDetailsComponent } from './component/user-profile-details/user-profile-details.component';
+import { CarouselComponent } from './component/carousel/carousel.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { UserProfileDetailsComponent } from './component/user-profile-details/us
     ItemFormComponent,
     UserDashTwoComponent,
     UserProfileDetailsComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
