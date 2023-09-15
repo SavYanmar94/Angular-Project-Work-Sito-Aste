@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 
 //API endpoints
 const ITEMS_GET_API = "http://localhost:8080/" //DA AGGIUNGERE
-const ITEMS_POST_API = "http://localhost:8080/" //DA AGGIUNGERE
+const ITEMS_POST_API = "http://localhost:8080/auctions/item/reg"
 const ITEMS_PUT_API = "http://localhost:8080/" //DA AGGIUNGERE
 const ITEMS_DELETE_API = "http://localhost:8080/" //DA AGGIUNGERE
 
