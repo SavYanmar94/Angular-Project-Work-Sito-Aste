@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-dash-two',
@@ -7,4 +7,27 @@ import { Component } from '@angular/core';
 })
 export class UserDashTwoComponent {
 
+  @Input() child_lander:String = "main";
+  @Output() lander_main = new EventEmitter();
+
+  ritorna_al_profilo():void {
+    this.lander_main.emit();
+    this.child_lander = "main";
+  }
+
+  nuovoArt():void {
+    
+  }
+
+  offerte():void {
+    this.child_lander = "offer";
+  }
+
+  articoliAsta():void {
+    this.child_lander = "auction";
+  }
+
+  articoliVenduti():void {
+
+  }
 }

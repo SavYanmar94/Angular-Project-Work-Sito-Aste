@@ -15,6 +15,7 @@ import { UserDashTwoComponent } from './component/user-dash-two/user-dash-two.co
 import { ItemFormComponent } from './component/item-form/item-form.component';
 import { UserProfileDetailsComponent } from './component/user-profile-details/user-profile-details.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
+import { UserUpdateComponent } from './component/user-update/user-update.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CarouselComponent } from './component/carousel/carousel.component';
     UserDashTwoComponent,
     UserProfileDetailsComponent,
     CarouselComponent,
+    UserUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,8 +6,7 @@ import { UserDashTwoComponent } from './component/user-dash-two/user-dash-two.co
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
-  {path: "customer", component:UserDashComponent},
-  {path: "c_dash_two", component:UserDashTwoComponent}
+  {path: "user", component:UserDashComponent}
 ];
 
 @NgModule({

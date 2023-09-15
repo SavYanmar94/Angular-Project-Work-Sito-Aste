@@ -1,4 +1,4 @@
-<body>
+<body *ngIf="child_lander != 'main' && child_lander != 'update'">
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -10,12 +10,12 @@
             <ul class="list-unstyled components">
                 <p>MENU</p>
                 <li>
-                    <a href="#">Home</a>
-                    <a href="#">Il tuo profilo</a>
-                    <a href="#">Aggiungi un nuovo articolo</a>
-                    <a href="#">Le tue offerte</a>
-                    <a href="#">I tuoi articoli all'asta</a>
-                    <a href="#">I tuoi articoli venduti</a>
+                    <a >Home</a> <!--TODO-->
+                    <a (click)="ritorna_al_profilo()">Il tuo profilo</a>
+                    <a (click)="nuovoArt()">Aggiungi un nuovo articolo</a>
+                    <a (click)="offerte()">Le tue offerte</a>
+                    <a (click)="articoliAsta()">I tuoi articoli all'asta</a>
+                    <a (click)="articoliVenduti()">I tuoi articoli venduti</a>
                 </li>
             </ul>
         </nav>
@@ -24,7 +24,7 @@
         <div id="content">
             <div class="row">
                 <!-- Articoli all'asta  -->
-                <div class="col-md-3">
+                <div *ngIf="child_lander == 'auction'" class="col-md-3">
                     <div class="card">
                         <img class="card-img-top" src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1" alt="Card image cap">
                         <strong id="nome_articolo">Nome articolo</strong>
@@ -40,26 +40,28 @@
                     </div>
                 </div>
                 <!-- Offerte  -->
-                <h1 id="titolo-offerte">Le tue offerte inviate</h1>
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                      <h1 class="display-6">Nome articolo</h1>
-                      <table>
-                        <thead>
+                <div *ngIf="child_lander == 'offer'">
+                    <h1 id="titolo-offerte">Le tue offerte inviate</h1>
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                          <h1 class="display-6">Nome articolo</h1>
+                          <table>
+                            <thead>
+                                <tr>
+                                    <th>Data e ora offerta</th>
+                                    <th>Base asta</th>
+                                    <th>Offerta</th>
+                                    <th>Stato</th>
+                                </tr>
+                            </thead>
                             <tr>
-                                <th>Data e ora offerta</th>
-                                <th>Base asta</th>
-                                <th>Offerta</th>
-                                <th>Stato</th>
+                                <td>Data e ora</td>
+                                <td>base asta</td>
+                                <td>offerta</td>
+                                <td>stato</td>
                             </tr>
-                        </thead>
-                        <tr>
-                            <td>Data e ora</td>
-                            <td>base asta</td>
-                            <td>offerta</td>
-                            <td>stato</td>
-                        </tr>
-                      </table>
+                          </table>
+                        </div>
                     </div>
                 </div>
             </div>
