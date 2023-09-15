@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 import { Router } from '@angular/router';
+import { ItemService } from 'src/app/service/item.service';
+import { Item } from 'src/app/model/item';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +15,14 @@ export class HomeComponent implements OnInit {
   userLoginPopupVisible:boolean = false;
   userLogged:boolean = false;
   userRegPopupVisible:boolean = false;
+  items:Item[]|undefined;
+  serverError:any;
 
   //costruttore
   constructor(
     private userService:UserService,
-    private router:Router) { } 
+    private router:Router,
+    private itemService:ItemService) { } 
   
   //inizializzazione
   ngOnInit(): void {
@@ -30,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.userLoginPopupVisible = true; // per vedere se cosi funziona
 
     //  if(this.userService.checkUserLoginState())
-    //    this.router.navigate(["customer"]) //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
+    //    this.router.navigate(["customer"])
     //  else
     //    this.userLoginPopupVisible = true;
   }
@@ -45,7 +50,7 @@ export class HomeComponent implements OnInit {
   //gestione login cliente
   userLoginManager():void{
     this.userLoginPopupVisible = false;
-    this.router.navigate(["customer"]); //DA MODIFICARE PER AGGIUNGERE LA DASH DEI VENDITORI
+    this.router.navigate(["customer"]); 
   }
 
   // visualizzazione popup form registrazione cliente
@@ -63,5 +68,19 @@ export class HomeComponent implements OnInit {
    userRegistrationManager():void
    {
      this.userRegPopupVisible = false;
+   }
+
+   //invocazione API per lettura prodotti (barra di ricerca)
+   getItemAPI(search:string=""):void{
+    this.itemService.getItems()
+      .subscribe({
+        next: response => {
+          this.items = response;
+          if(search)
+            this.items = this.items?.filter(item =>
+              item.name?.toLowerCase().includes(search.toLowerCase()));
+        },
+        error: e => this.serverError = e.message
+      })
    }
 }

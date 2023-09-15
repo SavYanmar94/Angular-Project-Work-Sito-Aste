@@ -22,9 +22,9 @@
             </div>
           </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <form  #f="ngForm" (submit)="searcherEmitter(f)" class="form-inline my-2 my-lg-0">
           <div class="input-group">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search">
+              <input [ngModel] class="form-control mr-sm-2" type="text" name="search" placeholder="Cerca prodotti">
               <div class="input-group-append">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                       <i class="fa-solid fa-magnifying-glass" style="color: #334d5c;"><img src="../../../assets/images/search-svgrepo-com-2.png" alt="" style="width: 25px;"></i>
