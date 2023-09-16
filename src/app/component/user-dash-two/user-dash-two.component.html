@@ -10,9 +10,9 @@
             <ul class="list-unstyled components">
                 <p>MENU</p>
                 <li>
-                    <a >Home</a> <!--TODO-->
+                    <a routerLink="">Home</a> 
                     <a (click)="ritorna_al_profilo()">Il tuo profilo</a>
-                    <a (click)="nuovoArt()">Aggiungi un nuovo articolo</a>
+                    <a (click)="addNewItem()">Aggiungi un nuovo articolo</a>
                     <a (click)="offerte()">Le tue offerte</a>
                     <a (click)="articoliAsta()">I tuoi articoli all'asta</a>
                     <a (click)="articoliVenduti()">I tuoi articoli venduti</a>
@@ -20,6 +20,8 @@
             </ul>
         </nav>
         
+        <app-item-form [(isVisible)]="itemFormVisibility"></app-item-form>
+
         <!-- Page Content  -->
         <div id="content">
             <div class="row">

@@ -1,137 +1,157 @@
-<div id="overlay" *ngIf="update_lander == 'update'">
-
-    <div class="wrapper">
-        <form #f="ngForm" (submit)="formManager(f)">
-            <!-- SECTION 1 -->
-            <section>
-                <div class="inner">
-                    <div class="image-holder">
-                        <img src="https://images.unsplash.com/photo-1616852732890-b108bcf5b2da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="">
+<body id="body" *ngIf="update_lander == 'update'">
+    <div id="overlay">
+        <div class="wrapper">
+            <form #f="ngForm" (submit)="formManager(f)">
+                <!-- SECTION 1 -->
+                <section>
+                    <div class="inner">
+                        <div class="image-holder">
+                            <img id="myImg" src="">
+                            <!--https://images.unsplash.com/photo-1616852732890-b108bcf5b2da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80-->
+                        </div>
+                        <div class="form-content" id="myForm">
+                            <div class="form-header">
+                                <h3>Modifica profilo</h3>
+                            </div>
+                            <p>Inserisci i tuoi dettagli</p>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="name">Nome</label>
+                                    <input [ngModel] type="text" name="name" placeholder="Nome" class="form-control"
+                                        required pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
+                                        [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label for="lastname">Cognome</label>
+                                    <input [ngModel] type="text" name="lastname" placeholder="Cognome"
+                                        class="form-control" required pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
+                                        [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="mail">Email</label>
+                                    <input [ngModel] type="email" name="mail" placeholder="Email" class="form-control"
+                                        required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+                                        #mail="ngModel"
+                                        [ngStyle]="{'background-color': mail.invalid && mail.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label for="taxCode">Codice fiscale</label>
+                                    <input [ngModel] type="text" placeholder="Codice fiscale" name="taxCode"
+                                        class="form-control" required pattern="[a-zA-Z0-9]{16}" #taxCode="ngModel"
+                                        [ngStyle]="{'background-color': taxCode.invalid && taxCode.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="password">Password</label>
+                                    <input [ngModel] type="password" name="password" placeholder="Password"
+                                        class="form-control" required
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}"
+                                        #password="ngModel"
+                                        [ngStyle]="{'background-color': password.invalid && password.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label>Immagine del profilo:</label>
+                                    <input [ngModel] type="file" name="profileImage" class="form-control-file btn">
+                                </div>
+                            </div>
+                            <!-- DOMICILIO -->
+                            <p>Indirizzo di residenza</p>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="street">Via/Viale/Piazza</label>
+                                    <input [ngModel] type="text" name="street" placeholder="Via/Viale/Piazza"
+                                        class="form-control" required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}"
+                                        #street="ngModel"
+                                        [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label for="civic">Civico</label>
+                                    <input [ngModel] type="text" name="civic" placeholder="Civico" class="form-control"
+                                        required pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
+                                        [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="cap">Cap</label>
+                                    <input [ngModel] type="text" name="cap" placeholder="Cap" class="form-control"
+                                        required pattern="[0-9]{5}" #cap="ngModel"
+                                        [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label for="town">Comune</label>
+                                    <input [ngModel] type="text" name="town" placeholder="Comune" class="form-control"
+                                        required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
+                                        [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="province">Provincia</label>
+                                    <input [ngModel] type="text" name="province" placeholder="Provincia"
+                                        class="form-control" required pattern="[a-zA-Z]{2}" #province="ngModel"
+                                        [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <!-- INDIRIZZO DI SPEDIZIONE -->
+                            <p>Indirizzo di spedizione</p>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="street">Via/Viale/Piazza</label>
+                                    <input [ngModel] type="text" name="street" placeholder="Via/Viale/Piazza"
+                                        class="form-control" required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}"
+                                        #street="ngModel"
+                                        [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label for="civic">Civico</label>
+                                    <input [ngModel] type="text" name="civic" placeholder="Civico" class="form-control"
+                                        required pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
+                                        [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="cap">Cap</label>
+                                    <input [ngModel] type="text" name="cap" placeholder="Cap" class="form-control"
+                                        required pattern="[0-9]{5}" #cap="ngModel"
+                                        [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                                <div class="form-holder">
+                                    <label for="town">Comune</label>
+                                    <input [ngModel] type="text" name="town" placeholder="Comune" class="form-control"
+                                        required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
+                                        [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <label for="province">Provincia</label>
+                                    <input [ngModel] type="text" name="province" placeholder="Provincia"
+                                        class="form-control" required pattern="[a-zA-Z]{2}" #province="ngModel"
+                                        [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
+                                </div>
+                            </div>
+                            <!-- BOTTONI -->
+                            <div class="form-row">
+                                <div class="form-holder">
+                                    <button type="button" class="btn btn-outline-warning mt-4"
+                                        (click)="leaveRegistration(f)">
+                                        Abbandona Modifica
+                                    </button>
+                                </div>
+                                <div class="form-holder">
+                                    <input type="submit" class="btn btn-outline-primary mt-4 ms-4" value="Conferma"
+                                        [disabled]="f.invalid">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-content" >
-                        <div class="form-header">
-                            <h3>Modifica profilo</h3>
-                        </div>
-                        <p>Inserisci i tuoi dettagli</p>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="name" placeholder="Nome" class="form-control" required 
-                                pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
-                                [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="lastname" placeholder="Cognome" class="form-control" required 
-                                pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
-                                [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="email" name="mail" placeholder="Email" class="form-control" required
-                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" #mail="ngModel"
-                            [ngStyle]="{'background-color': mail.invalid && mail.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <input [ngModel] type="text" placeholder="Codice fiscale" name="taxCode" class="form-control" required
-                            pattern="[a-zA-Z0-9]{16}" #taxCode="ngModel"
-                            [ngStyle]="{'background-color': taxCode.invalid && taxCode.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="password" name="password" placeholder="Password" class="form-control" required
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}"
-                            #password="ngModel"
-                            [ngStyle]="{'background-color': password.invalid && password.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <label>Immagine del profilo:</label>
-                                <input [ngModel] type="file" name="profileImage" class="form-control-file btn">
-                            </div>
-                        </div>
-                        <!-- DOMICILIO -->
-                        <p>Indirizzo di residenza</p>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="street" placeholder="Via/Viale/Piazza" class="form-control" required  
-                    pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #street="ngModel"
-                    [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="civic" placeholder="Civico" class="form-control" required
-                    pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
-                    [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="cap" placeholder="Cap" class="form-control" required
-                        pattern="[0-9]{5}" #cap="ngModel" 
-                        [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="town" placeholder="Comune" class="form-control" required  
-                        pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
-                        [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="province" placeholder="Provincia" class="form-control" required
-                        pattern="[a-zA-Z]{2}" #province="ngModel"
-                        [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <!-- INDIRIZZO DI SPEDIZIONE -->
-                        <p>Indirizzo di spedizione</p>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="street" placeholder="Via/Viale/Piazza" class="form-control" required  
-                    pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #street="ngModel"
-                    [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="civic" placeholder="Civico" class="form-control" required
-                    pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
-                    [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="cap" placeholder="Cap" class="form-control" required
-                        pattern="[0-9]{5}" #cap="ngModel" 
-                        [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="town" placeholder="Comune" class="form-control" required  
-                        pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
-                        [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <input [ngModel] type="text" name="province" placeholder="Provincia" class="form-control" required
-                        pattern="[a-zA-Z]{2}" #province="ngModel"
-                        [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
-                            </div>
-                        </div>
-                        <!-- BOTTONI -->
-                        <div class="form-row">
-                            <div class="form-holder">
-                                <button type="button" class="btn btn-outline-warning mt-4" 
-                        (click)="leaveRegistration(f)">
-                        Abbandona Modifica
-                        </button>
-                        <input type="submit" class="btn btn-outline-primary mt-4 ms-4" 
-                        value="Conferma" [disabled]="f.invalid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            
-        </form>
+                </section>
+            </form>
+        </div>
     </div>
-
-  </div>
+</body>

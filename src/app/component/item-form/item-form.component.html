@@ -5,7 +5,7 @@
         </div>
         <div class="row mt-2">
             <div class="col-7">
-                <form #f="ngForm" (submit)="formManager(f)">
+                <form #f="ngForm" (submit)="formManager(f)" >
                     <div class="row">
                         <div class="col-6">
                             <label>Nome:</label>
@@ -37,8 +37,7 @@
                             (click)="leaveItemForm(f)">
                                 Abbandona
                             </button>
-                            <input type="submit" class="btn btn-outline-primary"
-                                >
+                            <input type="submit" class="btn btn-outline-primary">
                         </div>
                     </div>
                 </form>
