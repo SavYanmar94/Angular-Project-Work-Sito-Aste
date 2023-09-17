@@ -9,21 +9,21 @@
                     <div class="row">
                         <div class="col-6">
                             <label>Nome:</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input [ngModel] type="text" name="name" class="form-control" required>
                         </div>
                         <div class="col-6">
                             <label>Descrizione:</label>
-                            <input name="description" class="form-control" required>
+                            <input [ngModel] name="description" class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label>Base d'asta:</label>
-                            <input type="number" name="auctionBase" class="form-control" required>
+                            <input [ngModel] type="number" name="auctionBase" class="form-control" required>
                         </div>
                     </div>
                         <div class="col-9">
-                            <input type="file" name="image" class="form-control" style="display: none;"
+                            <input [ngModel] type="file" name="image" class="form-control" style="display: none;"
                                 accept="image/jpeg,image/png" maxlength="1048576"
                                 #image>
                             <button type="button" class="btn btn-outline-warning mt-4"
@@ -37,7 +37,7 @@
                             (click)="leaveItemForm(f)">
                                 Abbandona
                             </button>
-                            <input type="submit" class="btn btn-outline-primary">
+                            <input [disabled]="f.invalid" type="submit" class="btn btn-outline-primary">
                         </div>
                     </div>
                 </form>
