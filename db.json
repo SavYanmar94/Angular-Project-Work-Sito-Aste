@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "entryDate": "2023-09-07",
+      "name": "Giuseppe",
+      "lastname": "Lovaglio",
+      "mail": "email@gmail.com",
+      "taxCode": "adfaadfasdfadsfa",
+      "nickname": "Gigi",
+      "password": "Pass123!",
+      "profileImage": "C:\\fakepath\\black.jpg",
+      "profileType": "v",
+      "homeAddress": {
+        "street": "via",
+        "civic": "civ",
+        "cap": "10010",
+        "town": "co",
+        "province": "pr"
+      },
+      "shippingAddress": {
+        "street": "via",
+        "civic": "civ",
+        "cap": "10010",
+        "town": "co",
+        "province": "pr"
+      },
+      "id": 1
+    }
+  ]
+}

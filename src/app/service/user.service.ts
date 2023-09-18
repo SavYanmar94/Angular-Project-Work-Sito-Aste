@@ -10,6 +10,11 @@ const USER_REG_API:string = "http://localhost:8080/auctions/user/reg";
 const USER_LOGIN_API:string = "http://localhost:8080/auctions/user/login";
 const USER_LOGOUT_API:string = "http://localhost:8080/auctions/user/logout";
 
+//local server momentaneo
+const l_USER_REG_API:string = "http://localhost:3000/users";
+const l_USER_LOGIN_API:string = "http://localhost:3000/users";
+const l_USER_LOGOUT_API:string = "http://localhost:3000users";
+
 
 //chiavi local storage
 const USER_STORAGE_ID = "uid";
@@ -22,21 +27,21 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  //INVOCAZIONE ENDPOINT
+  //INVOCAZIONE ENDPOINT                                   --> da modificare local endpoints
   
   //registrazione user
   public userRegistration(user:User):Observable<ServiceResponse>{
-    return this.http.post<ServiceResponse>(USER_REG_API, user);
+    return this.http.post<ServiceResponse>(l_USER_REG_API, user);
   }
 
   //login user
   public userLogin(user:User):Observable<ServiceResponse>{
-    return this.http.put<ServiceResponse>(USER_LOGIN_API, user);
+    return this.http.put<ServiceResponse>(l_USER_LOGIN_API, user);
   }
 
   //logout user
   public userLogout():Observable<ServiceResponse>{
-    return this.http.get<ServiceResponse>(`${USER_LOGOUT_API}/${this.getUserToken()}`);
+    return this.http.get<ServiceResponse>(`${l_USER_LOGOUT_API}/${this.getUserToken()}`);
   }
 
 
@@ -59,4 +64,5 @@ export class UserService {
   public checkUserLoginState():boolean{
     return localStorage.getItem(USER_STORAGE_TKN) != null;
   }
+  
 }

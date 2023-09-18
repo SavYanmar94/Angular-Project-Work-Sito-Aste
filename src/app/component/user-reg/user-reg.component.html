@@ -14,7 +14,7 @@
                   <div class="row  d-flex justify-content-center text-center">
                     <div class="col-6 m-4">
                         <label for="dataAttuale">Seleziona una data:</label>
-                        <input type="date" id="dataAttuale" name="dataAttuale" style="border-radius: 5px;">
+                        <input [ngModel] type="date" id="dataAttuale" style="border-radius: 5px;" name="entryDate" required>
                     </div>
                          <!-- NOME --> 
                     <div class="row d-flex justify-content-center" >
@@ -80,11 +80,11 @@
                     <div class="row  d-flex justify-content-center">
                         <div class="col-auto m-2">
                         <label for="venditore"style="margin: 4px;">Venditore</label>
-                        <!-- <input [(ngModel)]="profileType" type="radio" name="profileType"> DA VEDERE-->
+                        <input [ngModel] type="radio" name="profileType" value="v"> 
                     </div> 
                     <div class="col-auto m-2">
                         <label for="acquirente" style="margin: 4px;">Acquirente</label>
-                        <!-- <input  [(ngModel)]="profileType"  type="radio" name="profileType"> DA VEDERE-->
+                        <input  [ngModel]  type="radio" name="profileType" value="a">
                     </div>
                      <!-- DOMICILIO -->
                      <h5 class=" text-center  mt-4 mb-4" style="color: #334D5C;" >Indirizzo di residenza:</h5>
