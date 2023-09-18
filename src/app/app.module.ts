@@ -16,6 +16,7 @@ import { ItemFormComponent } from './component/item-form/item-form.component';
 import { UserProfileDetailsComponent } from './component/user-profile-details/user-profile-details.component';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
+import { ItemDetailsComponent } from './component/item-details/item-details.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { UserUpdateComponent } from './component/user-update/user-update.compone
     UserProfileDetailsComponent,
     CarouselComponent,
     UserUpdateComponent,
+    ItemDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -85,7 +85,16 @@ a:focus {
     font-size: large;
 }
 
-#articoli_asta_btn {
+#articoli_asta_btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.articoli_asta_btn {
+    width: 48%;
+}
+
+#articoli_venduti_btn {
     width: 100%;
 }
 

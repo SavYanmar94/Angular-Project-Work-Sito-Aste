@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class UserDashTwoComponent {
 
   itemFormVisibility:boolean = false;
+  itemDetailsVisibility:boolean = false;
   @Input() child_lander:String = "main";
   @Output() lander_main = new EventEmitter();
 
@@ -18,6 +19,10 @@ export class UserDashTwoComponent {
 
   addNewItem():void {
     this.itemFormVisibility = true;
+  }
+
+  itemDetails():void {
+    this.itemDetailsVisibility = true;
   }
 
   offerte():void {

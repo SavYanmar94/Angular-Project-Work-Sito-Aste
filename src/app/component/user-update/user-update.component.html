@@ -1,10 +1,10 @@
-<body id="body" *ngIf="update_lander == 'update'">
+<body *ngIf="update_lander == 'update'">
     <div id="overlay">
         <div class="wrapper">
             <form #f="ngForm" (submit)="formManager(f)">
                 <!-- SECTION 1 -->
                 <section>
-                    <div class="inner">
+                    <div class="inner" #inner>
                         <div class="image-holder">
                             <img id="myImg" src="">
                             <!--https://images.unsplash.com/photo-1616852732890-b108bcf5b2da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80-->
