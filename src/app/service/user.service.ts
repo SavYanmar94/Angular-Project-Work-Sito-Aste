@@ -60,6 +60,13 @@ export class UserService {
     return "_";
   }
 
+  //rimozione token dal Local Storage in fase di logout
+  public removeUserToken():void{
+    if(localStorage.getItem(USER_STORAGE_TKN))
+      localStorage.removeItem(USER_STORAGE_TKN);
+  }
+
+
   //controllo stato di login del cliente
   public checkUserLoginState():boolean{
     return localStorage.getItem(USER_STORAGE_TKN) != null;
