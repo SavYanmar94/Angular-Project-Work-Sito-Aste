@@ -72,5 +72,15 @@ export class UserService {
     return localStorage.getItem(USER_STORAGE_TKN) != null;
   }
 
+    // rimozione credenziali cliente al logout
+    public removeUserCredential():void
+    {
+      if(localStorage.getItem(USER_STORAGE_ID) && localStorage.getItem(USER_STORAGE_TKN))
+      {
+        localStorage.removeItem(USER_STORAGE_ID);
+        localStorage.removeItem(USER_STORAGE_TKN);
+      }
+    }
+
  
 }

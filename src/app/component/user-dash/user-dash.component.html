@@ -6,8 +6,9 @@
     
     <app-user-dash-two [child_lander]="child_lander" (lander_main)="return_to_profile()"></app-user-dash-two>
     <body *ngIf="lander == 'main'">
-    
-        <app-navbar></app-navbar>
+        <!-- navbar-->
+        <app-navbar [userLogged]="true" (userLogout)="userLogoutManager()"></app-navbar>
+
         <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">

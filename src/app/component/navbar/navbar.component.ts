@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +9,14 @@ import { NgForm } from '@angular/forms';
 })
 export class NavbarComponent {
 
+  constructor(private router:Router) {}
+
   //attributi
-  @Input() position:any;
+  @Input() userLogged:boolean = false;
   @Output() userLoginFormPopup = new EventEmitter();
   @Output() userRegFormPopup = new EventEmitter();
   @Output() search = new EventEmitter<string>();
+  @Output() userLogout = new EventEmitter();
 
   //attivazione popup form login user
   activateUserLoginFormPopup():void{
@@ -27,6 +31,14 @@ export class NavbarComponent {
   searcherEmitter(form:NgForm):void{
     this.search.emit(form.value["search"]);
     form.reset();
+  }
+
+  goUser():void{
+    this.router.navigate(["user"]);
+  }
+
+  userLogoutEvent():void{
+    this.userLogout.emit();
   }
 
 }

@@ -81,4 +81,20 @@ export class HomeComponent implements OnInit {
         error: e => this.serverError = e.message
       })
    }
+
+   userLogoutManager():void
+   {
+     this.userService.userLogout()
+       .subscribe({
+         next: response => {
+           if(response.code == 202)
+           {
+             this.userService.removeUserCredential();
+             this.userLogged = false;
+             window.alert("Logout effettuato con successo!")
+           }
+         },
+         error: e => console.log(e)
+       });
+   }
 }

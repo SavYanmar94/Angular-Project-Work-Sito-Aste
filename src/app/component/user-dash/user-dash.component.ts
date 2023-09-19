@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from "@angular/router"
+import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-user-dash',
@@ -10,7 +12,7 @@ export class UserDashComponent {
 
   constructor(
     private router:Router,
-    
+    private userService:UserService
   ) {}
 
   isVisible:boolean = false;
@@ -58,6 +60,21 @@ export class UserDashComponent {
 
   leaveItemForm():void {
     this.itemFormVisibility = false;
+  }
+
+  userLogoutManager():void
+  {
+    this.userService.userLogout()
+      .subscribe({
+        next: response => {
+          if(response.code == 202)
+          {
+            this.userService.removeUserCredential();
+            this.router.navigate([""]);
+          }
+        },
+        error: e => console.log(e)
+      });
   }
 
 }

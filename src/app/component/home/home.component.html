@@ -5,9 +5,10 @@
     (login)="userLoginManager()">
 </app-user-login>
 <app-navbar
-    [position]="'home'"
+    [userLogged]="userLogged"
     (userRegFormPopup)="activateUserRegFormPopup()"
     (userLoginFormPopup)="activateUserLoginFormPopup()"
+    (userLogout)="userLogoutManager()"
     (search)="getItemAPI($event)">
     
 </app-navbar>

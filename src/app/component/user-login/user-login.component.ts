@@ -34,13 +34,6 @@ export class UserLoginComponent {
       password:form.value["password"]
     };
     this.userService.userLogin(user)
-    //.subscribe(res=>{
-    //  alert("Login success");
-    //  this.login.emit();
-    //},err=>{
-    //  alert("Login failed");
-    //  console.log(err);
-    //})
        .subscribe({
          next: response => {
            this.userService.saveUserData(response.code, response.message);
