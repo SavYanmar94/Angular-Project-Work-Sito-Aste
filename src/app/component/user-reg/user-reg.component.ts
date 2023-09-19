@@ -35,7 +35,9 @@ export class UserRegComponent
     this.leave.emit();
   }
 
-  // gestione del form
+  // gestione del form forse serve dopo da inserire per l update
+
+  //metodo per creare e registrare nuovo user
   formManager(form:NgForm):void
   {
     let homeAddress:HomeAddress = {

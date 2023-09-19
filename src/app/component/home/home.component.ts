@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private userService:UserService,
     private router:Router,
-    private itemService:ItemService) { } 
+    private itemService:ItemService
+    ) { } 
   
   //inizializzazione
   ngOnInit(): void {
@@ -32,12 +33,9 @@ export class HomeComponent implements OnInit {
   //visualizzazione popup form login user
   activateUserLoginFormPopup():void{
 
-    this.userLoginPopupVisible = true; // per vedere se cosi funziona
-
-    //  if(this.userService.checkUserLoginState())
-    //    this.router.navigate(["customer"])
-    //  else
-    //    this.userLoginPopupVisible = true;
+    if(this.userService.checkUserLoginState())
+        this.router.navigate(["user"])
+    this.userLoginPopupVisible = true;
   }
 
 
@@ -47,10 +45,10 @@ export class HomeComponent implements OnInit {
   }
 
 
-  //gestione login cliente
+  //gestione login user
   userLoginManager():void{
     this.userLoginPopupVisible = false;
-    this.router.navigate(["customer"]); 
+    this.router.navigate(["user"]); 
   }
 
   // visualizzazione popup form registrazione cliente

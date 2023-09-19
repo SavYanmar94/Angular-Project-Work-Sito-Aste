@@ -12,8 +12,8 @@ const USER_LOGOUT_API:string = "http://localhost:8080/auctions/user/logout";
 
 
 //chiavi local storage
-const USER_STORAGE_ID = "uid";
-const USER_STORAGE_TKN = "utkn";
+const USER_STORAGE_ID:string = "uid";
+const USER_STORAGE_TKN:string = "utkn";
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +58,11 @@ export class UserService {
   //controllo stato di login del cliente
   public checkUserLoginState():boolean{
     return localStorage.getItem(USER_STORAGE_TKN) != null;
+  }
+
+  //rimozione token dal Local storage dopo logout
+  public removeUserToken():void{
+    if(localStorage.getItem(USER_STORAGE_TKN))
+      localStorage.removeItem(USER_STORAGE_TKN);
   }
 }
