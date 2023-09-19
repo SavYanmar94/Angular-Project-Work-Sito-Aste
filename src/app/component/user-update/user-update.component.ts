@@ -52,7 +52,7 @@ export class UserUpdateComponent {
       name: form.value["name"],
       lastname: form.value["lastname"],
       mail: form.value["mail"],
-      taxCode: form.value["taxCode"],
+      taxcode: form.value["taxCode"],
       password: form.value["password"],
       profileImage: form.value["profileImage"],
       authToken: form.value["authToken"],
