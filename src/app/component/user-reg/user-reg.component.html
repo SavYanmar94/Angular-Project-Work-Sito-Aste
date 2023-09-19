@@ -54,6 +54,9 @@
                        <div class="row d-flex justify-content-center">
                         <div class="col-4">
                             <label>Nickname:</label>
+                            <span [ngStyle]="{'display': duplicate ? 'inline' : 'none'}" class="text-danger"> 
+                                {{duplicate}}
+                            </span>
                             <input [ngModel] type="text" name="nickname" class="form-control" required 
                                 pattern="[a-zA-Z0-9.]{1,50}" #nickname="ngModel"
                                 [ngStyle]="{'background-color': nickname.invalid && nickname.dirty ? '#fa8072' : 'white'}">
