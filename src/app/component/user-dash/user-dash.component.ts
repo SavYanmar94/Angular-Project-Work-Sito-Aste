@@ -1,3 +1,4 @@
+import { OfferService } from './../../service/offer.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from "@angular/router"
 import { Item } from 'src/app/model/item';
@@ -28,7 +29,8 @@ export class UserDashComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    private itemService: ItemService
+    private itemService: ItemService,
+    private offerService: OfferService
   ) { }
 
   // inizializzazione
@@ -54,10 +56,21 @@ export class UserDashComponent {
                 error: e => console.log(e)
               })
 
-            this.offers
+            this.offerService.getOffers().subscribe({
+              next: response => {
+                if (response) {
+                  this.offers = response;
+                }
+              },
+              error: e => console.log(e)
+            })
+
+            console.log("------------");
+            console.log(this.items);
           }
         },
-        error: e => console.log(e)
+        error: e => {console.log(e), console.log("damn")}
+        
       });
   }
 
@@ -79,6 +92,7 @@ export class UserDashComponent {
 
   addNewItem(): void {
     this.itemFormVisibility = true;
+    
   }
 
   yourOffers(): void {
