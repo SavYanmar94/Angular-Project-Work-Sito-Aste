@@ -6,7 +6,8 @@ import { UserDashTwoComponent } from './component/user-dash-two/user-dash-two.co
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
-  {path: "user", component:UserDashComponent}
+  {path: "user", component:UserDashComponent},
+  {path: "**", redirectTo: ""}, //se l'url non esiste rimanda alla home
 ];
 
 @NgModule({

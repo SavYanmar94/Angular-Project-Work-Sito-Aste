@@ -8,7 +8,7 @@ export interface User {
     name?:string;
     lastname?:string;
     mail?:string;
-    taxCode?:string;
+    taxcode?:string;
     nickname?:string;
     password?:string;
     profileImage?:string;

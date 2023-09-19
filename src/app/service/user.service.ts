@@ -10,6 +10,11 @@ const USER_REG_API:string = "http://localhost:8080/auctions/user/reg";
 const USER_LOGIN_API:string = "http://localhost:8080/auctions/user/login";
 const USER_LOGOUT_API:string = "http://localhost:8080/auctions/user/logout";
 
+//local server momentaneo
+const l_USER_REG_API:string = "http://localhost:3000/users";
+const l_USER_LOGIN_API:string = "http://localhost:3000/users";
+const l_USER_LOGOUT_API:string = "http://localhost:3000users";
+
 
 //chiavi local storage
 const USER_STORAGE_ID:string = "uid";
@@ -22,7 +27,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  //INVOCAZIONE ENDPOINT
+  //INVOCAZIONE ENDPOINT                                  
   
   //registrazione user
   public userRegistration(user:User):Observable<ServiceResponse>{
@@ -55,14 +60,17 @@ export class UserService {
     return "_";
   }
 
+  //rimozione token dal Local Storage in fase di logout
+  public removeUserToken():void{
+    if(localStorage.getItem(USER_STORAGE_TKN))
+      localStorage.removeItem(USER_STORAGE_TKN);
+  }
+
+
   //controllo stato di login del cliente
   public checkUserLoginState():boolean{
     return localStorage.getItem(USER_STORAGE_TKN) != null;
   }
 
-  //rimozione token dal Local storage dopo logout
-  public removeUserToken():void{
-    if(localStorage.getItem(USER_STORAGE_TKN))
-      localStorage.removeItem(USER_STORAGE_TKN);
-  }
+ 
 }

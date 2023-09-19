@@ -61,18 +61,22 @@ export class UserRegComponent
       name:form.value["name"],
       lastname:form.value["lastname"],
       mail:form.value["mail"],
-      taxCode:form.value["taxCode"],
-      nickname:form.value["nikname"],
+      taxcode:form.value["taxCode"],
+      nickname:form.value["nickname"],
       password:form.value["password"],
       profileImage:form.value["profileImage"],
       profileType:form.value["profileType"],
-      authToken:form.value["authToken"],
+      // authToken:form.value["authToken"],  non credo serva
       homeAddress:homeAddress,
       shippingAddress:shippingAddress
     };
+    
+    console.log("------------");
+    console.log(form.value["taxCode"]);
     this.userService.userRegistration(user)
       .subscribe({
         next: response => {
+          console.log(response);
           // da vedere
           if(response.code == 201)
           {
@@ -83,10 +87,12 @@ export class UserRegComponent
           }
         },
         error: e => {
+          console.log(e);
           if(e.status == 406)
             this.duplicate = "Nickname Occupato";
           else
             this.serverError = "Problemi con il server";
+            
         }
       });
   }
