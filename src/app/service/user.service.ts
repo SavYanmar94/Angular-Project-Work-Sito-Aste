@@ -27,21 +27,21 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  //INVOCAZIONE ENDPOINT                                   --> da modificare local endpoints
+  //INVOCAZIONE ENDPOINT                                  
   
   //registrazione user
   public userRegistration(user:User):Observable<ServiceResponse>{
-    return this.http.post<ServiceResponse>(l_USER_REG_API, user);
+    return this.http.post<ServiceResponse>(USER_REG_API, user);
   }
 
   //login user
   public userLogin(user:User):Observable<ServiceResponse>{
-    return this.http.put<ServiceResponse>(l_USER_LOGIN_API, user);
+    return this.http.put<ServiceResponse>(USER_LOGIN_API, user);
   }
 
   //logout user
   public userLogout():Observable<ServiceResponse>{
-    return this.http.get<ServiceResponse>(`${l_USER_LOGOUT_API}/${this.getUserToken()}`);
+    return this.http.get<ServiceResponse>(`${USER_LOGOUT_API}/${this.getUserToken()}`);
   }
 
 

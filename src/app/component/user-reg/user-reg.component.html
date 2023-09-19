@@ -45,8 +45,13 @@
                         <div class="col-4">
                             <label>Codice Fiscale:</label>
                             <input [ngModel] type="text" name="taxCode" class="form-control" required
-                                pattern="[a-zA-Z0-9]{16}" #taxCode="ngModel"
+                                pattern="[A-Z0-9]{16}" #taxCode="ngModel"
                                 [ngStyle]="{'background-color': taxCode.invalid && taxCode.dirty ? '#fa8072' : 'white'}">
+                            <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="taxCode.valid || taxCode.pristine" class="alert alert-danger">
+                             Il codice fiscale deve essere di 16 cifre alfanumeriche MAIUSCOLE
+                           </div>
+
                         </div>
                     </div>
                     <!-- NICKNAME -->

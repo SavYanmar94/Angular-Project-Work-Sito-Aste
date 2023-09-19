@@ -34,26 +34,19 @@ export class UserLoginComponent {
       password:form.value["password"]
     };
     this.userService.userLogin(user)
-    .subscribe(res=>{
-      alert("Login success");
-      this.login.emit();
-    },err=>{
-      alert("Male");
-      console.log(err);
+    .subscribe({
+      next: response => {
+        this.userService.saveUserData(response.code, response.message);
+        this.serverError = undefined;
+        this.login.emit();
+      },
+      error: e => {
+        if(e.status == 401) //CONTROLLARE I CODICI CHE ARRIVANO DA BACKEND
+          this.serverError = "Accesso Negato";
+        else
+          this.serverError = e.message;
+      }
     })
-      // .subscribe({
-      //   next: response => {
-      //     this.userService.saveUserData(response.code, response.message);
-      //     this.serverError = undefined;
-      //     this.login.emit();
-      //   },
-      //   error: e => {
-      //     if(e.status == 401) //CONTROLLARE I CODICI CHE ARRIVANO DA BACKEND
-      //       this.serverError = "Accesso Negato";
-      //     else
-      //       this.serverError = e.message;
-      //   }
-      // })
 
   }
 

@@ -59,7 +59,7 @@ export class UserRegComponent
       name:form.value["name"],
       lastname:form.value["lastname"],
       mail:form.value["mail"],
-      taxCode:form.value["taxCode"],
+      taxcode:form.value["taxCode"],
       nickname:form.value["nickname"],
       password:form.value["password"],
       profileImage:form.value["profileImage"],
@@ -68,32 +68,30 @@ export class UserRegComponent
       homeAddress:homeAddress,
       shippingAddress:shippingAddress
     };
-    // this.userService.userRegistration(user)
-    //   .subscribe({
-    //     next: response => {
-    //       // da vedere
-    //       if(response.code == 201)
-    //       {
-    //         form.reset();
-    //         this.serverError = undefined;
-    //         this.duplicate = undefined;
-    //         this.register.emit();
-    //       }
-    //     },
-    //     error: e => {
-    //       if(e.status == 406)
-    //         this.duplicate = "Nickname Occupato";
-    //       else
-    //         this.serverError = "Problemi con il server";
-    //     }
-    //   });
     
-    this.userService.userRegistration(user).subscribe(res=>{
-      alert('SIGN IN SUCCESSFUL');
-      form.reset()
-    },err=>{
-      alert("Something went wrong")
-    })
-
+    console.log("------------");
+    console.log(form.value["taxCode"]);
+    this.userService.userRegistration(user)
+      .subscribe({
+        next: response => {
+          console.log(response);
+          // da vedere
+          if(response.code == 201)
+          {
+            form.reset();
+            this.serverError = undefined;
+            this.duplicate = undefined;
+            this.register.emit();
+          }
+        },
+        error: e => {
+          console.log(e);
+          if(e.status == 406)
+            this.duplicate = "Nickname Occupato";
+          else
+            this.serverError = "Problemi con il server";
+            
+        }
+      });
   }
 }
