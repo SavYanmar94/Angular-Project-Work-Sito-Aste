@@ -36,6 +36,7 @@ export class UserDashComponent {
   // inizializzazione
   ngOnInit(): void {
     this.callAPI();
+    
   }
 
   // metodo invocabile per invocazione API dati
@@ -65,12 +66,12 @@ export class UserDashComponent {
               error: e => console.log(e)
             })
 
-            console.log("------------");
-            console.log(this.items);
+            console.log("-----items sotto--------"); //da togliere
+            console.log(this.items); //da togliere
+            console.log(this.offers); //da togliere
           }
         },
-        error: e => {console.log(e), console.log("damn")}
-        
+        error: e => console.log(e)
       });
   }
 
@@ -92,7 +93,7 @@ export class UserDashComponent {
 
   addNewItem(): void {
     this.itemFormVisibility = true;
-    
+
   }
 
   yourOffers(): void {

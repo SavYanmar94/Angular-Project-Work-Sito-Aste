@@ -6,10 +6,10 @@ import { ServiceResponse } from '../model/service-response';
 import { UserService } from './user.service';
 
 //API endpoints
-const OFFERS_GET_API = "http://localhost:8080/auctions/offer/get"
-const OFFERS_POST_API = "http://localhost:8080/auctions/offer/reg/{usertoken}"
-const OFFERS_PUT_API = "" 
-const OFFERS_DELETE_API = "http://localhost:8080/auctions/offer/delete/{id}" 
+const OFFERS_GET_API = "http://localhost:8080/auctions/offer/get";
+const OFFERS_POST_API = "http://localhost:8080/auctions/offer/reg";
+const OFFERS_PUT_API = "http://localhost:8080/auctions/offer/update";
+const OFFERS_DELETE_API = "http://localhost:8080/auctions/offer/delete";
 
 @Injectable({
   providedIn: 'root'

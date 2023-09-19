@@ -25,7 +25,7 @@
                         <div class="col-9">
                             <input [ngModel] type="file" name="image" class="form-control" style="display: none;"
                                 accept="image/jpeg,image/png" maxlength="1048576"
-                                #image>
+                                #image (change)="uploadImage($event)">
                             <button type="button" class="btn btn-outline-warning mt-4"
                                 (click)="image.click()">
                                 Carica immagine di copertina

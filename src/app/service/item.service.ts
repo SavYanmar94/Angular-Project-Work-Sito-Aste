@@ -7,9 +7,8 @@ import { UserService } from './user.service';
 
 //API endpoints
 const ITEMS_GET_API = "http://localhost:8080/auctions/item/get";
-const ITEMS_POST_API = "http://localhost:8080/auctions/item/reg/{usertoken}";
-const ITEMS_PUT_API = "";
-const ITEMS_DELETE_API = "http://localhost:8080/auctions/item/delete/{id}/{usertoken}";
+const ITEMS_POST_API = "http://localhost:8080/auctions/item/reg";
+const ITEMS_DELETE_API = "http://localhost:8080/auctions/item/delete";
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +28,6 @@ export class ItemService {
     //metodo per registrare un nuovo item
     public itemRegistration(item:Item):Observable<ServiceResponse>{
       return this.http.post<ServiceResponse>(`${ITEMS_POST_API}/${this.userService.getUserToken()}`, item);
-    }
-
-    //metodo per modificare i dati di un item
-    public itemDataUpdate(item:Item):Observable<ServiceResponse>{
-      return this.http.put<ServiceResponse>(`${ITEMS_PUT_API}/${this.userService.getUserToken()}`, item);
     }
 
     //metodo per cancellare un item
