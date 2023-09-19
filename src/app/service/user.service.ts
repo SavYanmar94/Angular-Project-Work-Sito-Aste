@@ -9,12 +9,7 @@ import { ServiceResponse } from '../model/service-response';
 const USER_REG_API:string = "http://localhost:8080/auctions/user/reg";
 const USER_LOGIN_API:string = "http://localhost:8080/auctions/user/login";
 const USER_LOGOUT_API:string = "http://localhost:8080/auctions/user/logout";
-
-//local server momentaneo
-const l_USER_REG_API:string = "http://localhost:3000/users";
-const l_USER_LOGIN_API:string = "http://localhost:3000/users";
-const l_USER_LOGOUT_API:string = "http://localhost:3000users";
-
+const USER_DATA_API:string = "http://localhost:8080/auctions/user/get/{usertoken}";
 
 //chiavi local storage
 const USER_STORAGE_ID:string = "uid";
@@ -80,6 +75,12 @@ export class UserService {
         localStorage.removeItem(USER_STORAGE_ID);
         localStorage.removeItem(USER_STORAGE_TKN);
       }
+    }
+
+    // dati completi user loggato
+    public getUserData():Observable<User>
+    {
+      return this.http.get<User>(`${USER_DATA_API}/${this.getUserToken()}`);
     }
 
  

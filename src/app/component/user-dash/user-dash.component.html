@@ -1,5 +1,7 @@
 <div id="container">
 
+    <div *ngIf="serverError" class="alert alert-danger text-center">{{serverError}}</div>
+
     <app-user-update [update_lander]="child_lander" (leave)="return_to_profile()"></app-user-update>
     
     <app-item-form  [(isVisible)]="itemFormVisibility"></app-item-form>
