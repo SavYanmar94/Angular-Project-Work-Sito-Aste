@@ -4,7 +4,7 @@ import { ShippingAddress } from "./shipping-address";
 export interface User {
 
     id?:number;
-    entryDate?:Date;
+    entryDate?:string;
     name?:string;
     lastname?:string;
     mail?:string;

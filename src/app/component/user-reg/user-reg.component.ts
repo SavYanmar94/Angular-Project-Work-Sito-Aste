@@ -57,7 +57,6 @@ export class UserRegComponent
     };
     
     let user:User = {
-      entryDate:form.value["entryDate"],
       name:form.value["name"],
       lastname:form.value["lastname"],
       mail:form.value["mail"],
@@ -66,7 +65,6 @@ export class UserRegComponent
       password:form.value["password"],
       profileImage:form.value["profileImage"],
       profileType:form.value["profileType"],
-      // authToken:form.value["authToken"],  non credo serva
       homeAddress:homeAddress,
       shippingAddress:shippingAddress
     };
