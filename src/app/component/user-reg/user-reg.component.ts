@@ -23,6 +23,7 @@ export class UserRegComponent
   
 
 
+
   // costruttore
   constructor(private userService:UserService) { }
 
@@ -49,11 +50,11 @@ export class UserRegComponent
     };
 
     let shippingAddress:ShippingAddress = {
-      street:form.value["street"],
-      civic:form.value["civic"],
-      cap:form.value["cap"],
-      town:form.value["town"],
-      province:form.value["province"]
+      street:form.value["shipping_street"],
+      civic:form.value["shipping_civic"],
+      cap:form.value["shipping_cap"],
+      town:form.value["shipping_town"],
+      province:form.value["shipping_province"]
     };
     
     let user:User = {

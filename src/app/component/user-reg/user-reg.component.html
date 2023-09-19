@@ -83,7 +83,7 @@
                     <!-- RADIO BUTTON -->
                     <div class="row  d-flex justify-content-center">
                         <div class="col-auto m-2">
-                        <label for="venditore"style="margin: 4px;">Venditore</label>
+                        <label for="venditore"style="margin: 4px;" required >Venditore</label>
                         <input [ngModel] type="radio" name="profileType" value="v"> 
                     </div> 
                     <div class="col-auto m-2">
@@ -132,35 +132,35 @@
                     <div class="row d-flex justify-content-center"> 
                         <div class="col-4">
                             <label>Via/Viale/Piazza</label>
-                            <input [ngModel] type="text" name="street" class="form-control" required  
-                                pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #street="ngModel"
-                                [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
+                            <input [ngModel] type="text" name="shipping_street" class="form-control" required  
+                                pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #shipping_street="ngModel"
+                                [ngStyle]="{'background-color': shipping_street.invalid && shipping_street.dirty ? '#fa8072' : 'white'}">
                         </div>
                         <div class="col-2">
                             <label>Civico:</label>
-                            <input [ngModel] type="text" name="civic" class="form-control" required
-                                pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
-                                [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
+                            <input [ngModel] type="text" name="shipping_civic" class="form-control" required
+                                pattern="[a-zA-Z0-9/_-]{1,20}" #shipping_civic="ngModel"
+                                [ngStyle]="{'background-color': shipping_civic.invalid && shipping_civic.dirty ? '#fa8072' : 'white'}">
                         </div>
                         <div class="col-2">
                             <label>Cap:</label>
-                            <input [ngModel] type="text" name="cap" class="form-control" required
-                                pattern="[0-9]{5}" #cap="ngModel" 
-                                [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
+                            <input [ngModel] type="text" name="shipping_cap" class="form-control" required
+                                pattern="[0-9]{5}" #shipping_cap="ngModel" 
+                                [ngStyle]="{'background-color': shipping_cap.invalid && shipping_cap.dirty ? '#fa8072' : 'white'}">
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
                         <div class="col-5">
                             <label>Comune:</label>
-                            <input [ngModel] type="text" name="town" class="form-control" required  
-                                pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
-                                [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
+                            <input [ngModel] type="text" name="shipping_town" class="form-control" required  
+                                pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #shipping_town="ngModel"
+                                [ngStyle]="{'background-color': shipping_town.invalid && shipping_town.dirty ? '#fa8072' : 'white'}">
                         </div>
                         <div class="col-2">
                             <label>Provincia:</label>
-                            <input [ngModel] type="text" name="province" class="form-control" required
-                                pattern="[a-zA-Z]{2}" #province="ngModel"
-                                [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
+                            <input [ngModel] type="text" name="shipping_province" class="form-control" required
+                                pattern="[a-zA-Z]{2}" #shipping_province="ngModel"
+                                [ngStyle]="{'background-color': shipping_province.invalid && shipping_province.dirty ? '#fa8072' : 'white'}">
                         </div>
                     </div>
                      <!-- BOTTONE ABBANDONA -->
