@@ -32,7 +32,6 @@ export class ItemFormComponent {
   formManager(form:NgForm):void{
     if(!this.item)
       this.createItem(form);
-    //AGGIUNGERE METODO SULL'UPDATE
   }
 
   createItem(form:NgForm):void{
