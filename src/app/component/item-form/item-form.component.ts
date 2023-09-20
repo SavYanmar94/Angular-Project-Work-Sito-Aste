@@ -13,6 +13,7 @@ import { UserService } from 'src/app/service/user.service';
 export class ItemFormComponent {
 
   //attributi
+  @Input() newUser:User|undefined;
   @Input() isVisible:boolean = false;
   itemImage:any;  //ho tolto @input perché l'immagine non può essere cambiata
   @Output() isVisibleChange = new EventEmitter<boolean>();
@@ -37,10 +38,7 @@ export class ItemFormComponent {
 
     // CREO DATA 
     let date = new Date();
-    // CREO USER
-    let user:User|undefined;
-    this.userService.getUserData().subscribe({next: response => user = response, error: e => console.log(e)})
-    
+   
     let image = this.itemImage ? this.itemImage : null;
     let item:Item = {
       placementDate:date,
@@ -49,19 +47,16 @@ export class ItemFormComponent {
       description:form.value["description"],
       auctionBase:form.value["auctionBase"],
       image:image,
-      state:"n", //stato n per non venduto, v per venduto
-      seller:user
-      
+      //lo stato dell'item è impostato da spring, ricordarsi di aumentare il valore varchar nel database a 30
+      seller:this.newUser
     };
-    console.log(item);
-    console.log("*********");
     this.itemService.itemRegistration(item)
       .subscribe({
         next: response => {
-          if(response.code == 201){ //CHECK SE IL CODICE È GIUSTO IN BACKEND
+          if(response.code == 201){
             form.reset();
             this.itemImage = undefined;
-            this.isVisibleChange.emit(); //da controllare 
+            this.isVisibleChange.emit();
           }
         },
         error: e => console.log(e.message)

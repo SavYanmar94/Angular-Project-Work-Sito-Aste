@@ -69,9 +69,7 @@ export class UserRegComponent
       homeAddress:homeAddress,
       shippingAddress:shippingAddress
     };
-    
-    console.log("------------");
-    console.log(form.value["taxCode"]);
+
     this.userService.userRegistration(user)
       .subscribe({
         next: response => {

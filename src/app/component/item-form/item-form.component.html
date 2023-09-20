@@ -1,53 +1,46 @@
 <div class="popup-overlay" [ngClass]="{'visible':isVisible}">
     <div class="popup">
-        <div class="row">
-            <h5 class="text-primary text-center">Nuovo Elemento</h5>
-        </div>
-        <div class="row mt-2">
-            <div class="col-7">
-                <form #f="ngForm" (submit)="formManager(f)" >
-                    <div class="row">
-                        <div class="col-6">
-                            <label>Nome:</label>
-                            <input [ngModel] type="text" name="name" class="form-control" required>
-                        </div>
-                        <div class="col-6">
-                            <label>Descrizione:</label>
-                            <input [ngModel] name="description" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label>Base d'asta:</label>
-                            <input [ngModel] type="number" name="auctionBase" class="form-control" required>
-                        </div>
-                    </div>
-                        <div class="col-9">
-                            <input [ngModel] type="file" name="image" class="form-control" style="display: none;"
-                                accept="image/jpeg,image/png" maxlength="1048576"
-                                #image (change)="uploadImage($event)">
-                            <button type="button" class="btn btn-outline-warning mt-4"
-                                (click)="image.click()">
-                                Carica immagine di copertina
-                            </button>
-                        </div>
-                    <div class="row mt-4">
-                        <div class="col-12 text-center">
-                            <button type="button" class="btn btn-outline-warning me-4"
-                            (click)="leaveItemForm(f)">
-                                Abbandona
-                            </button>
-                            <input [disabled]="f.invalid" type="submit" class="btn btn-outline-primary">
-                        </div>
-                    </div>
-                </form>
+        <form #f="ngForm" (submit)="formManager(f)" >
+            <div class="form-row"><h5>Nuovo elemento</h5></div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Nome:</label>
+                    <input id="in" #name="ngModel" [ngModel] type="text" name="name" class="form-control" required pattern="[a-zA-Z\\sàèìòù']{1,100}" [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
+                    <!--MESSAGGIO DI ERRORE-->
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Il nome deve essere composto di sole lettere</div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Descrizione:</label>
+                    <input [ngModel] name="description" class="form-control" required>
+                </div>
             </div>
-            <div class="col-5 text-center">
-                <h6 class="mt-4 mb-3">Immagine Caricata</h6>
-                <img  
-                    class="img-thumbnail" alt="image" 
-                    style="width:210px;max-width:210px;height:310px;max-height:310px;">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Base d'asta:</label>
+                    <input [ngModel] type="number" name="auctionBase" class="form-control" required>
+                </div>
+                <div class="form-group col-md-12">
+                    <input [ngModel] type="file" name="image" class="form-control" style="display: none;"
+                    accept="image/jpeg,image/png" maxlength="1048576"
+                    #image (change)="uploadImage($event)">
+                    <button type="button" class="btn btn-outline-warning mt-4" 
+                    (click)="image.click()">
+                    <span [hidden]="itemImage">Carica immagine di copertina</span>
+                    <span [hidden]="!itemImage">Immagine caricata</span>
+                    </button>
+                </div>
+            </div>    
+            <div class="form-row">
+                <div class="form-group col-md-12 mt-4">
+                    <input [disabled]="f.invalid" type="submit" class="btn btn-outline-primary">
+                </div>
+                <div class="form-group col-md-12">
+                    <button type="button" class="btn btn-outline-danger mt-4"
+                    (click)="leaveItemForm(f)">
+                        Abbandona
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>

@@ -51,9 +51,13 @@ export class UserService {
 
   //ottenimento token user
   public getUserToken():string{
-    if(localStorage.getItem(USER_STORAGE_TKN))
+    if(localStorage.getItem(USER_STORAGE_TKN)) {
       return localStorage.getItem(USER_STORAGE_TKN) as string;
-    return "_";
+    }
+    else {
+      return "_";  
+    }
+    
   }
 
   public getUserId():number

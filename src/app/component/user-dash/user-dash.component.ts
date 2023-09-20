@@ -45,6 +45,8 @@ export class UserDashComponent {
       .subscribe({
         next: response => {
           this.user = response;
+          console.log("--------------")
+          console.log(this.user);
           if (this.user && this.user.id != 0) {
             
             this.itemService.getItems()
@@ -66,9 +68,7 @@ export class UserDashComponent {
               error: e => console.log(e)
             })
 
-            console.log("-----items sotto--------"); //da togliere
-            console.log(this.items); //da togliere
-            console.log(this.offers); //da togliere
+
           }
         },
         error: e => console.log(e)

@@ -21,6 +21,15 @@
     border-style:outset;
     border-color:#75757580;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    width: 900px;
+    width: 500px;
     padding: 20px;
   }
+
+  .btn {
+    width: 100%;
+  }
+
+  #submit {
+    outline: auto;
+  }
+
