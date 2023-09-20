@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-user-profile-details',
@@ -8,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class UserProfileDetailsComponent {
 
   @Input() isVisible:boolean = false;
+  @Input() user:User | undefined;
 }
