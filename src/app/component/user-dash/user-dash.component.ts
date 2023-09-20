@@ -1,3 +1,4 @@
+import { OfferService } from './../../service/offer.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from "@angular/router"
 import { Item } from 'src/app/model/item';
@@ -22,17 +23,23 @@ export class UserDashComponent implements OnInit {
   itemFormVisibility: boolean = false;
   offers: Offer[] | undefined;
   items: Item[] | undefined;
+  itemOffers: Offer[] | undefined;
   userType: String = "";
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private offerService: OfferService
   ) { }
 
   // inizializzazione
   ngOnInit(): void {
+
     this.userService.getUserData()
-    .subscribe({ next: response => {this.user = response; console.log(this.user)}, error: e => console.log(e) });
+    .subscribe({next: response => {this.user = response; this.items = response.items; this.offers = response.offers}, error: e => console.log(e) });
+
+    this.offerService.getOffers()
+    .subscribe({next: response => this.itemOffers = response, error: e => console.log(e)});
   }
 
   btnClick(): void {

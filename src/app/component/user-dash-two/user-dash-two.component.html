@@ -25,72 +25,90 @@
         <app-item-details [(isVisible)]="itemDetailsVisibility"></app-item-details>
 
         <!-- Page Content  -->
-        <div id="content">
+        <!-- Articoli all'asta  -->
+        <div class="container-fluid" *ngIf="child_lander == 'auction'">
+            <h1 class="pageTitle">Articoli all'asta</h1>
             <div class="row">
-                <!-- Articoli all'asta  -->
-                <div *ngIf="child_lander == 'auction'" class="col-md-3">
+                <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
                     <div class="card">
                         <img class="card-img-top"
-                            src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
-                            alt="Card image cap">
-                        <strong id="nome_articolo">Nome articolo</strong>
+                        src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
+                        alt="Card image cap">
+                        <strong id="nome_articolo">{{item.name}}</strong>
                         <div class="card-body">
-                            <table>
-                                <tr>
-                                    <td>Prezzo iniziale</td>
-                                    <td id="td-offerta">Offerta corrente</td>
-                                </tr>
-                            </table>
-                            <div id="articoli_asta_btns">
-                                <button (click)="itemDetails()" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
-                                <button class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
+                            <div class="row justify-content-between">
+                                <div class="col-lg-6 col-sm-12 price">
+                                    Base asta: {{item.auctionBase}} €
+                                </div>
+                                <div class="col-lg-6 col-sm-12 price">
+                                    Offerta corrente: {{itemOffers}} € <!--TODO-->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 mt-sm-2">
+                                    <button (click)="itemDetails()" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
+                                </div>
+                                <div class="col-lg-6 col-md-12 mt-sm-2">
+                                    <button class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Articoli venduti  -->
-                <div *ngIf="child_lander == 'soldItems'" class="col-md-3">
+            </div>
+        </div>
+        <!-- Articoli venduti  -->
+        <div class="container-fluid" *ngIf="child_lander == 'soldItems'">
+            <h1 class="pageTitle">Articoli venduti</h1>
+            <div class="row">
+                <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
                     <div class="card">
                         <img class="card-img-top"
                             src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
                             alt="Card image cap">
                         <strong id="nome_articolo">Nome articolo</strong>
                         <div class="card-body">
-                            <table>
-                                <tr>
-                                    <td>Prezzo iniziale</td>
-                                    <td id="td-offerta">Prezzo di vendita</td>
-                                </tr>
-                            </table>
-                            <button (click)="itemDetails()" id="articoli_venduti_btn"
-                                class="btn btn-outline-warning btn-md">Dettagli</button>
+                            <div class="row justify-content-between">
+                                <div class="col-lg-6 col-sm-12 price">
+                                    Prezzo iniziale
+                                </div>
+                                <div class="col-lg-6 col-sm-12 price">
+                                    Prezzo di vendita
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button (click)="itemDetails()" id="articoli_venduti_btn"
+                                    class="btn btn-outline-warning btn-md mt-2">Dettagli</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Offerte  -->
-                <div *ngIf="child_lander == 'offer'">
-                    <h1 id="titolo-offerte">Le tue offerte inviate</h1>
-                    <div class="jumbotron jumbotron-fluid">
-                        <div class="container">
-                            <h1 class="display-6">Nome articolo</h1>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Data e ora offerta</th>
-                                        <th>Base asta</th>
-                                        <th>Offerta</th>
-                                        <th>Stato</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <td>Data e ora</td>
-                                    <td>base asta</td>
-                                    <td>offerta</td>
-                                    <td>stato</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <!-- Offerte  -->
+        <div class="container-fluid" *ngIf="child_lander == 'offer'">
+            <h1 class="pageTitle">Le tue offerte inviate</h1>
+            <div *ngFor="let offer of offers" class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-6">Nome articolo</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data e ora offerta</th>
+                                <th>Base asta</th>
+                                <th>Offerta</th>
+                                <th>Stato</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>Data e ora</td>
+                            <td>base asta</td>
+                            <td>offerta</td>
+                            <td>stato</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

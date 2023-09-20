@@ -13,6 +13,7 @@ import { UserService } from 'src/app/service/user.service';
 export class UserUpdateComponent {
 
   @Input() update_lander: String = "main";
+  @Input() user:User | undefined;
   serverError: any;
   duplicate: any;
   @Output() leave = new EventEmitter();
@@ -48,7 +49,6 @@ export class UserUpdateComponent {
     };
 
     let user: User = {
-      entryDate: form.value["entryDate"],
       name: form.value["name"],
       lastname: form.value["lastname"],
       mail: form.value["mail"],
@@ -60,10 +60,9 @@ export class UserUpdateComponent {
       shippingAddress: shippingAddress
     };
 
-    this.userService.userRegistration(user)
+    this.userService.userUpdate(user)
       .subscribe({
         next: response => {
-          // da vedere
           if (response.code == 201) {
             form.reset();
             this.serverError = undefined;
@@ -72,8 +71,10 @@ export class UserUpdateComponent {
           }
         },
         error: e => {
+          console.log("------------");
+          console.log(this.user);
           if (e.status == 406)
-            this.duplicate = "Nickname Occupato"; //TODO
+            this.duplicate = "Nickname Occupato";
           else
             this.serverError = "Problemi con il server";
         }

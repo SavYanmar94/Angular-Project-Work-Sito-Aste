@@ -40,6 +40,10 @@ export class UserService {
     return this.http.get<ServiceResponse>(`${USER_LOGOUT_API}/${this.getUserToken()}`);
   }
 
+  public userUpdate(user:User):Observable<ServiceResponse>{
+    return this.http.put<ServiceResponse>(`${USER_UPDATE_API}/${this.getUserToken()}`, user);
+  }
+
 
   //METODI DI SERVIZIO INTERNI
 

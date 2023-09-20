@@ -21,7 +21,7 @@ export class OfferService {
     private userService:UserService) { }
 
 
-    //metodo per ottenere l'elenco delle offerte
+    //metodo per ottenere l'elenco delle offerte (dovrebbe essere degli items)
     public getOffers():Observable<Offer[]>{
       return this.http.get<Offer[]>(OFFERS_GET_API);
     }

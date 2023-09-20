@@ -35,9 +35,11 @@ export class ItemFormComponent {
 
   createItem(form:NgForm):void{
 
+    console.log("8888888888888");
+    console.log(this.user);
     // CREO DATA 
     let date = new Date();
-   
+
     let image = this.itemImage ? this.itemImage : null;
     let item:Item = {
       placementDate:date,

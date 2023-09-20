@@ -20,6 +20,10 @@
                             <input [ngModel] type="text" name="name" class="form-control" required 
                                 pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
                                 [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
+                            <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                                Il nome non può contenere numeri
+                              </div>
                         </div>
                          <!-- COGNOME -->
                         <div class="col-4">
@@ -27,6 +31,10 @@
                             <input [ngModel] type="text" name="lastname" class="form-control" required 
                                 pattern="[a-zA-Z\sàèìòù']{1,50}" #lastname="ngModel"
                                 [ngStyle]="{'background-color': lastname.invalid && lastname.dirty ? '#fa8072' : 'white'}">
+                                                            <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+                                Il cognome non può contenere numeri
+                              </div>
                         </div>
                         
                     </div>
@@ -37,6 +45,10 @@
                             <input [ngModel] type="email" name="mail" class="form-control" required
                                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" #mail="ngModel"
                                 [ngStyle]="{'background-color': mail.invalid && mail.dirty ? '#fa8072' : 'white'}">
+                                                            <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div> 
                         <!-- CODICE FISCALE -->
                         <div class="col-4">
@@ -60,6 +72,10 @@
                             <input [ngModel] type="text" name="nickname" class="form-control" required 
                                 pattern="[a-zA-Z0-9.]{1,50}" #nickname="ngModel"
                                 [ngStyle]="{'background-color': nickname.invalid && nickname.dirty ? '#fa8072' : 'white'}">
+                                        <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="nickname.valid || nickname.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div>
                          <!-- PASSWORD -->
 
@@ -69,6 +85,10 @@
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}"
                                 #password="ngModel"
                                 [ngStyle]="{'background-color': password.invalid && password.dirty ? '#fa8072' : 'white'}">
+                                    <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div>
                     </div>
                     
@@ -104,12 +124,20 @@
                             <input [ngModel] type="text" name="civic" class="form-control" required
                                 pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
                                 [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
+                                                                                           <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="civic.valid || civic.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div>
                         <div class="col-2">
                             <label>Cap:</label>
                             <input [ngModel] type="text" name="cap" class="form-control" required
                                 pattern="[0-9]{5}" #cap="ngModel" 
                                 [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
+                                                                                           <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="cap.valid || cap.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
@@ -118,16 +146,24 @@
                             <input [ngModel] type="text" name="town" class="form-control" required  
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
                                 [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
+                                                                                           <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="town.valid || town.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div>
                         <div class="col-2">
                             <label>Provincia:</label>
                             <input [ngModel] type="text" name="province" class="form-control" required
                                 pattern="[a-zA-Z]{2}" #province="ngModel"
                                 [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
+                                                                                           <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="province.valid || province.pristine" class="alert alert-danger">
+                                da implementare
+                              </div>
                         </div>
                     </div>
                     
-                    <!-- INDIRIZZO DI SPEDIZIONE -->
+                    <!-- INDIRIZZO DI SPEDIZIONE    da implementare messaggi di errore TODO-->
                     <h5 class="text-center mt-4 mb-4" style="color: #334D5C;">Indirizzo di spedizione:</h5>
                     <div class="row d-flex justify-content-center"> 
                         <div class="col-4">

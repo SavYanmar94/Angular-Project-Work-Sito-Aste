@@ -17,13 +17,13 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="name">Nome</label>
-                                    <input [ngModel] type="text" name="name" placeholder="Nome" class="form-control"
+                                    <input [ngModel]="user?.name" type="text" name="name" placeholder="Nome" class="form-control"
                                         required pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
                                         [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
                                 </div>
                                 <div class="form-holder">
                                     <label for="lastname">Cognome</label>
-                                    <input [ngModel] type="text" name="lastname" placeholder="Cognome"
+                                    <input [ngModel]="user?.lastname" type="text" name="lastname" placeholder="Cognome"
                                         class="form-control" required pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
                                         [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -31,14 +31,14 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="mail">Email</label>
-                                    <input [ngModel] type="email" name="mail" placeholder="Email" class="form-control"
+                                    <input [ngModel]="user?.mail" type="email" name="mail" placeholder="Email" class="form-control"
                                         required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
                                         #mail="ngModel"
                                         [ngStyle]="{'background-color': mail.invalid && mail.dirty ? '#fa8072' : 'white'}">
                                 </div>
                                 <div class="form-holder">
                                     <label for="taxCode">Codice fiscale</label>
-                                    <input [ngModel] type="text" placeholder="Codice fiscale" name="taxCode"
+                                    <input [ngModel]="user?.taxcode" type="text" placeholder="Codice fiscale" name="taxCode"
                                         class="form-control" required pattern="[a-zA-Z0-9]{16}" #taxCode="ngModel"
                                         [ngStyle]="{'background-color': taxCode.invalid && taxCode.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -46,7 +46,7 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="password">Password</label>
-                                    <input [ngModel] type="password" name="password" placeholder="Password"
+                                    <input [ngModel]="user?.password" type="password" name="password" placeholder="Password"
                                         class="form-control" required
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}"
                                         #password="ngModel"
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-holder">
                                     <label>Immagine del profilo:</label>
-                                    <input [ngModel] type="file" name="profileImage" class="form-control-file btn">
+                                    <input [ngModel]="user?.profileImage" type="file" name="profileImage" class="form-control-file btn">
                                 </div>
                             </div>
                             <!-- DOMICILIO -->
@@ -62,14 +62,14 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="street">Via/Viale/Piazza</label>
-                                    <input [ngModel] type="text" name="street" placeholder="Via/Viale/Piazza"
+                                    <input [ngModel]="user?.homeAddress?.street" type="text" name="street" placeholder="Via/Viale/Piazza"
                                         class="form-control" required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}"
                                         #street="ngModel"
                                         [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
                                 </div>
                                 <div class="form-holder">
                                     <label for="civic">Civico</label>
-                                    <input [ngModel] type="text" name="civic" placeholder="Civico" class="form-control"
+                                    <input [ngModel]="user?.homeAddress?.civic" type="text" name="civic" placeholder="Civico" class="form-control"
                                         required pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
                                         [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -77,13 +77,13 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="cap">Cap</label>
-                                    <input [ngModel] type="text" name="cap" placeholder="Cap" class="form-control"
+                                    <input [ngModel]="user?.homeAddress?.cap" type="text" name="cap" placeholder="Cap" class="form-control"
                                         required pattern="[0-9]{5}" #cap="ngModel"
                                         [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
                                 </div>
                                 <div class="form-holder">
                                     <label for="town">Comune</label>
-                                    <input [ngModel] type="text" name="town" placeholder="Comune" class="form-control"
+                                    <input [ngModel]="user?.homeAddress?.town" type="text" name="town" placeholder="Comune" class="form-control"
                                         required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
                                         [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -91,7 +91,7 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="province">Provincia</label>
-                                    <input [ngModel] type="text" name="province" placeholder="Provincia"
+                                    <input [ngModel]="user?.homeAddress?.province" type="text" name="province" placeholder="Provincia"
                                         class="form-control" required pattern="[a-zA-Z]{2}" #province="ngModel"
                                         [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -101,14 +101,14 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="street">Via/Viale/Piazza</label>
-                                    <input [ngModel] type="text" name="street" placeholder="Via/Viale/Piazza"
+                                    <input [ngModel]="user?.homeAddress?.street" type="text" name="street" placeholder="Via/Viale/Piazza"
                                         class="form-control" required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}"
                                         #street="ngModel"
                                         [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
                                 </div>
                                 <div class="form-holder">
                                     <label for="civic">Civico</label>
-                                    <input [ngModel] type="text" name="civic" placeholder="Civico" class="form-control"
+                                    <input [ngModel]="user?.homeAddress?.civic" type="text" name="civic" placeholder="Civico" class="form-control"
                                         required pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
                                         [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -116,13 +116,13 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="cap">Cap</label>
-                                    <input [ngModel] type="text" name="cap" placeholder="Cap" class="form-control"
+                                    <input [ngModel]="user?.homeAddress?.cap" type="text" name="cap" placeholder="Cap" class="form-control"
                                         required pattern="[0-9]{5}" #cap="ngModel"
                                         [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
                                 </div>
                                 <div class="form-holder">
                                     <label for="town">Comune</label>
-                                    <input [ngModel] type="text" name="town" placeholder="Comune" class="form-control"
+                                    <input [ngModel]="user?.homeAddress?.town" type="text" name="town" placeholder="Comune" class="form-control"
                                         required pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
                                         [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
                                 </div>
@@ -130,7 +130,7 @@
                             <div class="form-row">
                                 <div class="form-holder">
                                     <label for="province">Provincia</label>
-                                    <input [ngModel] type="text" name="province" placeholder="Provincia"
+                                    <input [ngModel]="user?.homeAddress?.province" type="text" name="province" placeholder="Provincia"
                                         class="form-control" required pattern="[a-zA-Z]{2}" #province="ngModel"
                                         [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
                                 </div>

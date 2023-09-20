@@ -12,30 +12,12 @@ export class UserDashTwoComponent {
 
   itemFormVisibility:boolean = false;
   itemDetailsVisibility:boolean = false;
-  items:Item[] | undefined;
-  offers:Offer[] | undefined;
+  @Input() items:Item[] | undefined;
+  @Input() offers:Offer[] | undefined;
   @Input() user:User | undefined;
+  @Input() itemOffers:Offer[] | undefined;
   @Input() child_lander:String = "main";
   @Output() lander_main = new EventEmitter();
-
-  ngOnInit() {
-    console.log("ccccccccccccccccc");
-    console.log(this.user);
-    this.items = this.user?.items;
-    this.dannazione();
-  }
-
-  dannazione():void {
-    this.items = this.user?.items;
-    this.offers = this.user?.offers;
-    console.log("**********");
-    console.log(this.user);
-    console.log(this.items);
-    console.log(this.offers);
-    if(this.items !== undefined) {
-      console.log(this.items.length)
-    };
-  }
 
   ritorna_al_profilo():void {
     this.lander_main.emit();
