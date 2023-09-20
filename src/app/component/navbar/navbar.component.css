@@ -1,3 +1,16 @@
+a {
+    color: white;
+}
+
+a:hover {
+    color: #E43137;
+}
+
 #logo {
     width: 300px;
+}
+
+.navbar {
+    background-color: #1F1F1F;
+    padding-right: 20px;
 }

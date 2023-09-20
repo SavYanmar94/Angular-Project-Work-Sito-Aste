@@ -1,10 +1,8 @@
-import { OfferService } from './../../service/offer.service';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from "@angular/router"
 import { Item } from 'src/app/model/item';
 import { Offer } from 'src/app/model/offer';
 import { User } from 'src/app/model/user';
-import { ItemService } from 'src/app/service/item.service';
 import { UserService } from 'src/app/service/user.service';
 
 
@@ -14,9 +12,9 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./user-dash.component.css']
 })
 
-export class UserDashComponent {
+export class UserDashComponent implements OnInit {
 
-  user:User|undefined;
+  user: User | undefined;
   serverError: any;
   isVisible: boolean = false;
   lander: String = "main";
@@ -28,54 +26,14 @@ export class UserDashComponent {
 
   constructor(
     private router: Router,
-    private userService: UserService,
-    private itemService: ItemService,
-    private offerService: OfferService
+    private userService: UserService
   ) { }
 
   // inizializzazione
   ngOnInit(): void {
-    this.callAPI();
-    
-  }
-
-  // metodo invocabile per invocazione API dati
-  callAPI(): void {
     this.userService.getUserData()
-      .subscribe({
-        next: response => {
-          this.user = response;
-          console.log("--------------")
-          console.log(this.user);
-          if (this.user && this.user.id != 0) {
-            
-            this.itemService.getItems()
-              .subscribe({
-                next: response => {
-                  if (response) {
-                    this.items = response;
-                  }
-                },
-                error: e => console.log(e)
-              })
-
-            this.offerService.getOffers().subscribe({
-              next: response => {
-                if (response) {
-                  this.offers = response;
-                }
-              },
-              error: e => console.log(e)
-            })
-
-
-          }
-        },
-        error: e => console.log(e)
-      });
+    .subscribe({ next: response => {this.user = response; console.log(this.user)}, error: e => console.log(e) });
   }
-
-
 
   btnClick(): void {
     this.router.navigate(["c_dash_two"]);

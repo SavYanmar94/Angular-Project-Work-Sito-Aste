@@ -1,5 +1,13 @@
 #bottone_sotto_profilo {
     margin-top: 20px;
+    background-color: #1F1F1F;
+    color: white;
+    font-weight: lighter;
+}
+
+#bottone_sotto_profilo:hover {
+    background-color: #F6C358;
+    color: black;
 }
 
 .bottone_2 {
@@ -15,4 +23,28 @@
     width: 50px;
     border-radius: 50%;
     margin-top: 60px;
+    background-color: white;
+}
+
+#info_btn:hover {
+    background-color: #F6C358;
+}
+
+#containerImg {
+    margin: auto;
+    width: 250px;
+    height: 250px;
+    max-width: 250px;
+    max-height: 250px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 250px;
 }

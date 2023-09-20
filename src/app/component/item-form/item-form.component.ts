@@ -13,11 +13,10 @@ import { UserService } from 'src/app/service/user.service';
 export class ItemFormComponent {
 
   //attributi
-  @Input() newUser:User|undefined;
+  @Input() user:User|undefined;
   @Input() isVisible:boolean = false;
   itemImage:any;  //ho tolto @input perché l'immagine non può essere cambiata
   @Output() isVisibleChange = new EventEmitter<boolean>();
-  
 
   //costruttore
   constructor(private itemService:ItemService, private userService:UserService) { }
@@ -48,7 +47,7 @@ export class ItemFormComponent {
       auctionBase:form.value["auctionBase"],
       image:image,
       //lo stato dell'item è impostato da spring, ricordarsi di aumentare il valore varchar nel database a 30
-      seller:this.newUser
+      seller:this.user
     };
     this.itemService.itemRegistration(item)
       .subscribe({

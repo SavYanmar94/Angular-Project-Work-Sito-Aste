@@ -1,4 +1,6 @@
 import { HomeAddress } from "./home-address";
+import { Item } from "./item";
+import { Offer } from "./offer";
 import { ShippingAddress } from "./shipping-address";
 
 export interface User {
@@ -16,4 +18,6 @@ export interface User {
     authToken?:string;
     homeAddress?:HomeAddress;
     shippingAddress?:ShippingAddress;
+    items?:Item[];
+    offers?:Offer[];
 }

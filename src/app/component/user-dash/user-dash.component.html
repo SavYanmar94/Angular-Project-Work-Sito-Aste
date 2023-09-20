@@ -4,9 +4,9 @@
 
     <app-user-update [update_lander]="child_lander" (leave)="return_to_profile()"></app-user-update>
     
-    <app-item-form  [(isVisible)]="itemFormVisibility" [newUser]="user"></app-item-form>
+    <app-item-form  [(isVisible)]="itemFormVisibility" [user]="user"></app-item-form>
     
-    <app-user-dash-two [child_lander]="child_lander" (lander_main)="return_to_profile()"></app-user-dash-two>
+    <app-user-dash-two [child_lander]="child_lander" (lander_main)="return_to_profile()" [user]="user"></app-user-dash-two>
     <body *ngIf="lander == 'main'">
         <!-- navbar-->
         <app-navbar [userLogged]="true" (userLogout)="userLogoutManager()"></app-navbar>
@@ -16,10 +16,9 @@
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">Benvenuto nella tua dashboard!</h1>
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 250px; margin-top: 20px;"
-                        alt="Avatar" /><br>
+                        <div id="containerImg"><img src="../../../assets/images/profileImagePlaceholder.png" alt="Avatar" /></div><br>
                         <!-- modifica profilo button-->
-                        <button (click)="user_profile_update()"  id="bottone_sotto_profilo" class="btn btn-outline-secondary btn-lg">Modifica il tuo profilo</button><br>
+                        <button (click)="user_profile_update()"  id="bottone_sotto_profilo" class="btn btn-lg">Modifica il tuo profilo</button><br>
                         <!-- info button-->
                         <button (click)="info_btnClick()"  id="info_btn" class="btn btn-lg bottone_2" type="button" data-toggle="collapse" data-target="#dettagli_profilo" aria-expanded="true" aria-controls="dettagli_profilo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
