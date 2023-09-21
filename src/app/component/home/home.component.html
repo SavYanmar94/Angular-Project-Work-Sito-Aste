@@ -1,7 +1,8 @@
     <app-user-login
     [isVisible]="userLoginPopupVisible"
     (leave)="deactivateUserLoginFormPopup()"
-    (login)="userLoginManager()">
+    (login)="userLoginManager()"
+    (openRegistration)="openRegistrationPopup()">
 </app-user-login>
 <app-navbar
     [userLogged]="userLogged"

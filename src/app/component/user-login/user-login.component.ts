@@ -16,6 +16,7 @@ export class UserLoginComponent {
   serverError:any;
   @Output() leave = new EventEmitter();
   @Output() login = new EventEmitter();
+  @Output() openRegistration = new EventEmitter();
 
   //costruttore
   constructor(private userService:UserService){  }
@@ -48,9 +49,11 @@ export class UserLoginComponent {
              this.serverError = e.message;
          }
        })
-
-
   }
 
+  //Metodo per aprire la registrazione
+  openRegistrationPopup(){
+    this.openRegistration.emit();
+  }
 }
 

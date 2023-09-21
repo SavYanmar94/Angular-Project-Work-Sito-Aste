@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   items:Item[]|undefined;
   serverError:any;
 
+
   //costruttore
   constructor(
     private userService:UserService,
@@ -101,5 +102,10 @@ export class HomeComponent implements OnInit {
          },
          error: e => console.log(e)
        });
+   }
+
+   openRegistrationPopup(){
+    this.userLoginPopupVisible = false;
+    this.userRegPopupVisible = true;
    }
 }
