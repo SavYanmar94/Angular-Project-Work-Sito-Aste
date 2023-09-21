@@ -27,6 +27,7 @@ export class UserDashComponent implements OnInit {
   itemOffers: itemOffers[] | undefined;
   offer:number = 0;
   userType: String = "";
+  
 
   constructor(
     private router: Router,
