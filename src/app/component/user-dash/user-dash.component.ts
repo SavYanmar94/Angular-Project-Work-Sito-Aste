@@ -22,10 +22,10 @@ export class UserDashComponent implements OnInit {
   lander: String = "main";
   child_lander: String = "main";
   itemFormVisibility: boolean = false;
-  offers: Offer[] | undefined;
+  userOffers: Offer[] | undefined;
   items: Item[] | undefined;
-  itemOffers: itemOffers[] | undefined;
-  offer:number = 0;
+  // itemOffers: itemOffers[] | undefined;
+  offersOfItems:number[] = [];
   userType: String = "";
 
   constructor(
@@ -38,11 +38,11 @@ export class UserDashComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.getUserData()
-    .subscribe({next: response => {this.user = response; this.items = response.items; this.offers = response.offers; 
-                                    }, error: e => console.log(e) });
+    .subscribe({next: response => {this.user = response; this.items = response.items; this.userOffers = response.offers;
 
-    this.offerService.getOffers()
-    .subscribe({next: response => this.itemOffers = response, error: e => console.log(e)});
+    
+    }, error: e => console.log(e) });
+
   }
 
   btnClick(): void {
