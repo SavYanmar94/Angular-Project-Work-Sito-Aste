@@ -1,5 +1,6 @@
 import { HomeAddress } from "./home-address";
 import { Item } from "./item";
+import { itemOffers } from "./itemOffers";
 import { Offer } from "./offer";
 import { ShippingAddress } from "./shipping-address";
 
@@ -20,4 +21,5 @@ export interface User {
     shippingAddress?:ShippingAddress;
     items?:Item[];
     offers?:Offer[];
+    itemOffers?:itemOffers[];
 }

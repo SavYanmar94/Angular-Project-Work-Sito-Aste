@@ -29,12 +29,17 @@ a:focus {
     align-items: stretch;
 }
 
+#filler {
+    min-width: 250px;
+}
+
 #sidebarWebsiteName {
     font-size: 30px;
     line-height: 50px;
 }
 
 #sidebar {
+    position: fixed;
     min-width: 250px;
     max-width: 250px;
     background: #6D93A8;

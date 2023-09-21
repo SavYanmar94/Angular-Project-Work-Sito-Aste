@@ -1,3 +1,4 @@
+import { itemOffers } from './../../model/itemOffers';
 import { OfferService } from './../../service/offer.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from "@angular/router"
@@ -23,7 +24,8 @@ export class UserDashComponent implements OnInit {
   itemFormVisibility: boolean = false;
   offers: Offer[] | undefined;
   items: Item[] | undefined;
-  itemOffers: Offer[] | undefined;
+  itemOffers: itemOffers[] | undefined;
+  offer:number = 0;
   userType: String = "";
 
   constructor(
@@ -36,7 +38,8 @@ export class UserDashComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.getUserData()
-    .subscribe({next: response => {this.user = response; this.items = response.items; this.offers = response.offers}, error: e => console.log(e) });
+    .subscribe({next: response => {this.user = response; this.items = response.items; this.offers = response.offers; 
+                                    }, error: e => console.log(e) });
 
     this.offerService.getOffers()
     .subscribe({next: response => this.itemOffers = response, error: e => console.log(e)});
