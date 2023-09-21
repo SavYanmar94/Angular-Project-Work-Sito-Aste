@@ -15,29 +15,13 @@
 <div class="container">
 <app-carousel></app-carousel>
 
-<div class="container mt-5">
-    <h2 class="text-center">Elettronica</h2>
-    <div id="carouselCard1" class="carousel slide">
-        <!-- slide1 -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
+<div class="container mt-5 carte">
+    <h2 class="text-center">Ultimi articoli inseriti</h2>
                 <div class="d-flex flex-wrap">
                     <div *ngFor="let item of items" class="col-md-4">
                         <app-home-card [item]="item"></app-home-card>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Controlli del carosello -->
-    <a class="carousel-control-prev" href="#carouselCard1" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselCard1" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </a>
-    </div>
+                    </div> 
+                </div> 
 </div>
 
 <app-user-reg
