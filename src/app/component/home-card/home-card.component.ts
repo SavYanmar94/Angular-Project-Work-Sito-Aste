@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Item } from 'src/app/model/item';
 
 @Component({
   selector: 'app-home-card',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-card.component.css']
 })
 export class HomeCardComponent {
+
+  //attributi
+  @Input() item:Item|undefined;
 
 }
