@@ -2,6 +2,10 @@ a {
     color: white;
 }
 
+.dropdown-item{
+    color:#1F1F1F;
+}
+
 a:hover {
     color: #E43137;
 }
