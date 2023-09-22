@@ -13,9 +13,8 @@ export class UserDashTwoComponent {
   itemFormVisibility:boolean = false;
   itemDetailsVisibility:boolean = false;
   @Input() items:Item[] | undefined;
-  @Input() offers:Offer[] | undefined;
+  @Input() userOffers:Offer[] | undefined;
   @Input() user:User | undefined;
-  @Input() itemOffers:Offer[] | undefined;
   @Input() child_lander:String = "main";
   @Output() lander_main = new EventEmitter();
 

@@ -29,9 +29,10 @@ export class UserLoginComponent {
   }
 
   //gestione form di login
-  formManager(form:NgForm):void{
+  formManager(form:NgForm):void
+  {
     let user:User = {
-      nickname:form.value["nickname"],
+      nickname:form.value["username"],
       password:form.value["password"]
     };
     this.userService.userLogin(user)
