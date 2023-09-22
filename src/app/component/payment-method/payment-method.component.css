@@ -23,7 +23,7 @@
   .card {
     position: relative;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 1%;
     border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     width: 500px;
@@ -33,4 +33,9 @@
   
   img {
     margin: 0 16px 0 16px;
+  }
+
+  #linkPaypal {
+    text-decoration: none;
+    color: black;
   }

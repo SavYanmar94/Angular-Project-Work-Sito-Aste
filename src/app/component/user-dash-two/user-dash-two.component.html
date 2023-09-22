@@ -43,7 +43,7 @@
                                     Base asta: {{item.auctionBase}} €
                                 </div>
                                 <div class="col-lg-6 col-sm-12 price">
-                                    Offerta corrente: {{itemOffers}} € <!--TODO-->
+                                    Offerta corrente: {{item}} €
                                 </div>
                             </div>
                             <div class="row">
@@ -92,7 +92,7 @@
         <!-- Offerte  -->
         <div class="container-fluid" *ngIf="child_lander == 'offer'">
             <h1 class="pageTitle">Le tue offerte inviate</h1>
-            <div *ngFor="let offer of offers" class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h1 class="display-6">Nome articolo</h1>
                     <table>

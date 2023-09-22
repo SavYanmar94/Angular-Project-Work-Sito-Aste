@@ -8,3 +8,11 @@
     z-index: 2;
 }
 
+#paypal {
+    width: 150px;
+}
+
+#paypalContainer {
+    padding-top: 18px;
+}
+

@@ -42,6 +42,7 @@ a:focus {
     position: fixed;
     min-width: 250px;
     max-width: 250px;
+    min-height: 100vh;
     background: #6D93A8;
     color: #fff;
     transition: all 0.3s;
