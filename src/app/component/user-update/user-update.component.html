@@ -24,7 +24,7 @@
                                 <div class="form-holder">
                                     <label for="lastname">Cognome</label>
                                     <input [ngModel]="user?.lastname" type="text" name="lastname" placeholder="Cognome"
-                                        class="form-control" required pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
+                                        class="form-control" required pattern="[a-zA-Z\sàèìòù']{1,50}" #lastname="ngModel"
                                         [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
                                 </div>
                             </div>
