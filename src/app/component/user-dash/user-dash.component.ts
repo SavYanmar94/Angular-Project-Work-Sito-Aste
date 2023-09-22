@@ -1,11 +1,8 @@
-import { OfferService } from './../../service/offer.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
 import { User } from 'src/app/model/user';
 import { UserItem } from 'src/app/model/userItem';
-import { UserItemOffer } from 'src/app/model/userItemOffer';
 import { UserOffer } from 'src/app/model/userOffer';
-import { ItemService } from 'src/app/service/item.service';
 import { UserDashService } from 'src/app/service/user-dash.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -28,6 +25,9 @@ export class UserDashComponent implements OnInit {
   child_lander: String = "main";
   itemFormVisibility: boolean = false;
   userType: String = "";
+  //attributi per update
+  userUpdatePopupVisible: boolean= false;
+  userToUpdateImage: any;
   
 
   constructor(
@@ -36,25 +36,42 @@ export class UserDashComponent implements OnInit {
     private userDashService: UserDashService
   ) { }
 
-  // inizializzazione
+  // inizializzazione : il metodo richiama callReadAPI ogni volta che serve aggiornare i dati
   ngOnInit(): void {
-
-    this.userService.getUserData()
-    .subscribe({next: response => {this.user = response; this.offers = response.offers; this.items = response.items;
-    }, error: e => console.log(e) });
-
-
+    this.callReadAPI();   
 
   }
+
+  //callReadAPI per update 
+  callReadAPI():void{
+    this.userService.getUserData()
+//AAA PUSH DI VALERIA NON SO SE FUNZIONA COSI IO IN CASO NON HO CANCELLATO
+     .subscribe({next: response => {this.user = response; this.offers = response.offers; this.items = response.items;
+     }, error: e => console.log(e) });
+
+
+    // .subscribe({next: response => {this.user = response; this.items = response.items; this.userOffers = response.offers;
+
+    // }, error: e => console.log(e) });
+
+  }
+
 
   btnClick(): void {
     this.router.navigate(["c_dash_two"]);
   }
 
-  user_profile_update(): void {
-    window.scroll(0, 0);
-    this.lander = "no";
-    this.child_lander = "update";
+  //metodi per update
+ activateAndUpdatePopup(): void {
+    if(this.user && this.user.profileImage)
+      this.userToUpdateImage=this.user.profileImage;
+    this.userUpdatePopupVisible=true;
+    alert("ciaone");
+  }
+
+  deactivateUpdatePopup():void{
+    this.userUpdatePopupVisible=false;
+    this.userToUpdateImage=undefined;
   }
 
   info_btnClick(): void {

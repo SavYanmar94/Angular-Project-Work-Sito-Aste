@@ -18,6 +18,7 @@ import { CarouselComponent } from './component/carousel/carousel.component';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
 import { ItemDetailsComponent } from './component/item-details/item-details.component';
 import { PaymentMethodComponent } from './component/payment-method/payment-method.component';
+import { UserUpdatePopupComponent } from './component/user-update-popup/user-update-popup.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { PaymentMethodComponent } from './component/payment-method/payment-metho
     UserUpdateComponent,
     ItemDetailsComponent,
     PaymentMethodComponent,
+    UserUpdatePopupComponent,
   ],
   imports: [
     BrowserModule,
