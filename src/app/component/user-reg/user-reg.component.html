@@ -47,7 +47,7 @@
                                 [ngStyle]="{'background-color': mail.invalid && mail.dirty ? '#fa8072' : 'white'}">
                                                             <!--MESSAGGIO DI ERRORE-->
                             <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">
-                                da implementare
+                                Inserisci un'email valida (es. esempio@mail.com)
                               </div>
                         </div> 
                         <!-- CODICE FISCALE -->
@@ -74,7 +74,7 @@
                                 [ngStyle]="{'background-color': nickname.invalid && nickname.dirty ? '#fa8072' : 'white'}">
                                         <!--MESSAGGIO DI ERRORE-->
                             <div [hidden]="nickname.valid || nickname.pristine" class="alert alert-danger">
-                                da implementare
+                                Il nickname può contenere solo lettere, numeri, '.'
                               </div>
                         </div>
                          <!-- PASSWORD -->
@@ -87,7 +87,14 @@
                                 [ngStyle]="{'background-color': password.invalid && password.dirty ? '#fa8072' : 'white'}">
                                     <!--MESSAGGIO DI ERRORE-->
                             <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                                da implementare
+                                La password deve contenere almeno:
+                                <ul>
+                                    <li>1 lettera maiuscola</li>
+                                    <li>1 lettera minuscola</li>
+                                    <li>1 cifra</li>
+                                    <li>1 carattere speciale (@$!%*?&)</li>
+                                    <li>Avere lunghezza tra 6 e 10 caratteri</li>
+                                </ul>
                               </div>
                         </div>
                     </div>
@@ -124,20 +131,20 @@
                             <input [ngModel] type="text" name="civic" class="form-control" required
                                 pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
                                 [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
-                                                                                           <!--MESSAGGIO DI ERRORE-->
-                            <div [hidden]="civic.valid || civic.pristine" class="alert alert-danger">
-                                da implementare
-                              </div>
+                        <!--MESSAGGIO DI ERRORE-->
+                        <div [hidden]="civic.valid || civic.pristine" class="alert alert-danger">
+                            Il Civico deve contenere almeno un numero e può includere lettere e "/"
+                        </div>
                         </div>
                         <div class="col-2">
                             <label>Cap:</label>
                             <input [ngModel] type="text" name="cap" class="form-control" required
                                 pattern="[0-9]{5}" #cap="ngModel" 
                                 [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
-                                                                                           <!--MESSAGGIO DI ERRORE-->
+                        <!--MESSAGGIO DI ERRORE-->
                             <div [hidden]="cap.valid || cap.pristine" class="alert alert-danger">
-                                da implementare
-                              </div>
+                                Il CAP deve essere composto da 5 cifre
+                            </div>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
@@ -146,20 +153,20 @@
                             <input [ngModel] type="text" name="town" class="form-control" required  
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
                                 [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
-                                                                                           <!--MESSAGGIO DI ERRORE-->
+                        <!--MESSAGGIO DI ERRORE-->
                             <div [hidden]="town.valid || town.pristine" class="alert alert-danger">
-                                da implementare
-                              </div>
+                                Il comune può contenere solo lettere e i caratteri speciali 'à', 'è', 'ì', 'ò', 'ù'
+                            </div>
                         </div>
                         <div class="col-2">
                             <label>Provincia:</label>
                             <input [ngModel] type="text" name="province" class="form-control" required
                                 pattern="[a-zA-Z]{2}" #province="ngModel"
                                 [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
-                                                                                           <!--MESSAGGIO DI ERRORE-->
+                        <!--MESSAGGIO DI ERRORE-->
                             <div [hidden]="province.valid || province.pristine" class="alert alert-danger">
-                                da implementare
-                              </div>
+                                La provincia deve essere composta da 2 lettere
+                            </div>
                         </div>
                     </div>
                     
@@ -177,12 +184,20 @@
                             <input [ngModel] type="text" name="shipping_civic" class="form-control" required
                                 pattern="[a-zA-Z0-9/_-]{1,20}" #shipping_civic="ngModel"
                                 [ngStyle]="{'background-color': shipping_civic.invalid && shipping_civic.dirty ? '#fa8072' : 'white'}">
+                                <!--MESSAGGIO DI ERRORE-->
+                                <div [hidden]="shipping_civic.valid || shipping_civic.pristine" class="alert alert-danger">
+                                    Il Civico deve contenere almeno un numero e può includere lettere e "/"
+                                </div>
                         </div>
                         <div class="col-2">
                             <label>Cap:</label>
                             <input [ngModel] type="text" name="shipping_cap" class="form-control" required
                                 pattern="[0-9]{5}" #shipping_cap="ngModel" 
                                 [ngStyle]="{'background-color': shipping_cap.invalid && shipping_cap.dirty ? '#fa8072' : 'white'}">
+                                <!--MESSAGGIO DI ERRORE-->
+                                <div [hidden]="shipping_cap.valid || shipping_cap.pristine" class="alert alert-danger">
+                                    Il CAP deve essere composto da 5 cifre
+                                </div>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
@@ -191,12 +206,20 @@
                             <input [ngModel] type="text" name="shipping_town" class="form-control" required  
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #shipping_town="ngModel"
                                 [ngStyle]="{'background-color': shipping_town.invalid && shipping_town.dirty ? '#fa8072' : 'white'}">
+                                <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="shipping_town.valid || shipping_town.pristine" class="alert alert-danger">
+                                Il comune può contenere solo lettere e i caratteri speciali 'à', 'è', 'ì', 'ò', 'ù'
+                            </div>
                         </div>
                         <div class="col-2">
                             <label>Provincia:</label>
                             <input [ngModel] type="text" name="shipping_province" class="form-control" required
                                 pattern="[a-zA-Z]{2}" #shipping_province="ngModel"
                                 [ngStyle]="{'background-color': shipping_province.invalid && shipping_province.dirty ? '#fa8072' : 'white'}">
+                            <!--MESSAGGIO DI ERRORE-->
+                            <div [hidden]="shipping_province.valid || shipping_province.pristine" class="alert alert-danger">
+                                La provincia deve essere composta da 2 lettere
+                            </div>
                         </div>
                     </div>
                      <!-- BOTTONE ABBANDONA -->
