@@ -22,7 +22,6 @@ a:focus {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
-
 .wrapper {
     display: flex;
     width: 100%;
@@ -31,6 +30,10 @@ a:focus {
 
 #filler {
     min-width: 250px;
+}
+
+#logo {
+    width: 210px;
 }
 
 #sidebarWebsiteName {
@@ -43,14 +46,14 @@ a:focus {
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
-    background: #6D93A8;
+    background-color: #3D4041;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #334D5C;
+    background-color: #1F1F1F;
     text-align: center;
 }
 
@@ -85,12 +88,22 @@ a:focus {
     transition: all 0.3s;
 }
 
+.container-fluid {
+    background-color: white;
+}
+
 /* ---------------------------------------------------
     CARD STYLE
 ----------------------------------------------------- */
 
 .card {
     min-width: 160px;
+}
+
+.card-img-top {
+    height: 250px;
+    min-height: 250px;
+    object-fit: cover;
 }
 
 #nome_articolo {

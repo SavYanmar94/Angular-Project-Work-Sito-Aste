@@ -6,6 +6,7 @@ import { UserItem } from 'src/app/model/userItem';
 import { UserItemOffer } from 'src/app/model/userItemOffer';
 import { UserOffer } from 'src/app/model/userOffer';
 import { ItemService } from 'src/app/service/item.service';
+import { UserDashService } from 'src/app/service/user-dash.service';
 import { UserService } from 'src/app/service/user.service';
 
 
@@ -31,7 +32,8 @@ export class UserDashComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private userDashService: UserDashService
   ) { }
 
   // inizializzazione
@@ -65,18 +67,18 @@ export class UserDashComponent implements OnInit {
   }
 
   yourOffers(): void {
-    this.lander = "no";
-    this.child_lander = "offer";
+    this.userDashService.setLander("offer");
+    this.router.navigate(['user/dash']);
   }
 
   yourAuctionItems(): void {
-    this.lander = "no";
-    this.child_lander = "auction";
+    this.userDashService.setLander("auction");
+    this.router.navigate(['user/dash']);
   }
 
   yourSoldItems(): void {
-    this.lander = "no";
-    this.child_lander = "soldItems";
+    this.userDashService.setLander("soldItems");
+    this.router.navigate(['user/dash']);
   }
 
   return_to_profile(): void {

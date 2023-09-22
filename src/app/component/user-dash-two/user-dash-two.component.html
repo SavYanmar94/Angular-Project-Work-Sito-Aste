@@ -1,4 +1,4 @@
-<body *ngIf="child_lander != 'main' && child_lander != 'update'">
+<body>
     <div class="wrapper">
         <div id="filler"></div>
         <!-- Sidebar  -->
@@ -6,8 +6,7 @@
             <div id="filler"></div> <!-- serve per mantenere i contenuti della pagina sulla destra  -->
             <div class="sidebar-header">
                 <h1 id="sidebarWebsiteName">Auction Platform</h1>
-                <img src="../../../assets/images/auction-svgrepo-com-2.png" class="logo" alt="logo dell'asta"
-                    style="width: 80px; margin: 10px;">
+                <img src="../../../assets/images/logogenbay_white.png" id="logo" alt="logo dell'asta">
             </div>
 
             <ul class="list-unstyled components">
@@ -23,8 +22,8 @@
             </ul>
         </nav>
 
-        <app-item-form [(isVisible)]="itemFormVisibility"></app-item-form>
-        <app-item-details [(isVisible)]="itemDetailsVisibility"></app-item-details>
+        <app-item-form [(isVisible)]="itemFormVisibility" [user]="user" [lander]="child_lander" (timeToRefresh)="refresh()"></app-item-form>
+        <app-item-details [(isVisible)]="itemDetailsVisibility" [item]="item"></app-item-details>
 
         <!-- Page Content  -->
         <!-- Articoli all'asta  -->
@@ -33,25 +32,24 @@
             <div class="row">
                 <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
                     <div class="card">
-                        <img class="card-img-top"
-                        src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
+                        <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
                         alt="Card image cap">
                         <strong id="nome_articolo">{{item.name}}</strong>
                         <div class="card-body">
                             <div class="row justify-content-between">
                                 <div class="col-lg-6 col-sm-12 price">
-                                    Base asta: {{item.auctionBase}} €
+                                    Base asta: {{item.auctionBase}}&nbsp;€
                                 </div>
                                 <div class="col-lg-6 col-sm-12 price">
-                                    Offerta corrente: {{item.offers}} €
+                                    Offerta corrente: {{item.majorOffer}}&nbsp;€
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 mt-sm-2">
-                                    <button (click)="itemDetails()" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
+                                    <button (click)="itemDetails(item)" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
                                 </div>
                                 <div class="col-lg-6 col-md-12 mt-sm-2">
-                                    <button class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
+                                    <button (click)="removeItem(item)" class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +78,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button (click)="itemDetails()" id="articoli_venduti_btn"
+                                    <button (click)="itemDetails(item)" id="articoli_venduti_btn"
                                     class="btn btn-outline-warning btn-md mt-2">Dettagli</button>
                                 </div>
                             </div>

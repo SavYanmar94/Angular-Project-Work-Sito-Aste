@@ -6,11 +6,6 @@
     
     <app-item-form  [(isVisible)]="itemFormVisibility" [user]="user"></app-item-form>
     
-    <app-user-dash-two [child_lander]="child_lander" (lander_main)="return_to_profile()"
-    [user]="user"
-    [offers]="offers"
-    [items]="items"
-    ></app-user-dash-two>
     <body *ngIf="lander == 'main'">
         <!-- navbar-->
         <app-navbar [userLogged]="true" (userLogout)="userLogoutManager()"></app-navbar>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UserItem } from 'src/app/model/userItem';
 
 @Component({
   selector: 'app-item-details',
@@ -8,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ItemDetailsComponent {
 
   @Input() isVisible:boolean = false;
+  @Input() item:UserItem | undefined;
   @Output() isVisibleChange = new EventEmitter<boolean>();
 
   leaveItemDetails():void {
