@@ -19,6 +19,6 @@ export interface User {
     homeAddress?:HomeAddress;
     shippingAddress?:ShippingAddress;
     offers?:UserOffer[];
-    items?:UserItem;
+    items?:UserItem[];
 
 }

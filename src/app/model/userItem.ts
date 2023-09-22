@@ -8,5 +8,5 @@ export interface UserItem {
 	auctionBase?:number;
 	image?:string;
 	state?:string; 
-	offers?:UserItemOffer;
+	offers?:UserItemOffer[];
 }
