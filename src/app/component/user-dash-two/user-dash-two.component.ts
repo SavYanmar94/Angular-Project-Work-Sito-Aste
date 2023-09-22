@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from 'src/app/model/item';
-import { Offer } from 'src/app/model/offer';
 import { User } from 'src/app/model/user';
+import { UserItem } from 'src/app/model/userItem';
+import { UserItemOffer } from 'src/app/model/userItemOffer';
+import { UserOffer } from 'src/app/model/userOffer';
 
 @Component({
   selector: 'app-user-dash-two',
@@ -12,9 +14,9 @@ export class UserDashTwoComponent {
 
   itemFormVisibility:boolean = false;
   itemDetailsVisibility:boolean = false;
-  @Input() items:Item[] | undefined;
-  @Input() userOffers:Offer[] | undefined;
   @Input() user:User | undefined;
+  @Input() offers: UserOffer[] | undefined;
+  @Input() items: UserItem[] | undefined;
   @Input() child_lander:String = "main";
   @Output() lander_main = new EventEmitter();
 

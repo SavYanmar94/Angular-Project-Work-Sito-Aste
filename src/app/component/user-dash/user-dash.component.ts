@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router"
 import { User } from 'src/app/model/user';
 import { UserItem } from 'src/app/model/userItem';
+import { UserItemOffer } from 'src/app/model/userItemOffer';
 import { UserOffer } from 'src/app/model/userOffer';
+import { ItemService } from 'src/app/service/item.service';
 import { UserService } from 'src/app/service/user.service';
 
 
@@ -16,13 +18,14 @@ import { UserService } from 'src/app/service/user.service';
 export class UserDashComponent implements OnInit {
 
   user: User | undefined;
+  offers: UserOffer[] | undefined;
+  items: UserItem[] | undefined;
+
   serverError: any;
   isVisible: boolean = false;
   lander: String = "main";
   child_lander: String = "main";
   itemFormVisibility: boolean = false;
-  userOffers: UserOffer[] | undefined;
-  items: UserItem[] | undefined;
   userType: String = "";
   
 
@@ -35,8 +38,10 @@ export class UserDashComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.getUserData()
-    .subscribe({next: response => {this.user = response; this.userOffers = response.offers;
+    .subscribe({next: response => {this.user = response; this.offers = response.offers; this.items = response.items;
     }, error: e => console.log(e) });
+
+
 
   }
 
