@@ -19,7 +19,7 @@ import { UserUpdateComponent } from './component/user-update/user-update.compone
 import { ItemDetailsComponent } from './component/item-details/item-details.component';
 import { PaymentMethodComponent } from './component/payment-method/payment-method.component';
 import { UserUpdatePopupComponent } from './component/user-update-popup/user-update-popup.component';
-
+import { OfferPopupComponent } from './component/offer-popup/offer-popup.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { UserUpdatePopupComponent } from './component/user-update-popup/user-upd
     ItemDetailsComponent,
     PaymentMethodComponent,
     UserUpdatePopupComponent,
+    OfferPopupComponent,
   ],
   imports: [
     BrowserModule,

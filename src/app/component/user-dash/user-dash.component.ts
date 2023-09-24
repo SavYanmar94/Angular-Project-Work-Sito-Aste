@@ -19,12 +19,13 @@ export class UserDashComponent implements OnInit {
   offers: UserOffer[] | undefined;
   items: UserItem[] | undefined;
 
+  profileImg?:string = "";
   serverError: any;
   isVisible: boolean = false;
-  lander: String = "main";
-  child_lander: String = "main";
+  lander: string = "main";
+  child_lander: string = "main";
   itemFormVisibility: boolean = false;
-  userType: String = "";
+  userType?: string = "";
   //attributi per update
   userUpdatePopupVisible: boolean= false;
   userToUpdateImage: any;
@@ -38,22 +39,13 @@ export class UserDashComponent implements OnInit {
 
   // inizializzazione : il metodo richiama callReadAPI ogni volta che serve aggiornare i dati
   ngOnInit(): void {
-    this.callReadAPI();   
-
+    this.callReadAPI();
   }
 
   //callReadAPI per update 
   callReadAPI():void{
     this.userService.getUserData()
-//AAA PUSH DI VALERIA NON SO SE FUNZIONA COSI IO IN CASO NON HO CANCELLATO
-     .subscribe({next: response => {this.user = response; this.offers = response.offers; this.items = response.items;
-     }, error: e => console.log(e) });
-
-
-    // .subscribe({next: response => {this.user = response; this.items = response.items; this.userOffers = response.offers;
-
-    // }, error: e => console.log(e) });
-
+     .subscribe({next: response => {this.user = response; this.offers = response.offers; this.items = response.items; this.userType = response.profileType; this.profileImg = response.profileImage}, error: e => console.log(e) });
   }
 
 
@@ -66,7 +58,6 @@ export class UserDashComponent implements OnInit {
     if(this.user && this.user.profileImage)
       this.userToUpdateImage=this.user.profileImage;
     this.userUpdatePopupVisible=true;
-    alert("ciaone");
   }
 
   deactivateUpdatePopup():void{
@@ -84,7 +75,7 @@ export class UserDashComponent implements OnInit {
   }
 
   yourOffers(): void {
-    this.userDashService.setLander("offer");
+    this.userDashService.setLander("sentOffers");
     this.router.navigate(['user/dash']);
   }
 

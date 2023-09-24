@@ -15,14 +15,15 @@ import { UserService } from 'src/app/service/user.service';
 
 export class UserDashTwoComponent implements OnInit {
 
+  userType?: String = "";
   itemFormVisibility:boolean = false;
   itemDetailsVisibility:boolean = false;
   item:UserItem | undefined;
   user:User | undefined;
   offers: UserOffer[] | undefined;
   items: UserItem[] | undefined;
-  child_lander:String = "";
-  @Output() child_landerChange = new EventEmitter();
+  lander:string = "";
+  offerReceived:boolean = false;
 
   constructor(private itemService:ItemService,
               private router:Router,
@@ -31,25 +32,26 @@ export class UserDashTwoComponent implements OnInit {
               ) {}
 
   ngOnInit(): void {
-    this.child_lander = this.userDashService.getLander();
-    if (this.child_lander == "") {
-      this.child_lander = "offer";
+    this.lander = this.userDashService.getLander().toString();
+    if (this.lander == "") {
+      this.lander = "sentOffers";
     }
     this.userService.getUserData().subscribe({
-      next: response => { this.user = response, this.items = response.items, this.offers = response.offers },
+      next: response => {this.user = response, this.items = response.items, this.offers = response.offers, this.userType = response.profileType?.toString()},
       error: e => console.log(e)
     });
-  }
-  
 
-  //metodo per aggiornare la pagina all'aggiunta o rimozione di articoli
-  refresh():void {    
-    this.userService.getUserData().subscribe({
-      next: response => { this.items = response.items },
-      error: e => console.log(e)
-    });
+    //per vedere se c'è almeno un'offerta nella lista degli articoli dell'utente
+    if(this.items !== undefined) {
+      for(let item of this.items) {
+        if(item.offers !== undefined) {
+          this.offerReceived = true;
+        }
+      }
+    }
   }
 
+  //metodi navbar
   ritorna_al_profilo():void {
     this.router.navigate(['user']);
   }
@@ -58,21 +60,33 @@ export class UserDashTwoComponent implements OnInit {
     this.itemFormVisibility = true;
   }
 
-  itemDetails(item:UserItem):void {
-    this.itemDetailsVisibility = true;
-    this.item = item;
+  sentOffers():void {
+    this.lander = "sentOffers";
   }
 
-  offerte():void {
-    this.child_lander = "offer";
+  receivedOffers():void {
+    this.lander = "receivedOffers";
   }
 
   articoliAsta():void {
-    this.child_lander = "auction";
+    this.lander = "auction";
   }
 
   articoliVenduti():void {
-    this.child_lander = "soldItems";
+    this.lander = "soldItems";
+  }
+  
+  //metodo per aggiornare la pagina all'aggiunta o rimozione di articoli
+  refresh():void {    
+    this.userService.getUserData().subscribe({
+      next: response => { this.items = response.items },
+      error: e => console.log(e)
+    });
+  }
+
+  itemDetails(item:UserItem):void {
+    this.itemDetailsVisibility = true;
+    this.item = item;
   }
 
   removeItem(item:UserItem):void {
@@ -84,5 +98,9 @@ export class UserDashTwoComponent implements OnInit {
         error: e => console.log(e.message)
       }
     );
+  }
+
+  changeLander(lander:string) {
+    this.lander = lander;
   }
 }

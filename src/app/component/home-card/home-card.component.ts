@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from 'src/app/model/item';
 
 @Component({
@@ -9,6 +9,25 @@ import { Item } from 'src/app/model/item';
 export class HomeCardComponent {
 
   //attributi
-  @Input() item:Item|undefined;
+  @Input() userLogged:boolean = false;
+  @Input() item:Item | undefined;
+  @Output() detail = new EventEmitter<Item>();
+  @Output() notLoggedInOffer = new EventEmitter();
+  itemDetailsVisibility:boolean = false;
+  offerPopupVisibility:boolean = false;
+  itemDetails:Item | undefined;
+
+  details(item:Item):void {
+    this.itemDetails = item;
+    this.itemDetailsVisibility = true;
+  }
+
+  notLoggedOffer():void {
+    this.notLoggedInOffer.emit();
+  }
+
+  activateOfferPopup():void {
+    this.offerPopupVisibility = true;
+  }
 
 }

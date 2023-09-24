@@ -57,6 +57,7 @@ export class ItemFormComponent {
         next: response => {
           if(response.code == 201){
             form.reset();
+            this.itemImage = undefined;
             this.isVisibleChange.emit();
             this.timeToRefresh.emit();
           }

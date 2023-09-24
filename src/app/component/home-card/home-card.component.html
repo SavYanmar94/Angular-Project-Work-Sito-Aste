@@ -1,20 +1,37 @@
-<!-- CATEGORIA ARREDAMENTO CASA -->
-        <!-- slide1 -->
-  
-                  
-                        <div class="card">
-                            <img [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'" class="card-img-top" style="height:300px;"
-                                alt="Card image cap">
-                            <!-- Card content -->
-                            <div class="card-body text-center" style="height: 200px; ">
-                                <h4 class="card-title">{{item?.name}}</h4>
-                                <p class="card-text">OFFERTA ATTUALE</p>
-                                <h4>{{item?.auctionBase}} €</h4> <!--NON SO COME METTERE L'OFFERTA PIÙ RECENTE-->
-                                <a href="#" class="btn" style="background-color:#F6C358 ; color:#334D5C;">Visualizza</a>
-                            </div>
-                        </div>
-                    
-    
+<div *ngIf="item !== undefined" class="card">
+    <img class="card-img-top" [src]="item.image ? item.image : '../../../assets/images/placeholder.png'"
+    alt="Card image cap">
+    <strong id="nome_articolo">{{item.name}}</strong>
+    <div class="card-body">
+        <div class="row justify-content-between">
+            <div class="col-lg-6 col-sm-12 price">
+                <strong>Base asta:</strong> {{item.auctionBase}}&nbsp;€
+            </div>
+            <div class="col-lg-6 col-sm-12 price">
+                <strong>Offerta:</strong> {{item.auctionBase}}&nbsp;€
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mt-sm-2">
+                <button (click)="details(item)"  class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
+            </div>
+            <!--se utente è logged in-->
+            <div *ngIf="userLogged" class="col-lg-6 col-md-12 mt-sm-2">
+                <button (click)="activateOfferPopup()" class="btn btn-outline-success btn-md articoli_asta_btn">Fai un'offerta</button>
+            </div>
+            <!--se utente non è logged in-->
+            <div *ngIf="!userLogged" class="col-lg-6 col-md-12 mt-sm-2">
+                <button (click)="notLoggedOffer()"  class="btn btn-outline-success btn-md articoli_asta_btn">Fai un'offerta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-item-details [(isVisible)]="itemDetailsVisibility" [(item)]="itemDetails"></app-item-details>
+
+<app-offer-popup [(isVisible)]="offerPopupVisibility"></app-offer-popup>
+
+
 
 
 

@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   userLoginPopupVisible:boolean = false;
   userLogged:boolean = false;
   userRegPopupVisible:boolean = false;
+  itemDetailsVisibility:boolean = false;
+  offerPopupVisibility:boolean = false;
   items:Item[]|undefined;
   serverError:any;
 
@@ -104,8 +106,18 @@ export class HomeComponent implements OnInit {
        });
    }
 
-   openRegistrationPopup(){
+   openRegistrationPopup():void {
     this.userLoginPopupVisible = false;
     this.userRegPopupVisible = true;
+   }
+
+   //attivazione popup dettagli articoli
+   activateItemDetails():void {
+    this.itemDetailsVisibility = true;
+   }
+
+   //attivazione popup offerta
+   activateOfferPopup():void {
+    this.offerPopupVisibility = true;
    }
 }
