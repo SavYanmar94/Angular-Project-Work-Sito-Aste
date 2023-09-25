@@ -20,6 +20,7 @@ export class UserRegComponent
   duplicate:any;
   @Output() leave = new EventEmitter();
   @Output() register = new EventEmitter();
+  @Input() profileImage:any;
   
 
 
@@ -57,6 +58,7 @@ export class UserRegComponent
       province:form.value["shipping_province"]
     };
     
+    let img = this.profileImage ? this.profileImage : null;
     let user:User = {
       name:form.value["name"],
       lastname:form.value["lastname"],
@@ -64,7 +66,7 @@ export class UserRegComponent
       taxcode:form.value["taxCode"],
       nickname:form.value["nickname"],
       password:form.value["password"],
-      profileImage:form.value["profileImage"],
+      profileImage:img,
       profileType:form.value["profileType"],
       homeAddress:homeAddress,
       shippingAddress:shippingAddress
@@ -92,5 +94,18 @@ export class UserRegComponent
             
         }
       });
+  }
+
+  uploadImage(event:any):void {
+
+    let file:File = event.target.files[0];
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      this.profileImage = reader.result as string;
+      event.target.value = "";
+    }
   }
 }
