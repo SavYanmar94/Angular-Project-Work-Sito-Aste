@@ -23,6 +23,7 @@ export class UserRegComponent
   @Output() register = new EventEmitter();
   @Input() profileImage:any;
   
+  
 
 
 
@@ -84,6 +85,7 @@ export class UserRegComponent
             this.serverError = undefined;
             this.duplicate = undefined;
             this.register.emit();
+            window.alert("Registrazione avvenuta con successo!");
           }
         },
         error: e => {

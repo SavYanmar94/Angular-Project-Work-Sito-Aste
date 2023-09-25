@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit {
    userRegistrationManager():void
    {
      this.userRegPopupVisible = false;
+     this.activateUserLoginFormPopup();
    }
 
    //invocazione API per lettura prodotti (barra di ricerca)
