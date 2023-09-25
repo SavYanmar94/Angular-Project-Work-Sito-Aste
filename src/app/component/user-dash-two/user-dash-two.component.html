@@ -1,57 +1,52 @@
-<body *ngIf="child_lander != 'main' && child_lander != 'update'">
-    <div class="wrapper">
-        <div id="filler"></div>
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div id="filler"></div> <!-- serve per mantenere i contenuti della pagina sulla destra  -->
-            <div class="sidebar-header">
-                <h1 id="sidebarWebsiteName">Auction Platform</h1>
-                <img src="../../../assets/images/auction-svgrepo-com-2.png" class="logo" alt="logo dell'asta"
-                    style="width: 80px; margin: 10px;">
+<div class="wrapper">
+    <!-- Navbar  -->
+    <div id="sidebar">
+        <div id="sidebar-header">
+            <img src="../../../assets/images/logogenbay_white.png" id="logo" alt="logo dell'asta">
+        </div>
+        <ul class="list-unstyled components">
+            <p>MENU</p>
+            <li><a class="links" routerLink="">Home</a></li>
+            <li><a class="links" (click)="ritorna_al_profilo()">Il tuo profilo</a></li>
+            <li><a class="links" (click)="sentOffers()">Offerte inviate</a></li>
+            <div *ngIf="this.userType == 'v'">
+                <li><a class="links" (click)="receivedOffers()">Offerte ricevute</a></li>
+                <li><a class="links" (click)="addNewItem()">Aggiungi un nuovo articolo</a></li>
+                <li><a class="links" (click)="articoliAsta()">I tuoi articoli all'asta</a></li>
+                <li><a class="links" (click)="articoliVenduti()">I tuoi articoli venduti</a></li>
             </div>
+        </ul>
+    </div>
+        
+    <app-item-form [(isVisible)]="itemFormVisibility" [user]="user" [lander]="lander" (timeToRefresh)="refresh()"></app-item-form>
+    <app-item-details [(isVisible)]="itemDetailsVisibility" [(userItem)]="item"></app-item-details>
 
-            <ul class="list-unstyled components">
-                <p>MENU</p>
-                <li>
-                    <a routerLink="">Home</a>
-                    <a (click)="ritorna_al_profilo()" style="cursor: pointer;">Il tuo profilo</a>
-                    <a (click)="addNewItem()" style="cursor: pointer;">Aggiungi un nuovo articolo</a>
-                    <a (click)="offerte()" style="cursor: pointer;">Le tue offerte</a>
-                    <a (click)="articoliAsta()" style="cursor: pointer;">I tuoi articoli all'asta</a>
-                    <a (click)="articoliVenduti()" style="cursor: pointer;">I tuoi articoli venduti</a>
-                </li>
-            </ul>
-        </nav>
-
-        <app-item-form [(isVisible)]="itemFormVisibility"></app-item-form>
-        <app-item-details [(isVisible)]="itemDetailsVisibility"></app-item-details>
-
-        <!-- Page Content  -->
-        <!-- Articoli all'asta  -->
-        <div class="container-fluid" *ngIf="child_lander == 'auction'">
-            <h1 class="pageTitle">Articoli all'asta</h1>
-            <div class="row">
-                <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
+    <!-- Page content  -->
+    <!-- Articoli all'asta  -->
+    <div class="container-fluid" *ngIf="lander == 'auction'">
+        <h1 class="pageTitle">Articoli all'asta</h1>
+        <div class="row">
+            <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div *ngIf="item.state == 'disponibile'">
                     <div class="card">
-                        <img class="card-img-top"
-                        src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
+                        <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
                         alt="Card image cap">
                         <strong id="nome_articolo">{{item.name}}</strong>
                         <div class="card-body">
                             <div class="row justify-content-between">
                                 <div class="col-lg-6 col-sm-12 price">
-                                    Base asta: {{item.auctionBase}} €
+                                    Base asta: {{item.auctionBase}}&nbsp;€
                                 </div>
                                 <div class="col-lg-6 col-sm-12 price">
-                                    Offerta corrente: {{itemOffers}} € <!--TODO-->
+                                    Offerta corrente: {{item.majorOffer}}&nbsp;€
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-12 mt-sm-2">
-                                    <button (click)="itemDetails()" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
+                                    <button (click)="itemDetails(item)" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
                                 </div>
                                 <div class="col-lg-6 col-md-12 mt-sm-2">
-                                    <button class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
+                                    <button (click)="removeItem(item)" class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
                                 </div>
                             </div>
                         </div>
@@ -59,28 +54,35 @@
                 </div>
             </div>
         </div>
-        <!-- Articoli venduti  -->
-        <div class="container-fluid" *ngIf="child_lander == 'soldItems'">
-            <h1 class="pageTitle">Articoli venduti</h1>
-            <div class="row">
-                <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
+    </div>
+    <!-- Articoli venduti  -->
+    <div class="container-fluid" *ngIf="lander == 'soldItems'">
+        <h1 class="pageTitle" [hidden]="this.items == null">Non hai articoli venduti</h1>
+        <h1 class="pageTitle" [hidden]="this.items !== null">Articoli venduti</h1>
+        <div class="row">
+            <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div *ngIf="item.state == 'Venduto'">
                     <div class="card">
                         <img class="card-img-top"
                             src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
                             alt="Card image cap">
-                        <strong id="nome_articolo">Nome articolo</strong>
+                        <strong id="nome_articolo">{{item.name}}</strong>
                         <div class="card-body">
                             <div class="row justify-content-between">
                                 <div class="col-lg-6 col-sm-12 price">
-                                    Prezzo iniziale
+                                    Prezzo iniziale: {{item.auctionBase}}
                                 </div>
-                                <div class="col-lg-6 col-sm-12 price">
-                                    Prezzo di vendita
+                                <div *ngFor="let offer of item.offers">
+                                    <div *ngIf="offer.state == 'accettata'">
+                                        <div class="col-lg-6 col-sm-12 price">
+                                            Prezzo di vendita: {{offer.amount}}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button (click)="itemDetails()" id="articoli_venduti_btn"
+                                    <button (click)="itemDetails(item)" id="articoli_venduti_btn"
                                     class="btn btn-outline-warning btn-md mt-2">Dettagli</button>
                                 </div>
                             </div>
@@ -89,12 +91,16 @@
                 </div>
             </div>
         </div>
-        <!-- Offerte  -->
-        <div class="container-fluid" *ngIf="child_lander == 'offer'">
-            <h1 class="pageTitle">Le tue offerte inviate</h1>
-            <div *ngFor="let offer of offers" class="jumbotron jumbotron-fluid">
+    </div>
+    <!--OFFERTE INVIATE-->
+    <div class="container-fluid" *ngIf="lander == 'sentOffers'">
+        <h1 class="pageTitle" [hidden]="this.offers == null">Non hai inviato nessuna offerta</h1>
+        <h1 class="pageTitle" [hidden]="this.offers !== null">Le tue offerte inviate</h1>
+        <hr>
+        <div *ngFor="let offer of offers">
+            <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-6">Nome articolo</h1>
+                    <h1 class="display-6">{{offer.item?.name}}</h1>
                     <table>
                         <thead>
                             <tr>
@@ -105,14 +111,45 @@
                             </tr>
                         </thead>
                         <tr>
-                            <td>Data e ora</td>
-                            <td>base asta</td>
-                            <td>offerta</td>
-                            <td>stato</td>
+                            <td>{{offer.timing}}</td>
+                            <td>{{offer.item?.auctionBase}}</td>
+                            <td>{{offer.amount}}</td>
+                            <td>{{offer.state}}</td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</body>
+    <!--OFFERTE RICEVUTE-->
+    <div class="container-fluid" *ngIf="lander == 'receivedOffers'">
+        <h1 class="pageTitle" [hidden]="offerReceived == true">Non hai ricevuto offerte per i tuoi articoli</h1>
+        <h1 class="pageTitle" [hidden]="offerReceived == false">Le tue offerte ricevute</h1>
+        <hr>
+        <div *ngFor="let userItem of user?.items">
+            <div *ngFor="let itemOffer of userItem.offers">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-6">{{userItem.name}}</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data e ora offerta</th>
+                                    <th>Base asta</th>
+                                    <th>Offerta</th>
+                                    <th>Stato</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>{{itemOffer.timing}}</td>
+                                <td>{{userItem.auctionBase}}</td>
+                                <td>{{itemOffer.amount}}</td>
+                                <td>{{itemOffer.state}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

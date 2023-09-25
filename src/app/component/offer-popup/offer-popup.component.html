@@ -1,0 +1,37 @@
+<div *ngIf="isVisible" class="popup-overlay">
+
+    <div class="card">
+        <img class="card-img-top" src = "../../../assets/images/OffertaArticolo.jpg">
+        <div class="card-body">
+            <div class="row">
+                <span id="title">Effettua un'offerta per questo articolo!</span>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <strong>Offerta attuale: </strong> €
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-4">
+                    <strong>La tua offerta: </strong>
+                </div>
+                <div class="col">
+                    <form #f="ngForm" (submit)="formManager(f)">
+                        <div class="form-group">
+                            <input [ngModel] type="number" name="newOffer" class="form-control" required>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6">
+                    <button class="btn btn-outline-danger" (click)="leaveOfferPopup()">Abbandona</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-outline-success" (click)="leaveOfferPopup()">Invia offerta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

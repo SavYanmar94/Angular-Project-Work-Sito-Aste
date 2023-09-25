@@ -5,23 +5,24 @@
     <app-user-update [update_lander]="child_lander" (leave)="return_to_profile()" [user]="user"></app-user-update>
     
     <app-item-form  [(isVisible)]="itemFormVisibility" [user]="user"></app-item-form>
-    
-    <app-user-dash-two [child_lander]="child_lander" (lander_main)="return_to_profile()"
+    <app-user-update-popup
+    [isVisible]="userUpdatePopupVisible"
     [user]="user"
-    [items]="items"
-    ></app-user-dash-two>
+    [profileImage]="userToUpdateImage"
+    (leave)="deactivateUpdatePopup()"></app-user-update-popup>
+    
     <body *ngIf="lander == 'main'">
         <!-- navbar-->
         <app-navbar [userLogged]="true" (userLogout)="userLogoutManager()"></app-navbar>
 
         <header class="py-5">
-            <div class="container px-lg-5">
+                <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">Benvenuto nella tua dashboard!</h1>
-                        <div id="containerImg"><img src="../../../assets/images/profileImagePlaceholder.png" alt="Avatar" /></div><br>
+                        <div id="containerImg"><img [src]="this.profileImg == '' ? '../../../assets/images/profileImagePlaceholder.png' : this.profileImg" alt="Avatar" /></div><br>
                         <!-- modifica profilo button-->
-                        <button (click)="user_profile_update()"  id="bottone_sotto_profilo" class="btn btn-lg">Modifica il tuo profilo</button><br>
+                        <button   (click)="activateAndUpdatePopup()" id="bottone_sotto_profilo" class="btn btn-lg">Modifica il tuo profilo</button><br>
                         <!-- info button-->
                         <button (click)="info_btnClick()"  id="info_btn" class="btn btn-lg bottone_2" type="button" data-toggle="collapse" data-target="#dettagli_profilo" aria-expanded="true" aria-controls="dettagli_profilo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -36,17 +37,8 @@
         <section class="pt-4">
             <div class="container px-lg-5">
                 <!-- Page Features-->
-                <div class="row gx-lg-5">
-                    <div class="col-lg-6 col-xxl-6 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
-                                <h2 class="fs-4 fw-bold">Aggiungi un nuovo articolo</h2>
-                                <button (click)="addNewItem()" class="btn btn-lg bottone_2">Clicca qui</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-6 mb-5">
+                <div *ngIf="this.userType == 'a'" class="row gx-lg-5">
+                    <div class="col mb-5">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
@@ -55,25 +47,46 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xxl-6 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
-                                <h2 class="fs-4 fw-bold">I tuoi articoli all'asta</h2>
-                                <button (click)="yourAuctionItems()" class="btn btn-lg bottone_2">Clicca qui</button>
+                </div>    
+                    <div *ngIf="this.userType == 'v'" class="row gx-lg-5">
+                        <div class="col-lg-6 col-xxl-6 mb-5">
+                            <div class="card bg-light border-0 h-100">
+                                <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
+                                    <h2 class="fs-4 fw-bold">Aggiungi un nuovo articolo</h2>
+                                    <button (click)="addNewItem()" class="btn btn-lg bottone_2">Clicca qui</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-6 mb-5">
+                            <div class="card bg-light border-0 h-100">
+                                <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
+                                    <h2 class="fs-4 fw-bold">Le tue offerte</h2>
+                                    <button (click)="yourOffers()" class="btn btn-lg bottone_2">Clicca qui</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-6 mb-5">
+                            <div class="card bg-light border-0 h-100">
+                                <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
+                                    <h2 class="fs-4 fw-bold">I tuoi articoli all'asta</h2>
+                                    <button (click)="yourAuctionItems()" class="btn btn-lg bottone_2">Clicca qui</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xxl-6 mb-5">
+                            <div class="card bg-light border-0 h-100">
+                                <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
+                                    <h2 class="fs-4 fw-bold">I tuoi articoli venduti</h2>
+                                    <button (click)="yourSoldItems()" class="btn btn-lg bottone_2">Clicca qui</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xxl-6 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
-                                <h2 class="fs-4 fw-bold">I tuoi articoli venduti</h2>
-                                <button (click)="yourSoldItems()" class="btn btn-lg bottone_2">Clicca qui</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </section>
     </body>

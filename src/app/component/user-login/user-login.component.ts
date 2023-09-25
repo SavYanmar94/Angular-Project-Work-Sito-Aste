@@ -29,11 +29,14 @@ export class UserLoginComponent {
   }
 
   //gestione form di login
-  formManager(form:NgForm):void{
+  formManager(form:NgForm):void
+  {
     let user:User = {
       nickname:form.value["nickname"],
       password:form.value["password"]
     };
+    console.log(user.nickname);
+    console.log(user.password);
     this.userService.userLogin(user)
        .subscribe({
          next: response => {
@@ -44,7 +47,8 @@ export class UserLoginComponent {
          },
          error: e => {
            if(e.status == 401) //CONTROLLARE I CODICI CHE ARRIVANO DA BACKEND
-             this.serverError = "Accesso Negato";
+{           console.log(e);
+             this.serverError = "Accesso Negato";}
            else
              this.serverError = e.message;
          }
