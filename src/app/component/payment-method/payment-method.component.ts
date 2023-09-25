@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-method',
@@ -10,8 +9,6 @@ export class PaymentMethodComponent {
   @Input() isVisible: boolean = false;
   @Output() isVisibleChange = new EventEmitter<boolean>();
 
-  constructor(private router:Router) {}
-
   // Aggiungi la variabile per gestire l'animazione di reindirizzamento
   isRedirecting: boolean = false;
 
@@ -21,22 +18,10 @@ export class PaymentMethodComponent {
 
   redirectToPayment(): void {
     this.isRedirecting = true;
-    
     // Simula un ritardo di 3 secondi per il reindirizzamento (da sostituire con la tua logica effettiva)
     setTimeout(() => {
       this.isRedirecting = false;
+      // Qui dovresti effettuare il reindirizzamento effettivo al pagamento
     }, 3000);
-  }
-
-  test():void {
-    console.log("funziona");
-  }
-
-  apriPaginaEsterna() {
-    // Definisci l'URL della pagina esterna
-    const urlPaginaEsterna = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GMDY9KV97JGK8';
-
-    // Apri la pagina esterna in una nuova finestra o scheda del browser
-    window.open(urlPaginaEsterna, '_blank');
   }
 }

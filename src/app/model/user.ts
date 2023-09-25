@@ -1,7 +1,8 @@
 import { HomeAddress } from "./home-address";
+import { Item } from "./item";
+import { itemOffers } from "./itemOffers";
+import { Offer } from "./offer";
 import { ShippingAddress } from "./shipping-address";
-import { UserItem } from "./userItem";
-import { UserOffer } from "./userOffer";
 
 export interface User {
 
@@ -18,7 +19,7 @@ export interface User {
     authToken?:string;
     homeAddress?:HomeAddress;
     shippingAddress?:ShippingAddress;
-    offers?:UserOffer[];
-    items?:UserItem[];
-
+    items?:Item[];
+    offers?:Offer[];
+    itemOffers?:itemOffers[];
 }

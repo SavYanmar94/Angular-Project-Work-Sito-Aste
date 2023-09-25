@@ -1,3 +1,4 @@
+
 export interface itemOffers {
     id?:number,
     localDate?:Date,

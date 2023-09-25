@@ -1,49 +1,22 @@
-<div class="popup-overlay" *ngIf="isVisible && (userItem !== undefined || item !== undefined)">
+<div class="popup-overlay" *ngIf="isVisible">
 
-        <div *ngIf="userItem !== undefined">
-            <div class="card">
-                <h3 id="title">Dettagli articolo</h3>
-                <img class="img" [src]="userItem.image ? userItem.image : '../../../assets/images/placeholder.png'">
-                <div class="card-body">
-                    <div class="card-title">
-                        <h4>{{userItem.name}}</h4>
-                    </div>
-                    <div class="card-text">
-                        <p>
-                            <strong>Descrizione: </strong>{{userItem.description}}
-                        </p>
-                        <p>
-                            <strong>Base d'asta: </strong>{{userItem.auctionBase}}&nbsp;€
-                        </p>
-                        <p>
-                            <strong>Offerta corrente: </strong>{{userItem.majorOffer}}&nbsp;€
-                        </p>
-                        <button class="btn btn-outline-danger me-4" (click)="leaveItemDetails()">Abbandona</button>
-                    </div>
+        <div class="card">
+    
+            <h3 id="title">Dettagli articolo</h3>
+  
+            <img  src="https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg"alt="immagine-articolo">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4>Nome articolo</h4>
                 </div>
-            </div>
-        </div>
-
-        <div *ngIf="item !== undefined">
-            <div class="card">
-                <h3 id="title">Dettagli articolo</h3>
-                <img *ngIf="item !== undefined" class="img" [src]="item.image ? item.image : '../../../assets/images/placeholder.png'">
-                <div class="card-body">
-                    <div class="card-title">
-                        <h4>{{item.name}}</h4>
-                    </div>
-                    <div class="card-text">
-                        <p>
-                            <strong>Descrizione: </strong>{{item.description}}
-                        </p>
-                        <p>
-                            <strong>Base d'asta: </strong>{{item.auctionBase}}&nbsp;€
-                        </p>
-                        <p>
-                            <strong>Offerta corrente: </strong>{{item.auctionBase}}&nbsp;€
-                        </p>
-                        <button class="btn btn-outline-danger me-4" (click)="leaveItemDetails()">Abbandona</button>
-                    </div>
+                <div class="card-text">
+                    <p>
+                        <strong>Descrizione: </strong>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor sit debitis dignissimos quidem quinostrum nam, vitae voluptatibus cupiditate tempora animi at culpa quis non maxime officiis dolores reiciendisadipisci!
+                    </p>
+                    <p>
+                        <strong>Base d'asta: </strong> Prezzo
+                    </p>
+                    <button class="btn btn-outline-danger me-4" (click)="leaveItemDetails()">Abbandona</button>
                 </div>
             </div>
         </div>

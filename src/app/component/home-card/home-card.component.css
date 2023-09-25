@@ -1,22 +1,3 @@
-/* card */
-.card {
-    min-width: 160px;
-    max-width: 400px;
-    margin: auto;
-}
-
-.card-img-top {
-    height: 250px;
-    min-height: 250px;
-    object-fit: cover;
-}
-
-#nome_articolo {
-    text-align: center;
-    margin-top: 5px;
-    font-size: large;
-}
-
-.articoli_asta_btn {
-    width: 100%;
+.card{
+    margin: 5px;
 }

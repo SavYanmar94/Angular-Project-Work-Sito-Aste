@@ -1,55 +1,14 @@
-.wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
 }
 
-/* navbar */
-#sidebar {
-    position: fixed;
-    max-width: 330px;
-    min-height: 100vh;
-    background-color: #2f3132;
-}
-
-#sidebar-header {
-    padding: 20px;
-    background-color: #1F1F1F;
-    text-align: center;
-    min-height: 110px;
-}
-
-#logo {
-    height: 95px;
-}
-
-a {
-    padding: 20px;
-    font-size: 1.3em;
-    display: block;
-    line-height: 2.5em;
+a,
+a:hover,
+a:focus {
+    color: inherit;
     text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    color: rgb(216, 216, 216);
-    background: #3e3f40;
-    cursor: pointer;
-}
-
-p {
-    margin-top: 25px;
-    color: #fff;
-    padding: 10px;
-    padding-left: 20px;
-    margin-bottom: 0;
-    font-size: 2em;
-}
-
-/* page content */
-.container-fluid {
-    margin-left: 330px;
+    transition: all 0.3s;
 }
 
 .pageTitle {
@@ -60,21 +19,88 @@ p {
     width: 100%;
 }
 
-/* card */
-.card {
-    min-width: 160px;
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
 }
 
-.card-img-top {
-    height: 250px;
-    min-height: 250px;
-    object-fit: cover;
+#filler {
+    min-width: 250px;
+}
+
+#sidebarWebsiteName {
+    font-size: 30px;
+    line-height: 50px;
+}
+
+#sidebar {
+    position: fixed;
+    min-width: 250px;
+    max-width: 250px;
+    background: #6D93A8;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #334D5C;
+    text-align: center;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-size: 2em;
+
+}
+
+#sidebar ul li a {
+    padding: 20px;
+    font-size: 1.3em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    CARD STYLE
+----------------------------------------------------- */
+
+.card {
+    min-width: 160px;
 }
 
 #nome_articolo {
     text-align: center;
     margin-top: 5px;
     font-size: large;
+}
+
+#articoli_asta_btns {
+    display: flex;
+    justify-content: space-between;
 }
 
 .articoli_asta_btn {
@@ -85,7 +111,9 @@ p {
     width: 100%;
 }
 
-/* table */
+/* ---------------------------------------------------
+    TABLE STYLE
+----------------------------------------------------- */
 
 table {
     width: 100%;
@@ -96,7 +124,15 @@ td {
     padding-bottom: 10px;
 }
 
-/* offers */
+#td-offerta {
+    text-align: right;
+}
+
+/* ---------------------------------------------------
+    PAGINA OFFERTE
+----------------------------------------------------- */
+
+
 
 .jumbotron {
     background-color: rgb(240, 240, 240);
@@ -104,13 +140,27 @@ td {
     margin-top: 5px;
 }
 
-@media (max-width: 770px) {
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 992px) {
+    .price {
+        text-align: center;
+    }
+}
 
-    #sidebar{
-        display: none;
+
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
     }
 
-    .container-fluid {
+    #sidebar.active {
         margin-left: 0;
+    }
+
+    #sidebarCollapse span {
+        display: none;
     }
 }
