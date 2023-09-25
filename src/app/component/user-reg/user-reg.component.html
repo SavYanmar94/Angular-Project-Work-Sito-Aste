@@ -2,13 +2,8 @@
     <div class="popup">
         <div class="row">
             <div class="col-12 text-center">
-
-                
-
-
-                <h5 class="m-4" style="color: #334D5C;">Registrazione nuovo utente</h5>
-
-                
+                <h5 class="text-primary text-center mt-4">Registrazione Utente</h5>
+                <h6 *ngIf="serverError" class="text-danger">{{serverError}}</h6>
             </div>
         </div>
         <form #f="ngForm" (submit)="formManager(f)">
