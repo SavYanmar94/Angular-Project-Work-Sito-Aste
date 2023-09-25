@@ -18,6 +18,7 @@ export class UserRegComponent
   @Input() isVisible:boolean = false;
   serverError:any;
   duplicate:any;
+  userImage: any;
   @Output() leave = new EventEmitter();
   @Output() register = new EventEmitter();
   @Input() profileImage:any;
