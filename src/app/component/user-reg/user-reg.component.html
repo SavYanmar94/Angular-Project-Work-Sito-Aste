@@ -101,7 +101,17 @@
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-8 mt-4 mb-2">
                             <label>Immagine del profilo:</label>
-                            <input [ngModel] type="file" name="profileImage" class="form-control-file">
+
+                            <input [ngModel] type="file" name="profileImage" class="form-control" style="display: none;"
+                            accept="image/jpeg,image/png" maxlength="1048576"
+                            #image (change)="uploadImage($event)">
+                            <button type="button" class="btn btn-outline-warning mt-4" 
+                            (click)="image.click()">
+                            <span [hidden]="userImage">Carica immagine di copertina</span>
+                            <span [hidden]="!userImage">Immagine caricata</span>
+                            </button>
+
+                            
                         </div>
                     </div>
                     <!-- RADIO BUTTON -->

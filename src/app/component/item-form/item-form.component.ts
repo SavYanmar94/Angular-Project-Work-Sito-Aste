@@ -3,7 +3,6 @@ import { Item } from 'src/app/model/item';
 import { NgForm } from '@angular/forms';
 import { ItemService } from 'src/app/service/item.service';
 import { User } from 'src/app/model/user';
-import { UserItem } from 'src/app/model/userItem';
 
 @Component({
   selector: 'app-item-form',

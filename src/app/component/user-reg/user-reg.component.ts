@@ -18,6 +18,7 @@ export class UserRegComponent
   @Input() isVisible:boolean = false;
   serverError:any;
   duplicate:any;
+  userImage: any;
   @Output() leave = new EventEmitter();
   @Output() register = new EventEmitter();
   
@@ -64,7 +65,7 @@ export class UserRegComponent
       taxcode:form.value["taxCode"],
       nickname:form.value["nickname"],
       password:form.value["password"],
-      profileImage:form.value["profileImage"],
+      profileImage:this.userImage,
       profileType:form.value["profileType"],
       homeAddress:homeAddress,
       shippingAddress:shippingAddress
@@ -92,5 +93,15 @@ export class UserRegComponent
             
         }
       });
+  }
+
+  uploadImage(event:any):void {
+    let file:File = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.userImage = reader.result as string;
+      event.target.value = "";
+    }
   }
 }
