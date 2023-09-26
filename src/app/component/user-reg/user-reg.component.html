@@ -100,10 +100,15 @@
                     <!-- IMMAGINE DEL PROFILO -->
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-8 mt-4 mb-2">
-                            <label>Immagine del profilo:</label>
-                            <input type="file" name="profileImage" class="form-control-file"
+                            <!--<label>Immagine del profilo:</label>-->
+                            <input type="file" name="profileImage" class="form-control" style="display: none;"
                             accept="image/jpeg,image/png" maxlength="5242880"
                             (change)="uploadImage($event)" #image>
+                            <button type="button" class="btn btn-outline-warning mt-4" 
+                                (click)="image.click()">
+                                <span [hidden]="profileImage">Carica immagine del profilo</span>
+                                <span [hidden]="!profileImage">Immagine caricata</span>
+                            </button>
                         </div>
                     </div>
                     <!-- RADIO BUTTON -->
