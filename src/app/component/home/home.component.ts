@@ -34,13 +34,17 @@ export class HomeComponent implements OnInit {
   
   //inizializzazione
   ngOnInit(): void {
+    this.getData()
+    this.loggedUserID=this.userService.getUserId();
+  }
+
+  getData():void {
     this.userLogged = this.userService.checkUserLoginState();
     this.itemService.getItems()
       .subscribe({
         next: response => this.items = response,
         error: e => console.log(e.message)
       })
-      this.loggedUserID=this.userService.getUserId();
   }
 
   //visualizzazione popup form login user

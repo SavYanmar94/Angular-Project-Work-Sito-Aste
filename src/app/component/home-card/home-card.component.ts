@@ -15,6 +15,7 @@ export class HomeCardComponent {
   @Output() detail = new EventEmitter<Item>();
   @Output() notLoggedInOffer = new EventEmitter();
   @Output() goToItems = new EventEmitter();
+  @Output() refresh = new EventEmitter();
 
   itemDetailsVisibility:boolean = false;
   offerPopupVisibility:boolean = false;
@@ -40,6 +41,7 @@ export class HomeCardComponent {
 
   deactivateOfferPopup():void {
     this.offerPopupVisibility = false;
+    this.refresh.emit();
   }
 
 }

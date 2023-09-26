@@ -71,7 +71,7 @@ p {
     object-fit: cover;
 }
 
-#nome_articolo {
+.cardTitle {
     text-align: center;
     margin-top: 5px;
     font-size: large;
@@ -99,9 +99,9 @@ td {
 /* offers */
 
 .jumbotron {
-    background-color: rgb(240, 240, 240);
-    padding: 0;
-    margin-top: 5px;
+    background-color: rgb(220, 220, 220);
+    padding: 1%;
+    margin-top: 2%;
 }
 
 @media (max-width: 770px) {

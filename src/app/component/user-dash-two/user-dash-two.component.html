@@ -27,27 +27,26 @@
         <h1 class="pageTitle">Articoli all'asta</h1>
         <div class="row">
             <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
-                <div *ngIf="item.state == 'disponibile'">
-                    <div class="card">
-                        <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
-                        alt="Card image cap">
-                        <strong id="nome_articolo">{{item.name}}</strong>
-                        <div class="card-body">
-                            <div class="row justify-content-between">
-                                <div class="col-lg-6 col-sm-12 price">
-                                    Base asta: {{item.auctionBase}}&nbsp;€
-                                </div>
-                                <div class="col-lg-6 col-sm-12 price">
-                                    Offerta corrente: {{item.majorOffer}}&nbsp;€
-                                </div>
+                <div class="card">
+                    <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
+                    alt="Card image cap">
+                    <strong class="cardTitle">{{item.name}}</strong>
+                    <span class="cardTitle">Stato: <span [ngStyle]="{'color': item.state == 'disponibile' ? 'red' : 'green' }">{{item.state}}</span></span>
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            <div class="col-lg-6 col-sm-12 price">
+                                Base asta: {{item.auctionBase}}&nbsp;€
                             </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-12 mt-sm-2">
-                                    <button (click)="itemDetails(item)" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
-                                </div>
-                                <div class="col-lg-6 col-md-12 mt-sm-2">
-                                    <button (click)="removeItem(item)" class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
-                                </div>
+                            <div class="col-lg-6 col-sm-12 price">
+                                Offerta corrente: {{item.majorOffer}}&nbsp;€
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 mt-sm-2">
+                                <button (click)="itemDetails(item)" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
+                            </div>
+                            <div class="col-lg-6 col-md-12 mt-sm-2">
+                                <button (click)="removeItem(item)" class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
                             </div>
                         </div>
                     </div>
@@ -147,6 +146,11 @@
                                 <td>{{itemOffer.state}}</td>
                             </tr>
                         </table>
+                        <div class="row">
+                            <div class="col-3">
+                                <button (click)="acceptOffer(itemOffer)"  class="btn btn-outline-success btn-md articoli_asta_btn">Accetta offerta</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

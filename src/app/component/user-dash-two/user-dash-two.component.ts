@@ -6,6 +6,8 @@ import { UserItem } from 'src/app/model/userItem';
 import { UserOffer } from 'src/app/model/userOffer';
 import { ItemService } from 'src/app/service/item.service';
 import { UserService } from 'src/app/service/user.service';
+import { OfferService } from 'src/app/service/offer.service';
+import { Offer } from 'src/app/model/offer';
 
 @Component({
   selector: 'app-user-dash-two',
@@ -29,7 +31,8 @@ export class UserDashTwoComponent implements OnInit {
   constructor(private itemService:ItemService,
               private router:Router,
               private userService:UserService,
-              private userDashService:UserDashService
+              private userDashService:UserDashService,
+              private offerService:OfferService
               ) {}
 
   ngOnInit(): void {
@@ -120,5 +123,11 @@ export class UserDashTwoComponent implements OnInit {
 
   changeLander(lander:string) {
     this.lander = lander;
+  }
+
+  acceptOffer(offer:Offer):void {
+    this.offerService.offerDataUpdate(offer).subscribe(
+      {next: response => console.log(response), error: e => console.log(e)}
+    )
   }
 }
