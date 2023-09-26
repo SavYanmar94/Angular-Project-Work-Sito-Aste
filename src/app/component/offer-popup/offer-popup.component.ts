@@ -15,18 +15,21 @@ export class OfferPopupComponent {
 
   constructor(private userService:UserService,
     private OfferService:OfferService) {
-
   }
 
   user: User | undefined;
   serverError:any;
   duplicate:any;
+  inputValue:number | undefined = 0;
+  inputError:boolean = false;
   @Input() item: Item | undefined;
   @Input() isVisible:boolean = false;
   @Output() isVisibleChange = new EventEmitter();
   @Output() registered = new EventEmitter();
 
-  leaveOfferPopup():void {
+  leaveOfferPopup(form:NgForm):void {
+    form.reset();
+    this.inputError = false;
     this.isVisibleChange.emit();
   }
 
@@ -54,16 +57,23 @@ export class OfferPopupComponent {
         }
       },
       error: e => {
-        console.log(e);
-        console.log("-------------------");
-        console.log(offer);
-        console.log(this.user?.name);
         if(e.status == 406)
           this.duplicate = "";
         else
           this.serverError = "Problemi con il server";    
       }
     });;
+  }
+
+  checkOfferValue():void {
+    if(this.item?.majorOffer !== undefined) {
+      if(this.inputValue == this.item?.majorOffer) {
+        this.inputError = true;
+      }
+      else {
+        this.inputError = false;
+      }
+    }
   }
 
 }

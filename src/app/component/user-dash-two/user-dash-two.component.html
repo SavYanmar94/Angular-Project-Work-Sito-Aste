@@ -140,12 +140,16 @@
                                 <td>{{itemOffer.timing}}</td>
                                 <td>{{userItem.auctionBase}} €</td>
                                 <td>{{itemOffer.amount}} €</td>
-                                <td>{{itemOffer.state}}</td>
+                                <td><span [ngStyle]="{'color': itemOffer.state == 'In corso' ? 'blue' : (itemOffer.state == 'Rifiutata' ? 'red' : 'green')}">{{itemOffer.state}}</span></td>
                             </tr>
                         </table>
                         <div class="row">
                             <div class="col-3">
-                                <button (click)="acceptOffer(itemOffer)"  class="btn btn-outline-success btn-md articoli_asta_btn">Accetta offerta</button>
+                                <button *ngIf="itemOffer.state == 'In corso'" (click)="acceptOffer(itemOffer)"  class="btn btn-outline-primary btn-md articoli_asta_btn">Accetta offerta</button>
+                                <button *ngIf="itemOffer.state == 'accettata'"
+                                class="btn btn-success btn-md articoli_asta_btn" disabled>Offerta Accettata</button>
+                                <button *ngIf="itemOffer.state == 'Rifiutata'"
+                                class="btn btn-danger btn-md articoli_asta_btn" disabled>Offerta Rifiutata</button>
                             </div>
                         </div>
                     </div>

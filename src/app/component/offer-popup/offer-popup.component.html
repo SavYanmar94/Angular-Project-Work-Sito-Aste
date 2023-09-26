@@ -1,5 +1,4 @@
 <div *ngIf="isVisible" class="popup-overlay">
-
     <div class="card">
         <img class="card-img-top" src = "../../../assets/images/OffertaArticolo.jpg">
         <div class="card-body">
@@ -18,20 +17,20 @@
                 <div class="col">
                     <form #f="ngForm" (submit)="formManager(f)">
                         <div class="form-group">
-                            <input [ngModel] type="number" name="offerAmount" class="form-control" required>
-                        </div> 
+                            <input [attr.min]="item !== undefined ? item.majorOffer : null" [ngModel] type="number" name="offerAmount" class="form-control" required #offerInput="ngModel" [(ngModel)]="inputValue" (change)="checkOfferValue()">
+                            <div [hidden]="!inputError" class="alert alert-danger">L'offerta minima deve essere superiore a {{item?.majorOffer}} €</div>
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-6">
-                    <button class="btn btn-outline-danger" (click)="leaveOfferPopup()">Abbandona</button>
+                    <button class="btn btn-outline-danger" (click)="leaveOfferPopup(f)">Abbandona</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-outline-success" (click)="formManager(f)">Invia offerta</button>
+                    <button class="btn btn-outline-success" (click)="formManager(f)" [disabled]="inputError">Invia offerta</button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

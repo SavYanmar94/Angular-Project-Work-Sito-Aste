@@ -42,6 +42,12 @@ export class UserDashTwoComponent implements OnInit {
     if (this.lander == "") {
       this.lander = "sentOffers";
     }
+
+    this.getData();
+  }
+
+  //metodo per ricevere dati dal database
+  getData():void {
     this.userService.getUserData().subscribe({
       next: response => {this.user = response, this.items = response.items, this.offers = response.offers, this.userType = response.profileType?.toString(), this.offerReceived = this.offerReceivedFun(), this.offerSent = this.offerSentFun(), this.itemSold = this.itemSoldFun(), this.item_at_auction = this.item_at_auctionFun()},
       error: e => console.log(e)
@@ -156,5 +162,7 @@ export class UserDashTwoComponent implements OnInit {
     this.offerService.offerDataUpdate(offer).subscribe(
       {next: response => console.log(response), error: e => console.log(e)}
     )
+
+    this.getData();
   }
 }
