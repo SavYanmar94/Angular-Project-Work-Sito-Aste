@@ -24,9 +24,10 @@
     <!-- Page content  -->
     <!-- Articoli all'asta  -->
     <div class="container-fluid" *ngIf="lander == 'auction'">
-        <h1 class="pageTitle">Articoli all'asta</h1>
+        <h1 class="pageTitle" [hidden]="!item_at_auction">Articoli all'asta</h1>
+        <h1 class="pageTitle" [hidden]="item_at_auction">Non hai articoli all'asta</h1>
         <div class="row">
-            <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
+            <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4" [hidden]="item.state == 'Venduto'">
                 <div class="card">
                     <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
                     alt="Card image cap">
@@ -56,34 +57,30 @@
     </div>
     <!-- Articoli venduti  -->
     <div class="container-fluid" *ngIf="lander == 'soldItems'">
-        <h1 class="pageTitle" [hidden]="this.items == null">Non hai articoli venduti</h1>
-        <h1 class="pageTitle" [hidden]="this.items !== null">Articoli venduti</h1>
+        <h1 class="pageTitle" [hidden]="!itemSold">Articoli venduti</h1>
+        <h1 class="pageTitle" [hidden]="itemSold">Non hai articoli venduti</h1>
         <div class="row">
-            <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4">
-                <div *ngIf="item.state == 'Venduto'">
-                    <div class="card">
-                        <img class="card-img-top"
-                            src="https://i1.wp.com/potafiori.com/wp-content/uploads/2020/04/placeholder.png?ssl=1"
-                            alt="Card image cap">
-                        <strong id="nome_articolo">{{item.name}}</strong>
-                        <div class="card-body">
-                            <div class="row justify-content-between">
-                                <div class="col-lg-6 col-sm-12 price">
-                                    Prezzo iniziale: {{item.auctionBase}}
-                                </div>
-                                <div *ngFor="let offer of item.offers">
-                                    <div *ngIf="offer.state == 'accettata'">
-                                        <div class="col-lg-6 col-sm-12 price">
-                                            Prezzo di vendita: {{offer.amount}}
-                                        </div>
-                                    </div>
-                                </div>
+            <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4" [hidden]="item.state !== 'Venduto'">
+                <div class="card">
+                    <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
+                    alt="Card image cap">
+                    <strong class="cardTitle">{{item.name}}</strong>
+                    <span class="cardTitle">Stato: <span [ngStyle]="{'color': item.state == 'disponibile' ? 'red' : 'green' }">{{item.state}}</span></span>
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            <div class="col-lg-6 col-sm-12 price">
+                                Base asta: {{item.auctionBase}}&nbsp;€
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button (click)="itemDetails(item)" id="articoli_venduti_btn"
-                                    class="btn btn-outline-warning btn-md mt-2">Dettagli</button>
-                                </div>
+                            <div class="col-lg-6 col-sm-12 price">
+                                Offerta corrente: {{item.majorOffer}}&nbsp;€
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 mt-sm-2">
+                                <button (click)="itemDetails(item)" class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
+                            </div>
+                            <div class="col-lg-6 col-md-12 mt-sm-2">
+                                <button (click)="removeItem(item)" class="btn btn-outline-danger btn-md articoli_asta_btn">Rimuovi</button>
                             </div>
                         </div>
                     </div>
