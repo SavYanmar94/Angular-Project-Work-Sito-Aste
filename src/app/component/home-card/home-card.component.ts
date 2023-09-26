@@ -38,4 +38,8 @@ export class HomeCardComponent {
     this.offerPopupVisibility = true;
   }
 
+  deactivateOfferPopup():void {
+    this.offerPopupVisibility = false;
+  }
+
 }

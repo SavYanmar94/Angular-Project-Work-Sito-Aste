@@ -8,7 +8,7 @@
                 <strong>Base asta:</strong> {{item.auctionBase}}&nbsp;€
             </div>
             <div class="col-lg-6 col-sm-12 price">
-                <strong>Offerta:</strong> {{item.auctionBase}}&nbsp;€
+                <strong>Offerta:</strong> {{item.majorOffer}}&nbsp;€
             </div>
         </div>
         <div class="row">
@@ -34,7 +34,7 @@
 
 <app-item-details [(isVisible)]="itemDetailsVisibility" [(item)]="itemDetails"></app-item-details>
 
-<app-offer-popup [(isVisible)]="offerPopupVisibility" [item]="item"></app-offer-popup>
+<app-offer-popup [(isVisible)]="offerPopupVisibility" [item]="item" (registered)="deactivateOfferPopup()"></app-offer-popup>
 
 
 
