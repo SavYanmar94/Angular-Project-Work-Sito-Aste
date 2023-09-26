@@ -160,9 +160,7 @@ export class UserDashTwoComponent implements OnInit {
 
   acceptOffer(offer:Offer):void {
     this.offerService.offerDataUpdate(offer).subscribe(
-      {next: response => console.log(response), error: e => console.log(e)}
+      {next: () => this.getData(), error: e => console.log(e)}
     )
-
-    this.getData();
   }
 }

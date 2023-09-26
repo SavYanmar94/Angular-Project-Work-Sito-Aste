@@ -20,8 +20,9 @@ export class OfferPopupComponent {
   user: User | undefined;
   serverError:any;
   duplicate:any;
-  inputValue:number | undefined = 0;
+  inputValue:number = 0;
   inputError:boolean = false;
+  @Input() minOffer:number = 0;
   @Input() item: Item | undefined;
   @Input() isVisible:boolean = false;
   @Output() isVisibleChange = new EventEmitter();
@@ -47,7 +48,6 @@ export class OfferPopupComponent {
 
     this.OfferService.offerRegistration(offer).subscribe({
       next: response => {
-        console.log(response);
         if(response.code == 201)
         {
           form.reset();
@@ -66,8 +66,9 @@ export class OfferPopupComponent {
   }
 
   checkOfferValue():void {
-    if(this.item?.majorOffer !== undefined) {
-      if(this.inputValue == this.item?.majorOffer) {
+    if(this.item?.majorOffer !== undefined && this.item?.auctionBase !== undefined) {
+
+      if(this.inputValue == this.item?.majorOffer || this.inputValue <= this.item.auctionBase) {
         this.inputError = true;
       }
       else {

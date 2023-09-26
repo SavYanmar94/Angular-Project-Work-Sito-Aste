@@ -20,6 +20,7 @@ export class HomeCardComponent {
   itemDetailsVisibility:boolean = false;
   offerPopupVisibility:boolean = false;
   itemDetails:Item | undefined;
+  itemMinOffer:number = 0;
 
   details(item:Item):void {
     this.itemDetails = item;
@@ -37,6 +38,14 @@ export class HomeCardComponent {
 
   activateOfferPopup():void {
     this.offerPopupVisibility = true;
+    if(this.item?.majorOffer !== undefined && this.item.auctionBase !== undefined) {
+      if(this.item?.majorOffer > this.item?.auctionBase) {
+        this.itemMinOffer = this.item.majorOffer;
+      }
+      else {
+        this.itemMinOffer = this.item.auctionBase;
+      }
+    }  
   }
 
   deactivateOfferPopup():void {

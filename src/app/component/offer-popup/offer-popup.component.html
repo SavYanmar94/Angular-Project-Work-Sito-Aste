@@ -7,7 +7,10 @@
             </div>
             <div class="row mt-2">
                 <div class="col">
-                    <strong>Offerta attuale: </strong> €
+                    <strong>Base d'asta: </strong>{{item?.auctionBase}} €
+                </div>
+                <div class="col">
+                    <strong>Offerta attuale: </strong>{{item?.majorOffer}} €
                 </div>
             </div>
             <div class="row mt-4">
@@ -17,8 +20,8 @@
                 <div class="col">
                     <form #f="ngForm" (submit)="formManager(f)">
                         <div class="form-group">
-                            <input [attr.min]="item !== undefined ? item.majorOffer : null" [ngModel] type="number" name="offerAmount" class="form-control" required #offerInput="ngModel" [(ngModel)]="inputValue" (change)="checkOfferValue()">
-                            <div [hidden]="!inputError" class="alert alert-danger">L'offerta minima deve essere superiore a {{item?.majorOffer}} €</div>
+                            <input [attr.min]="minOffer" [ngModel] type="number" name="offerAmount" class="form-control" required [(ngModel)]="inputValue" (change)="checkOfferValue()">
+                            <div [hidden]="!inputError" class="alert alert-danger">L'offerta minima deve essere superiore alla base d'asta e all'offerta maggiore ricevuta</div>
                         </div>
                     </form>
                 </div>
