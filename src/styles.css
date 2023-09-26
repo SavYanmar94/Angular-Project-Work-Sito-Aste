@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    max-width: 1600px; /* Set the maximum width you desire */
+    margin: 0 auto; /* Center-align the content */
+    background-color: #f0f0f0; /* Set the background color for the sides */
+  }

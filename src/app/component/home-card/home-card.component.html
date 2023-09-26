@@ -15,14 +15,19 @@
             <div class="col-lg-6 col-md-12 mt-sm-2">
                 <button (click)="details(item)"  class="btn btn-outline-warning btn-md articoli_asta_btn">Dettagli</button>
             </div>
+            <!--se utente è logged in e seller-->
+            <div *ngIf="userLogged && item.seller?.id==loggedUserID "  class="col-lg-6 col-md-12 mt-sm-2">
+                <button (click)="manageItems()" class="btn btn-outline-primary btn-md articoli_asta_btn">Gestisci</button>
+            </div>
             <!--se utente è logged in-->
-            <div *ngIf="userLogged" class="col-lg-6 col-md-12 mt-sm-2">
+            <div *ngIf="userLogged && item.seller?.id!=loggedUserID" class="col-lg-6 col-md-12 mt-sm-2">
                 <button (click)="activateOfferPopup()" class="btn btn-outline-success btn-md articoli_asta_btn">Fai un'offerta</button>
             </div>
             <!--se utente non è logged in-->
             <div *ngIf="!userLogged" class="col-lg-6 col-md-12 mt-sm-2">
                 <button (click)="notLoggedOffer()"  class="btn btn-outline-success btn-md articoli_asta_btn">Fai un'offerta</button>
             </div>
+            
         </div>
     </div>
 </div>

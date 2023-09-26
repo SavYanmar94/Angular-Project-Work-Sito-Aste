@@ -1,8 +1,10 @@
+import { UserDashService } from './../../service/user-dash.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/service/item.service';
 import { Item } from 'src/app/model/item';
+
 
 @Component({
   selector: 'app-home',
@@ -19,13 +21,15 @@ export class HomeComponent implements OnInit {
   offerPopupVisibility:boolean = false;
   items:Item[]|undefined;
   serverError:any;
+  loggedUserID:number=0;
 
 
   //costruttore
   constructor(
     private userService:UserService,
     private router:Router,
-    private itemService:ItemService
+    private itemService:ItemService,
+    private userDashService:UserDashService
     ) { } 
   
   //inizializzazione
@@ -36,6 +40,7 @@ export class HomeComponent implements OnInit {
         next: response => this.items = response,
         error: e => console.log(e.message)
       })
+      this.loggedUserID=this.userService.getUserId();
   }
 
   //visualizzazione popup form login user
@@ -57,6 +62,13 @@ export class HomeComponent implements OnInit {
   userLoginManager():void{
     this.userLoginPopupVisible = false;
     this.router.navigate(["user"]); 
+  }
+  // reindirizza agli item dello user
+  goToItems():void{
+   
+    this.router.navigate(["user/dash"]); 
+    this.userDashService.setLander("auction");
+
   }
 
   // visualizzazione popup form registrazione cliente

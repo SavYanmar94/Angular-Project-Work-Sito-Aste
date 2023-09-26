@@ -11,8 +11,11 @@ export class HomeCardComponent {
   //attributi
   @Input() userLogged:boolean = false;
   @Input() item:Item | undefined;
+  @Input() loggedUserID:number=0;
   @Output() detail = new EventEmitter<Item>();
   @Output() notLoggedInOffer = new EventEmitter();
+  @Output() goToItems = new EventEmitter();
+
   itemDetailsVisibility:boolean = false;
   offerPopupVisibility:boolean = false;
   itemDetails:Item | undefined;
@@ -23,7 +26,12 @@ export class HomeCardComponent {
   }
 
   notLoggedOffer():void {
+    window.alert("Effettua il Login per fare la tua offerta")
     this.notLoggedInOffer.emit();
+  }
+
+  manageItems():void{
+    this.goToItems.emit();
   }
 
   activateOfferPopup():void {
