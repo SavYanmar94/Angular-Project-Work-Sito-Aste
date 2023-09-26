@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   items:Item[]|undefined;
   serverError:any;
   loggedUserID:number=0;
+  filters:boolean = false;
 
 
   //costruttore
@@ -89,8 +90,14 @@ export class HomeComponent implements OnInit {
      this.activateUserLoginFormPopup();
    }
 
+  //reset dei filtri di ricerca
+   resetFilters(): void {
+    this.getItemAPI();
+  }
+
    //invocazione API per lettura prodotti (barra di ricerca)
    getItemAPI(search:string=""):void{
+    this.filters = !!search; //se search non è una stringa vuota filters è true
     this.itemService.getItems()
       .subscribe({
         next: response => {
