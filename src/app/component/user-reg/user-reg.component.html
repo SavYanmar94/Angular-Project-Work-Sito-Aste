@@ -4,6 +4,7 @@
             <div class="col-12 text-center">
                 <h5 class="text-primary text-center mt-4">Registrazione Utente</h5>
                 <h6 *ngIf="serverError" class="text-danger">{{serverError}}</h6>
+                <div *ngIf="formSubmitted && !formValid" class="alert alert-danger mt-2">Controlla che tutti i campi siano compilati</div>
             </div>
         </div>
         <form #f="ngForm" (submit)="formManager(f)">
@@ -16,7 +17,7 @@
                             <input
                                 [ngModel] type="text" name="name" class="form-control" required
                                 pattern="[a-zA-Z\sàèìòù']{1,50}" #name="ngModel"
-                                [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (name.invalid && (name.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                                 Il nome non può contenere numeri
@@ -28,7 +29,7 @@
                             <input
                                 [ngModel] type="text" name="lastname" class="form-control" required
                                 pattern="[a-zA-Z\sàèìòù']{1,50}" #lastname="ngModel"
-                                [ngStyle]="{'background-color': lastname.invalid && lastname.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (lastname.invalid && (lastname.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
                                 Il cognome non può contenere numeri
@@ -42,7 +43,7 @@
                             <input
                                 [ngModel] type="email" name="mail" class="form-control" required
                                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" #mail="ngModel"
-                                [ngStyle]="{'background-color': mail.invalid && mail.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (mail.invalid && (mail.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">
                                 Inserisci un'email valida (es. esempio@mail.com)
@@ -54,7 +55,7 @@
                             <input
                                 [ngModel] type="text" name="taxCode" class="form-control" required
                                 pattern="[a-zA-Z]{6}\d{2}[ABCDEHLMPRSTabcdehlmprst]\d{2}[a-zA-Z]\d{3}[a-zA-Z]" #taxCode="ngModel"
-                                [ngStyle]="{'background-color': taxCode.invalid && taxCode.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (taxCode.invalid && (taxCode.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="taxCode.valid || taxCode.pristine" class="alert alert-danger">
                                 Formato codice fiscale ( es. ABCDEF12[ABCDEHLMPRST]34B567C )
@@ -71,7 +72,7 @@
                             <input
                                 [ngModel] type="text" name="nickname" class="form-control" required
                                 pattern="[a-zA-Z0-9.]{1,50}" #nickname="ngModel"
-                                [ngStyle]="{'background-color': nickname.invalid && nickname.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (nickname.invalid && (nickname.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="nickname.valid || nickname.pristine" class="alert alert-danger">
                                 Il nickname può contenere solo lettere, numeri, '.'
@@ -83,7 +84,7 @@
                             <input
                                 [ngModel] type="password" name="password" class="form-control" required
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}" #password="ngModel"
-                                [ngStyle]="{'background-color': password.invalid && password.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (password.invalid && (password.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
                                 La password deve contenere almeno:
@@ -111,16 +112,21 @@
                             </button> 
                         </div>
                     </div>
-                    <!-- RADIO BUTTON - PROFILE TYPE-->
+                    <!-- RADIO BUTTON - PROFILE TYPE -->
                     <div class="row d-flex justify-content-center">
                         <div class="col-auto m-2">
-                            <label for="venditore" style="margin: 4px;" required>Venditore</label>
-                            <input [ngModel] type="radio" name="profileType" value="v" (change)="profileType = 'v'">
+                            <label for="venditore" style="margin: 4px;">Venditore</label>
+                            <input [ngModel] type="radio" name="profileType" value="v" (change)="profileType = 'v';" required>
                         </div>
                         <div class="col-auto m-2">
                             <label for="acquirente" style="margin: 4px;">Acquirente</label>
-                            <input [ngModel] type="radio" name="profileType" value="a"  (change)="profileType = 'a'" >
+                            <input [ngModel] type="radio" name="profileType" value="a" (change)="profileType = 'a';" required>
                         </div>
+                        
+                    </div>
+                    <!-- Div per l'evidenziazione se nessun radio button è selezionato -->
+                    <div *ngIf="showRadioButtonError && !radioButtonSelected" [ngStyle]="{'background-color': '#fa8072'}" class="alert alert-danger text-center">
+                        Seleziona un'opzione 
                     </div>
                     <!-- EMAIL PAYPAL -->
                     <div class="row d-flex justify-content-center">
@@ -129,7 +135,7 @@
                             <input
                                 [ngModel] type="email" name="paypalMail" class="form-control" required
                                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" #paypalMail="ngModel"
-                                [ngStyle]="{'background-color': paypalMail.invalid && paypalMail.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (paypalMail.invalid && (paypalMail.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="paypalMail.valid || paypalMail.pristine" class="alert alert-danger">
                                 Inserisci un'email valida (es. esempio@mail.com)
@@ -145,14 +151,14 @@
                             <input
                                 [ngModel] type="text" name="street" class="form-control" required
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #street="ngModel"
-                                [ngStyle]="{'background-color': street.invalid && street.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (street.invalid && (street.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                         </div>
                         <div class="col-2">
                             <label>Civico:</label>
                             <input
                                 [ngModel] type="text" name="civic" class="form-control" required
                                 pattern="[a-zA-Z0-9/_-]{1,20}" #civic="ngModel"
-                                [ngStyle]="{'background-color': civic.invalid && civic.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (civic.invalid && (civic.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="civic.valid || civic.pristine" class="alert alert-danger">
                                 Il Civico deve contenere almeno un numero e può includere lettere e "/"
@@ -163,7 +169,7 @@
                             <input
                                 [ngModel] type="text" name="cap" class="form-control" required
                                 pattern="[0-9]{5}" #cap="ngModel"
-                                [ngStyle]="{'background-color': cap.invalid && cap.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (cap.invalid && (cap.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="cap.valid || cap.pristine" class="alert alert-danger">
                                 Il CAP deve essere composto da 5 cifre
@@ -176,7 +182,7 @@
                             <input
                                 [ngModel] type="text" name="town" class="form-control" required
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #town="ngModel"
-                                [ngStyle]="{'background-color': town.invalid && town.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (town.invalid && (town.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="town.valid || town.pristine" class="alert alert-danger">
                                 Il comune può contenere solo lettere e i caratteri speciali 'à', 'è', 'ì', 'ò', 'ù'
@@ -187,7 +193,7 @@
                             <input
                                 [ngModel] type="text" name="province" class="form-control" required
                                 pattern="[a-zA-Z]{2}" #province="ngModel"
-                                [ngStyle]="{'background-color': province.invalid && province.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (province.invalid && (province.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="province.valid || province.pristine" class="alert alert-danger">
                                 La provincia deve essere composta da 2 lettere
@@ -202,14 +208,14 @@
                             <input
                                 [ngModel] type="text" name="shipping_street" class="form-control" required
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #shipping_street="ngModel"
-                                [ngStyle]="{'background-color': shipping_street.invalid && shipping_street.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (shipping_street.invalid && (shipping_street.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                         </div>
                         <div class="col-2">
                             <label>Civico:</label>
                             <input
                                 [ngModel] type="text" name="shipping_civic" class="form-control" required
                                 pattern="[a-zA-Z0-9/_-]{1,20}" #shipping_civic="ngModel"
-                                [ngStyle]="{'background-color': shipping_civic.invalid && shipping_civic.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (shipping_civic.invalid && (shipping_civic.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="shipping_civic.valid || shipping_civic.pristine" class="alert alert-danger">
                                 Il Civico deve contenere almeno un numero e può includere lettere e "/"
@@ -220,7 +226,7 @@
                             <input
                                 [ngModel] type="text" name="shipping_cap" class="form-control" required
                                 pattern="[0-9]{5}" #shipping_cap="ngModel"
-                                [ngStyle]="{'background-color': shipping_cap.invalid && shipping_cap.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (shipping_cap.invalid && (shipping_cap.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="shipping_cap.valid || shipping_cap.pristine" class="alert alert-danger">
                                 Il CAP deve essere composto da 5 cifre
@@ -233,7 +239,7 @@
                             <input
                                 [ngModel] type="text" name="shipping_town" class="form-control" required
                                 pattern="[a-zA-Z0-9\sàèìòù'.]{1,50}" #shipping_town="ngModel"
-                                [ngStyle]="{'background-color': shipping_town.invalid && shipping_town.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (shipping_town.invalid && (shipping_town.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="shipping_town.valid || shipping_town.pristine" class="alert alert-danger">
                                 Il comune può contenere solo lettere e i caratteri speciali 'à', 'è', 'ì', 'ò', 'ù'
@@ -244,7 +250,7 @@
                             <input
                                 [ngModel] type="text" name="shipping_province" class="form-control" required
                                 pattern="[a-zA-Z]{2}" #shipping_province="ngModel"
-                                [ngStyle]="{'background-color': shipping_province.invalid && shipping_province.dirty ? '#fa8072' : 'white'}">
+                                [ngStyle]="{'background-color': (shipping_province.invalid && (shipping_province.dirty || formSubmitted)) ? '#fa8072' : 'white'}">
                             <!-- MESSAGGIO DI ERRORE -->
                             <div [hidden]="shipping_province.valid || shipping_province.pristine" class="alert alert-danger">
                                 La provincia deve essere composta da 2 lettere
@@ -257,7 +263,7 @@
                             <button type="button" class="btn btn-outline-warning mt-4" (click)="leaveRegistration(f)">
                                 Abbandona Registrazione
                             </button>
-                            <input type="submit" class="btn btn-outline-primary mt-4 ms-4" value="Registra Profilo" [disabled]="f.invalid || !profileType">
+                            <input type="submit" class="btn btn-outline-primary mt-4 ms-4" value="Registra Profilo">
                         </div>
                     </div>
                 </div>

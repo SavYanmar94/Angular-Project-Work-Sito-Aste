@@ -23,7 +23,11 @@ export class UserRegComponent
   @Output() register = new EventEmitter();
   @Input() profileImage:any;
   profileType:string = '';
-  
+  formValid:boolean = true;
+  formSubmitted:boolean = false;
+  radioButtonSelected: boolean = false;
+  showRadioButtonError: boolean = false;
+
 
 
 
@@ -37,9 +41,10 @@ export class UserRegComponent
     this.serverError = undefined;
     this.duplicate = undefined;
     this.leave.emit();
+    this.formValid = true;
+    this.formSubmitted = false;
+    this.showRadioButtonError =false;
   }
-
-  // gestione del form forse serve dopo da inserire per l update
 
   //metodo per creare e registrare nuovo user
   formManager(form:NgForm):void
@@ -74,11 +79,16 @@ export class UserRegComponent
       shippingAddress:shippingAddress
     };
 
+    this.formSubmitted = true;
+
+    
+     // Verifica se il modulo è valido
+     if (form.valid) {
+      this.formSubmitted = true; 
     this.userService.userRegistration(user)
       .subscribe({
         next: response => {
           console.log(response);
-          // da vedere
           if(response.code == 201)
           {
             form.reset();
@@ -87,6 +97,7 @@ export class UserRegComponent
             this.register.emit();
             window.alert("Registrazione avvenuta con successo!");
           }
+          this.formSubmitted = false;
         },
         error: e => {
           console.log(e);
@@ -94,10 +105,21 @@ export class UserRegComponent
             this.duplicate = "Nickname Occupato";
           else
             this.serverError = "Problemi con il server";
-            
+            this.formSubmitted = false;
         }
       });
+  }else {
+    // Il modulo non è valido, imposta formValid a false
+    this.formValid = false;
   }
+
+  // Verifica se nessun radio button è selezionato e mostra il messaggio di avviso
+  if (!this.radioButtonSelected) {
+    this.showRadioButtonError = true;
+} else {
+    this.showRadioButtonError = false;
+}
+}
 
   uploadImage(event:any):void {
 
