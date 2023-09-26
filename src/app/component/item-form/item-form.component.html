@@ -4,8 +4,8 @@
             <div class="form-row"><h5>Nuovo elemento</h5></div>
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label>Nome:</label>
-                    <input id="in" #name="ngModel" [ngModel] type="text" name="name" class="form-control" required pattern="[a-zA-Z\\sàèìòù']{1,100}" [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
+                    <label>Nome dell'articolo:</label>
+                    <input id="in" #name="ngModel" [ngModel] type="text" name="name" class="form-control" required pattern="[a-zA-Zàèìòù\s']+" [ngStyle]="{'background-color': name.invalid && name.dirty ? '#fa8072' : 'white'}">
                     <!--MESSAGGIO DI ERRORE-->
                     <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Il nome deve essere composto di sole lettere</div>
                 </div>
