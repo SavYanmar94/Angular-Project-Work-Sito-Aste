@@ -111,15 +111,15 @@
                             </button>
                         </div>
                     </div>
-                    <!-- RADIO BUTTON -->
+                    <!-- RADIO BUTTON - PROFILE TYPE-->
                     <div class="row d-flex justify-content-center">
                         <div class="col-auto m-2">
                             <label for="venditore" style="margin: 4px;" required>Venditore</label>
-                            <input [ngModel] type="radio" name="profileType" value="v">
+                            <input [ngModel] type="radio" name="profileType" value="v" (change)="profileType = 'v'">
                         </div>
                         <div class="col-auto m-2">
                             <label for="acquirente" style="margin: 4px;">Acquirente</label>
-                            <input [ngModel] type="radio" name="profileType" value="a">
+                            <input [ngModel] type="radio" name="profileType" value="a"  (change)="profileType = 'a'" >
                         </div>
                     </div>
                     <!-- EMAIL PAYPAL -->
@@ -257,7 +257,7 @@
                             <button type="button" class="btn btn-outline-warning mt-4" (click)="leaveRegistration(f)">
                                 Abbandona Registrazione
                             </button>
-                            <input type="submit" class="btn btn-outline-primary mt-4 ms-4" value="Registra Profilo" [disabled]="f.invalid">
+                            <input type="submit" class="btn btn-outline-primary mt-4 ms-4" value="Registra Profilo" [disabled]="f.invalid || !profileType">
                         </div>
                     </div>
                 </div>

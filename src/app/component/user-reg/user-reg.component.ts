@@ -22,7 +22,7 @@ export class UserRegComponent
   @Output() leave = new EventEmitter();
   @Output() register = new EventEmitter();
   @Input() profileImage:any;
-  
+  profileType:string = '';
   
 
 
@@ -111,4 +111,5 @@ export class UserRegComponent
       event.target.value = "";
     }
   }
+  
 }
