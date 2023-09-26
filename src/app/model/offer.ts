@@ -1,5 +1,4 @@
 import { Item } from "./item";
-import { OfferUser } from "./offerUser";
 import { User } from "./user";
 
 export interface Offer {
@@ -8,6 +7,6 @@ export interface Offer {
     timing?:Date;
     amount?:number;
     state?:string;
-    user?:OfferUser;
-    items?:Item;
+    item?:Item;
+    offerer?:User;
 }

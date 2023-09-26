@@ -94,8 +94,8 @@
     </div>
     <!--OFFERTE INVIATE-->
     <div class="container-fluid" *ngIf="lander == 'sentOffers'">
-        <h1 class="pageTitle" [hidden]="this.offers == null">Non hai inviato nessuna offerta</h1>
-        <h1 class="pageTitle" [hidden]="this.offers !== null">Le tue offerte inviate</h1>
+        <h1 class="pageTitle" [hidden]="this.offerSent">Non hai inviato nessuna offerta</h1>
+        <h1 class="pageTitle" [hidden]="!this.offerSent">Le tue offerte inviate</h1>
         <hr>
         <div *ngFor="let offer of offers">
             <div class="jumbotron jumbotron-fluid">
@@ -112,8 +112,8 @@
                         </thead>
                         <tr>
                             <td>{{offer.timing}}</td>
-                            <td>{{offer.item?.auctionBase}}</td>
-                            <td>{{offer.amount}}</td>
+                            <td>{{offer.item?.auctionBase}} €</td>
+                            <td>{{offer.amount}} €</td>
                             <td>{{offer.state}}</td>
                         </tr>
                     </table>
@@ -123,8 +123,8 @@
     </div>
     <!--OFFERTE RICEVUTE-->
     <div class="container-fluid" *ngIf="lander == 'receivedOffers'">
-        <h1 class="pageTitle" [hidden]="offerReceived == true">Non hai ricevuto offerte per i tuoi articoli</h1>
-        <h1 class="pageTitle" [hidden]="offerReceived == false">Le tue offerte ricevute</h1>
+        <h1 class="pageTitle" [hidden]="offerReceived">Non hai ricevuto offerte per i tuoi articoli</h1>
+        <h1 class="pageTitle" [hidden]="!offerReceived">Le tue offerte ricevute</h1>
         <hr>
         <div *ngFor="let userItem of user?.items">
             <div *ngFor="let itemOffer of userItem.offers">
@@ -142,8 +142,8 @@
                             </thead>
                             <tr>
                                 <td>{{itemOffer.timing}}</td>
-                                <td>{{userItem.auctionBase}}</td>
-                                <td>{{itemOffer.amount}}</td>
+                                <td>{{userItem.auctionBase}} €</td>
+                                <td>{{itemOffer.amount}} €</td>
                                 <td>{{itemOffer.state}}</td>
                             </tr>
                         </table>

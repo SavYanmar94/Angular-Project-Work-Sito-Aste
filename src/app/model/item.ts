@@ -11,4 +11,5 @@ export interface Item {
     image?:string;
     state?:string;
     seller?:User;
+    majorOffer?:number;
 }

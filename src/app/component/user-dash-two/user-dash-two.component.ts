@@ -24,6 +24,7 @@ export class UserDashTwoComponent implements OnInit {
   items: UserItem[] | undefined;
   lander:string = "";
   offerReceived:boolean = false;
+  offerSent:boolean = false;
 
   constructor(private itemService:ItemService,
               private router:Router,
@@ -37,19 +38,36 @@ export class UserDashTwoComponent implements OnInit {
       this.lander = "sentOffers";
     }
     this.userService.getUserData().subscribe({
-      next: response => {this.user = response, this.items = response.items, this.offers = response.offers, this.userType = response.profileType?.toString()},
+      next: response => {this.user = response, this.items = response.items, this.offers = response.offers, this.userType = response.profileType?.toString(), this.offerReceived = this.offerReceivedFun(), this.offerSent = this.offerSentFun(), console.log(this.offers);},
       error: e => console.log(e)
     });
+  }
 
-    //per vedere se c'è almeno un'offerta nella lista degli articoli dell'utente
+  //per vedere se c'è almeno un'offerta nella lista degli articoli dell'utente
+  offerReceivedFun():boolean {
+    let oneOffer = false;
     if(this.items !== undefined) {
       for(let item of this.items) {
-        if(item.offers !== undefined) {
-          this.offerReceived = true;
+        let len = this.item?.offers?.length;
+        if(len && len > 0) {
+          oneOffer = true;
+          break;
         }
       }
     }
+    return oneOffer;
   }
+
+  offerSentFun():boolean {
+    let len = this.offers?.length;
+    if(len && len > 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 
   //metodi navbar
   ritorna_al_profilo():void {
