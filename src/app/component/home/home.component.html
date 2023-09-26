@@ -26,7 +26,9 @@
 <!-- <app-item-details [(isVisible)]="itemDetailsVisibility"></app-item-details> -->
 
 <div class="container-fluid">
-    <h1 class="text-center">Ultimi articoli inseriti</h1>
+    <h1 class="text-center" *ngIf="!filters">Ultimi articoli inseriti</h1>
+    <h1 class="text-center" *ngIf="filters">Risultati della tua ricerca:</h1>
+    <button class="btn btn-danger" *ngIf="filters" (click)="resetFilters()">Cancella filtri</button>
     <div class="row">
         <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4" [hidden]="item.state !== 'disponibile'">
             <app-home-card [userLogged]="userLogged" [item]="item" (detail)="activateItemDetails()"
