@@ -4,26 +4,11 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <!-- DROPDOWN -->
-            <div class="dropdown">
-              <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; margin-right: 10px;">
-                Categories
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Elettronica</a></li>
-                <li><a class="dropdown-item" href="#">Quadri</a></li>
-                <li><a class="dropdown-item" href="#">Abbigliamento</a></li>
-                <li><a class="dropdown-item" href="#">Arredamento per la casa</a></li>
-              </ul>
-            </div>
-        </ul>
-  
+    
+        <div class="mx-auto">
         <form  #f="ngForm" (submit)="searcherEmitter(f)" class="form-inline my-2 my-lg-0">
             <div class="input-group">
-                <input [ngModel] class="form-control mr-sm-2" type="text" name="search" placeholder="Cerca prodotti">
+                <input [ngModel] class="form-control mr-sm-2 custom-search-input" type="text" name="search" placeholder="Cerca prodotti">
   
                 <div class="input-group-append">
                     <button class="btn btn-danger my-2 my-sm-0" type="submit">
@@ -32,7 +17,7 @@
                 </div>
             </div>
         </form>
-    </div>
+        </div>
   
     <ul class="navbar-nav ml-auto">
         <li *ngIf="userLogged == false" class="nav-item">

@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
            {
              this.userService.removeUserCredential();
              this.userLogged = false;
-             window.alert("Logout effettuato con successo! A presto!")
+             //window.alert("Logout effettuato con successo! A presto!")
            }
          },
          error: e => console.log(e)
