@@ -104,6 +104,11 @@ td {
     margin-top: 2%;
 }
 
+td, th {
+    box-sizing: border-box;
+    max-width: 120px;
+}
+
 @media (max-width: 770px) {
 
     #sidebar{
