@@ -105,7 +105,7 @@ export class UserDashComponent implements OnInit {
           if (response.code == 202) {
             this.userService.removeUserCredential();
             this.router.navigate([""]);
-            window.alert("Logout effettuato con successo! A presto!")
+            //window.alert("Logout effettuato con successo! A presto!")
           }
         },
         error: e => console.log(e)

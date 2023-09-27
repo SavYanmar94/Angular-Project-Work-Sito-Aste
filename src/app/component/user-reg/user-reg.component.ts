@@ -97,7 +97,7 @@ export class UserRegComponent
             this.serverError = undefined;
             this.duplicate = undefined;
             this.register.emit();
-            window.alert("Registrazione avvenuta con successo!");
+            //window.alert("Registrazione avvenuta con successo!");
           }
           this.formSubmitted = false;
         },
