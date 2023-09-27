@@ -39,3 +39,14 @@
     text-decoration: none;
     color: black;
   }
+
+  #paypal {
+    border: solid 1px #003087;
+    color: #003087;
+    background-color: white;
+  }
+
+  #paypal:hover {
+    color: white;
+    background-color: #003087;
+  }

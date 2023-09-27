@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Item } from 'src/app/model/item';
+import { UserItem } from 'src/app/model/userItem';
 
 @Component({
   selector: 'app-payment-method',
@@ -7,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment-method.component.css']
 })
 export class PaymentMethodComponent {
+
   @Input() isVisible: boolean = false;
+  @Input() item:Item | undefined;
   @Output() isVisibleChange = new EventEmitter<boolean>();
 
   constructor(private router:Router) {}

@@ -18,7 +18,7 @@
         </ul>
     </div>
         
-    <app-item-form [(isVisible)]="itemFormVisibility" [user]="user" [lander]="lander" (timeToRefresh)="refresh()"></app-item-form>
+    <app-item-form [(isVisible)]="itemFormVisibility" [user]="user" [lander]="lander" (timeToRefresh)="getData()"></app-item-form>
     <app-item-details [(isVisible)]="itemDetailsVisibility" [(userItem)]="item"></app-item-details>
 
     <!-- Page content  -->
@@ -94,13 +94,16 @@
         <h1 class="pageTitle" [hidden]="!this.offerSent">Le tue offerte inviate</h1>
         <hr>
         <div *ngFor="let offer of offers">
+
+            <app-payment-method [(isVisible)]="paymentPopupVisibility" [item]="itemOfOffer"></app-payment-method>
+
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h1 class="display-6">{{offer.item?.name}}</h1>
                     <table>
                         <thead>
                             <tr>
-                                <th>Data e ora offerta</th>
+                                <th>Data offerta</th>
                                 <th>Base asta</th>
                                 <th>Offerta</th>
                                 <th>Stato</th>
@@ -111,6 +114,7 @@
                             <td>{{offer.item?.auctionBase}} €</td>
                             <td>{{offer.amount}} €</td>
                             <td><span [ngStyle]="{'color': offer.state == 'In corso' ? 'blue' : (offer.state == 'Rifiutata' ? 'red' : 'green')}">{{offer.state}}</span></td>
+                            <td><button id="pagaOra" class="btn btn-warning btn-md articoli_asta_btn" [disabled]="offer.state == 'Rifiutata' || offer.state == 'In corso'" (click)="paymentPopUpVisibilityFun(offer.item)">Paga ora</button></td>
                         </tr>
                     </table>
                 </div>
@@ -124,13 +128,14 @@
         <hr>
         <div *ngFor="let userItem of user?.items">
             <div *ngFor="let itemOffer of userItem.offers">
+
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
                         <h1 class="display-6">{{userItem.name}}</h1>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Data e ora offerta</th>
+                                    <th>Data offerta</th>
                                     <th>Base asta</th>
                                     <th>Offerta</th>
                                     <th>Stato</th>
