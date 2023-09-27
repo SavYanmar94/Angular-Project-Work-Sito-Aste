@@ -2,7 +2,8 @@
 body {
     max-width: 1600px; /* Set the maximum width you desire */
     margin: 0 auto; /* Center-align the content */
-    background-color: #f0f0f0; /* Set the background color for the sides */
+   
+    
   }
 
 h1, h2, h3, h4, h5, h6 {
@@ -12,3 +13,16 @@ h1, h2, h3, h4, h5, h6 {
 ul p, li {
   font-family: 'Montserrat';
 }
+
+body {
+  background-image: url('percorso-del-tuo-pattern.jpg'); /* Sostituisci con il percorso del tuo pattern */
+  background-repeat: repeat-y; /* Ripeti l'immagine verticalmente solo sui lati sinistro e destro */
+  background-position: top left, top right; /* Posiziona l'immagine in alto a sinistra e in alto a destra */
+  background-size: auto; /* Imposta la dimensione dell'immagine come automatica */
+  /* Altre proprietà CSS per il corpo, se necessario */
+}
+.contenuto {
+  padding: 20px;
+  /* Altre proprietà CSS per il contenuto, se necessario */
+}
+

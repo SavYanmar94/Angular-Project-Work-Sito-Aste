@@ -48,3 +48,15 @@ img {
     transform: translate(-50%, -50%);
     max-height: 250px;
 }
+
+.hammerBox{
+    background-image: url('src\assets\images\sfondoBody.png'); /* Sostituisci con il percorso del tuo pattern */
+    background-repeat: repeat;
+}
+
+.babyBoss {
+    font-family: 'Roboto', sans-serif !important; /* Usa il font Roboto */
+    font-size: 4em  !important; /* Ingrandisci il font a tuo piacimento */
+    font-weight: bold  !important; /* Rendi il testo grassetto */
+    /* Altre proprietà CSS personalizzate se necessario */
+  }
