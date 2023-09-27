@@ -26,6 +26,7 @@ export class UserRegComponent
   formSubmitted:boolean = false;
   radioButtonSelected: boolean = false;
   showRadioButtonError: boolean = false;
+  allFieldsValid: boolean = true;
 
 
 
@@ -43,6 +44,7 @@ export class UserRegComponent
     this.formValid = true;
     this.formSubmitted = false;
     this.showRadioButtonError =false;
+    this.radioButtonSelected = false;
   }
 
   //metodo per creare e registrare nuovo user
@@ -83,6 +85,7 @@ export class UserRegComponent
     
      // Verifica se il modulo è valido
      if (form.valid) {
+      this.allFieldsValid = true;
       this.formSubmitted = true; 
     this.userService.userRegistration(user)
       .subscribe({
@@ -110,6 +113,8 @@ export class UserRegComponent
   }else {
     // Il modulo non è valido, imposta formValid a false
     this.formValid = false;
+    this.allFieldsValid = false; // Imposta la variabile allFieldsValid su false
+
   }
 
   // Verifica se nessun radio button è selezionato e mostra il messaggio di avviso
@@ -132,5 +137,9 @@ export class UserRegComponent
       event.target.value = "";
     }
   }
-  
+  onRadioButtonChange(profileType: string): void {
+  this.profileType = profileType; // Aggiorna il valore di profileType
+  this.radioButtonSelected = true; // Imposta radioButtonSelected su true quando viene selezionato un radio button
+}
+
 }

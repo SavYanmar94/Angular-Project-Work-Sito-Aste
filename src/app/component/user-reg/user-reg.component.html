@@ -4,7 +4,7 @@
             <div class="col-12 text-center">
                 <h5 class="text-primary text-center mt-4">Registrazione Utente</h5>
                 <h6 *ngIf="serverError" class="text-danger">{{serverError}}</h6>
-                <div *ngIf="formSubmitted && !formValid" class="alert alert-danger mt-2">Controlla che tutti i campi siano compilati</div>
+                <div *ngIf="formSubmitted && !allFieldsValid" class="alert alert-danger mt-2">Controlla che tutti i campi siano compilati</div>
             </div>
         </div>
         <form #f="ngForm" (submit)="formManager(f)">
@@ -116,11 +116,11 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-auto m-2">
                             <label for="venditore" style="margin: 4px;">Venditore</label>
-                            <input [ngModel] type="radio" name="profileType" value="v" (change)="profileType = 'v';" required>
+                            <input [ngModel] type="radio" name="profileType" value="v" (change)="onRadioButtonChange('v');" required>
                         </div>
                         <div class="col-auto m-2">
                             <label for="acquirente" style="margin: 4px;">Acquirente</label>
-                            <input [ngModel] type="radio" name="profileType" value="a" (change)="profileType = 'a';" required>
+                            <input [ngModel] type="radio" name="profileType" value="a" (change)="onRadioButtonChange('a');" required>
                         </div>
                         
                     </div>
