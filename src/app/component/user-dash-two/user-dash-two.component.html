@@ -32,7 +32,7 @@
                     <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
                     alt="Card image cap">
                     <strong class="cardTitle">{{item.name}}</strong>
-                    <span class="cardTitle">Stato: <span [ngStyle]="{'color': item.state == 'disponibile' ? 'red' : 'green' }">{{item.state}}</span></span>
+                    <span class="cardTitle">Stato: <span [ngStyle]="{'color': item.state == 'Disponibile' ? 'red' : 'green' }">{{item.state}}</span></span>
                     <div class="card-body">
                         <div class="row justify-content-between">
                             <div class="col-lg-6 col-sm-12 price">
@@ -65,7 +65,7 @@
                     <img class="card-img-top" [src]="item?.image ? item?.image : '../../../assets/images/placeholder.png'"
                     alt="Card image cap">
                     <strong class="cardTitle">{{item.name}}</strong>
-                    <span class="cardTitle">Stato: <span [ngStyle]="{'color': item.state == 'disponibile' ? 'red' : 'green' }">{{item.state}}</span></span>
+                    <span class="cardTitle">Stato: <span [ngStyle]="{'color': item.state == 'Disponibile' ? 'red' : 'green' }">{{item.state}}</span></span>
                     <div class="card-body">
                         <div class="row justify-content-between">
                             <div class="col-lg-6 col-sm-12 price">
@@ -146,7 +146,7 @@
                         <div class="row">
                             <div class="col-3">
                                 <button *ngIf="itemOffer.state == 'In corso'" (click)="acceptOffer(itemOffer)"  class="btn btn-outline-primary btn-md articoli_asta_btn">Accetta offerta</button>
-                                <button *ngIf="itemOffer.state == 'accettata'"
+                                <button *ngIf="itemOffer.state == 'Accettata'"
                                 class="btn btn-success btn-md articoli_asta_btn" disabled>Offerta Accettata</button>
                                 <button *ngIf="itemOffer.state == 'Rifiutata'"
                                 class="btn btn-danger btn-md articoli_asta_btn" disabled>Offerta Rifiutata</button>
