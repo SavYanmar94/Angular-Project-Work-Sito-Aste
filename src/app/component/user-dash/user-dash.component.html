@@ -19,7 +19,7 @@
                 <div class="container  px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center hammerBox">
                     <div class="m-4 m-lg-5">
-                        <h1 class="display-5 babyBoss">Ciao {{user?.nickname}}!</h1>
+                        <h1 class="display-5 babyBoss"><span>Ciao {{user?.nickname}}!</span></h1>
                         <div id="containerImg"><img [src]="user?.profileImage ? user?.profileImage : '../../../assets/images/propic.jpg'" alt="Avatar" /></div><br>
                         <!-- modifica profilo button-->
                         <button   (click)="activateAndUpdatePopup()" id="bottone_sotto_profilo" class="btn btn-lg">Modifica il tuo profilo</button><br>

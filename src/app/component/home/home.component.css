@@ -2,12 +2,21 @@
     margin-top: 2%;
     margin-bottom: 5%;
     padding-top:3%;
-    background-color: white;
+    
 }
 
 .boss {
     font-family: 'Roboto', sans-serif; /* Usa il font Roboto */
-    font-size: 3.5em; /* Ingrandisci il font a tuo piacimento */
+    font-size: 4em; /* Ingrandisci il font a tuo piacimento */
     font-weight: bold; /* Rendi il testo grassetto */
     /* Altre proprietà CSS personalizzate se necessario */
   }
+
+  
+.hammerBox{
+    background-image: url('src\assets\images\sfondoBody.png'); /* Sostituisci con il percorso del tuo pattern */
+    background-repeat: repeat;
+}
+span{
+    background-color:rgba(255, 255, 255, 0.65);
+}

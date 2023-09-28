@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper hammerBox">
     <!-- Navbar  -->
     <div id="sidebar">
         <div id="sidebar-header">
@@ -23,9 +23,9 @@
 
     <!-- Page content  -->
     <!-- Articoli all'asta  -->
-    <div class="container-fluid" *ngIf="lander == 'auction'">
-        <h1 class="pageTitle" [hidden]="!item_at_auction">Articoli all'asta</h1>
-        <h1 class="pageTitle" [hidden]="item_at_auction">Non hai articoli all'asta</h1>
+    <div class="container-fluid " *ngIf="lander == 'auction'">
+        <h1 class="pageTitle babyBoss" [hidden]="!item_at_auction"><span>Articoli all'asta</span></h1>
+        <h1 class="pageTitle babyBoss" [hidden]="item_at_auction"><span>Non hai articoli all'asta</span></h1>
         <div class="row">
             <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4" [hidden]="item.state == 'Venduto'">
                 <div class="card">
@@ -57,8 +57,8 @@
     </div>
     <!-- Articoli venduti  -->
     <div class="container-fluid" *ngIf="lander == 'soldItems'">
-        <h1 class="pageTitle" [hidden]="!itemSold">Articoli venduti</h1>
-        <h1 class="pageTitle" [hidden]="itemSold">Non hai articoli venduti</h1>
+        <h1 class="pageTitle babyBoss" [hidden]="!itemSold"><span>Articoli venduti</span></h1>
+        <h1 class="pageTitle babyBoss" [hidden]="itemSold"><span>Non hai articoli venduti</span></h1>
         <div class="row">
             <div *ngFor="let item of items" class="col-xxl-3 col-lg-4 col-md-6 col-sm-12 mt-4" [hidden]="item.state !== 'Venduto'">
                 <div class="card">
@@ -90,8 +90,8 @@
     </div>
     <!--OFFERTE INVIATE-->
     <div class="container-fluid" *ngIf="lander == 'sentOffers'">
-        <h1 class="pageTitle" [hidden]="this.offerSent">Non hai inviato nessuna offerta</h1>
-        <h1 class="pageTitle" [hidden]="!this.offerSent">Le tue offerte inviate</h1>
+        <h1 class="pageTitle babyBoss" [hidden]="this.offerSent"><span>Non hai inviato nessuna offerta</span></h1>
+        <h1 class="pageTitle babyBoss" [hidden]="!this.offerSent"><span>Le tue offerte inviate</span></h1>
         <hr>
         <div *ngFor="let offer of offers">
 
@@ -123,8 +123,8 @@
     </div>
     <!--OFFERTE RICEVUTE-->
     <div class="container-fluid" *ngIf="lander == 'receivedOffers'">
-        <h1 class="pageTitle" [hidden]="offerReceived">Non hai ricevuto offerte per i tuoi articoli</h1>
-        <h1 class="pageTitle" [hidden]="!offerReceived">Le tue offerte ricevute</h1>
+        <h1 class="pageTitle babyBoss" [hidden]="offerReceived"><span>Non hai ricevuto offerte per i tuoi articoli</span></h1>
+        <h1 class="pageTitle babyBoss" [hidden]="!offerReceived"><span>Le tue offerte ricevute</span></h1>
         <hr>
         <div *ngFor="let userItem of user?.items">
             <div *ngFor="let itemOffer of userItem.offers">

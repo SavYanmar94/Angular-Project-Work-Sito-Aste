@@ -8,7 +8,7 @@
 .card-img-top {
     height: 250px;
     min-height: 250px;
-    object-fit: cover;
+    object-fit:cover;
 }
 
 #nome_articolo {
