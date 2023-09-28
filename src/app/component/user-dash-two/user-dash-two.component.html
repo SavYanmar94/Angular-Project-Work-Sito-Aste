@@ -114,7 +114,15 @@
                             <td>{{offer.item?.auctionBase}} €</td>
                             <td>{{offer.amount}} €</td>
                             <td><span [ngStyle]="{'color': offer.state == 'In corso' ? 'blue' : (offer.state == 'Rifiutata' ? 'red' : 'green')}">{{offer.state}}</span></td>
-                            <td><button id="pagaOra" class="btn btn-warning btn-md articoli_asta_btn" [disabled]="offer.state == 'Rifiutata' || offer.state == 'In corso'" (click)="paymentPopUpVisibilityFun(offer.item)">Paga ora</button></td>
+                            <td><button id="pagaOra" class="btn btn-warning btn-md articoli_asta_btn" [disabled]="offer.state == 'Rifiutata' || offer.state == 'In corso'" (click)="paymentPopUpVisibilityFun(offer.item)">
+                                <ng-container *ngIf="offer.state == 'Rifiutata' || offer.state == 'In corso'; else payNow">
+                                    In attesa di conferma
+                                </ng-container>
+                                <ng-template #payNow>
+                                    Paga ora
+                                </ng-template>
+                                </button>
+                            </td>
                         </tr>
                     </table>
                 </div>
