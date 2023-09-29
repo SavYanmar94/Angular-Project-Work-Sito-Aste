@@ -122,7 +122,7 @@
                             <label for="acquirente" style="margin: 4px;">Acquirente</label>
                             <input [ngModel] type="radio" name="profileType" value="a" (change)="onRadioButtonChange('a');" required>
                         </div>
-                        
+                        <p style="text-align: center;">Attenzione: la scelta del tipo di profilo è definitiva e non potrà essere modificata in seguito!</p>
                     </div>
                     <!-- Div per l'evidenziazione se nessun radio button è selezionato -->
                     <div *ngIf="showRadioButtonError && !radioButtonSelected" [ngStyle]="{'background-color': '#fa8072'}" class="alert alert-danger text-center">
